@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "misans-m";
+    src: url("MiSans-Medium.ttf");
+}
+
+@font-face {
+    font-family: "misans-r";
+    src: url("misans-r.ttf");
+}
+
+@font-face {
+    font-family: "misans-n";
+    src: url("misans-n.ttf");
+}
+
+@font-face {
+    font-family: "tnr";
+    src: url("tnr.woff2");
+}
