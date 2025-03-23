@@ -9,7 +9,7 @@ import routerPath from "./routerPath.ts";
 import Mobile_KS_Query from "@/apps/MobileKSQuery/Mobile_KS_Query.tsx";
 import MobileScaleOverview from "@/apps/MobileScaleOverview/MobileScaleOverview.tsx";
 import MobileScoreChecker from "@/apps/MobileScoreChecker/MobileScoreChecker.tsx";
-import Settings from "@/apps/MidiTest/MidiTest.tsx";
+import Settings from "@/apps/MidiMessage/MidiMessage.tsx";
 import Temp251 from "@/apps/Temp251/Temp251.tsx";
 import ChordDisplay from "@/apps/ChordDisplay/ChordDisplay.tsx";
 // import FindInScale from "@/apps/FindInScale/FindInScale.tsx";
@@ -17,6 +17,8 @@ import FindNotesInChordOrScale from "@/apps/FindNotesInChordOrScale/FindNotesInC
 import FindNotesWithInterval from "@/apps/FindNotesWithInterval/FindNotesWithInterval.tsx";
 import HarmonicSeries from "@/apps/HarmonicSeries/HarmonicSeries.tsx";
 import Author from "@/apps/Author/Author.tsx";
+import MidiMessage from "@/apps/MidiMessage/MidiMessage.tsx";
+import StaveExam from "@/apps/StaveExam/StaveExam.tsx";
 
 const r = createHashRouter([
   {
@@ -76,10 +78,15 @@ const r = createHashRouter([
         path: routerPath.mobile_scoreChecker,
         element: <MobileScoreChecker/>
       },
+      // {
+      //   path: routerPath.staveExam,
+      //   element: <StaveExam/>
+      // },
+      // {
+      //   path: routerPath.midi,
+      //   element: <MidiMessage/>
+      // },
       {
-        path: routerPath.settings,
-        element: <Settings/>
-      }, {
         path: routerPath.temp251,
         element: <Temp251/>
       },

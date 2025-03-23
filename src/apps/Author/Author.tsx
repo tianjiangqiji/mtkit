@@ -6,6 +6,7 @@ import {range} from "lodash"
 import logo from "@/assets/svgs/logos/authorLogo.svg"
 import googleColors from "@/assets/colors/googleColors.ts";
 import {GiOgre} from "react-icons/gi";
+import shadowPresets from "@/assets/styles/shadowPresets.ts";
 
 const ma = {
   marginLeft: "auto", marginRight: "auto", userSelect: "none", paddingLeft: 15, paddingRight: 15, paddingTop: 5,
@@ -134,7 +135,8 @@ const Author_css = (naviBarHeight: number) => css({
         ...cssPresets.flexCenter,
         flexDirection: "column",
         borderRadius: 8,
-        border: `1px solid ${googleColors.blue400}`,
+        border: `1px solid ${googleColors.gray300}`,
+        boxShadow:shadowPresets.sm,
         "& .title": {
           fontSize: 18,
           color: googleColors.gray800,

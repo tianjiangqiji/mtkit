@@ -14,9 +14,10 @@ import {useWindowSize} from "react-use";
 import NumberNote from "@/components/reNote/NumberNote/NumberNote.tsx";
 
 const keyFontSize = 18
-
+const doNothing = () => {
+}
 const FindNotesOfChord = () => {
-  // const {findResult} = useFindChord()
+
   const [activeKey, setActiveKey] = useState([])
   const {pianoKeyIntervalList} = useFindChordConfig()
   useEffect(() => {
@@ -110,10 +111,10 @@ const FindNotesOfChord = () => {
             <div className="note_window"><NoteByLocation location={x.rootNoteLocation}/></div>
             <div className="cn_name">
               {x.cnName}
-
             </div>
           </div>}>
-          <div style={{height: 160, ...cssPresets.flexCenter}} onDoubleClick={() => alert("??")}
+          <div style={{height: 160, ...cssPresets.flexCenter}}
+               onDoubleClick={doNothing}
                className="line" key={`${x.chordKey}_${x.rootNoteLocation}`}>
             <OctavePiano
               isPureDisplay={true}

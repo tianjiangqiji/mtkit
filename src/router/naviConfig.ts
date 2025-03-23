@@ -9,6 +9,7 @@ import author_svg from "@/router/svgComps/author_svg.svg"
 import series_svg from "@/router/svgComps/series_svg.svg"
 import temp251_svg from "@/router/svgComps/temp251_svg.svg"
 import midi_svg from "@/router/svgComps/midi_svg.svg"
+import exam_svg from "@/router/svgComps/exam_svg.svg"
 import score_svg from "@/router/svgComps/score_svg.svg"
 import circle_svg from "@/router/svgComps/circle_svg.svg"
 import interval_svg from "@/router/svgComps/interval_svg.svg"
@@ -87,21 +88,28 @@ export default [
     subtitle: "给定任意音符给出251进行",
     imgURL: temp251_svg,
     type: "all"
-  }, {
+  },
+  {
     link: `/${routerPath.harmonicSeries}`,
     title: "泛音列",
     subtitle: "可比较多个音符的泛音列",
     imgURL: series_svg,
     type: "all"
   },
-
-  {
-    link: `/${routerPath.settings}`,
-    title: "MIDI键盘",
-    subtitle: "若系统支持则测试MIDI信号",
-    imgURL: midi_svg,
-    type: "all"
-  },
+  // {
+  //   link: `/${routerPath.staveExam}`,
+  //   title: "识谱小测试",
+  //   subtitle: "可用来随机出题巩固记忆",
+  //   imgURL: exam_svg,
+  //   type: "all"
+  // },
+  // {
+  //   link: `/${routerPath.midi}`,
+  //   title: "MIDI信号",
+  //   subtitle: "收发MIDI信号(部分设备支持)",
+  //   imgURL: midi_svg,
+  //   type: "all"
+  // },
   {
     link: `/${routerPath.about}`,
     title: "关于项目",

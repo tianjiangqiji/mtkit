@@ -24,7 +24,6 @@ const NaviItem = (props: {
     globalSettings.setNaviWindowOpen(false)
   }
   const navigate = useNavigate();
-  console.log(props.url)
   return <div css={navi_item_css(props.itemH, itemW, iconH)} onClick={handleClick}>
     <div className="icon">
       <img src={props.url} alt=""/>

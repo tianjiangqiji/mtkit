@@ -13,6 +13,12 @@ export default {
     justifyContent: "center",
     flexDirection: "column",
   },
+  flexCenterTopColumn: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "start",
+    flexDirection: "column",
+  },
   flex: {
     display: "flex",
   },

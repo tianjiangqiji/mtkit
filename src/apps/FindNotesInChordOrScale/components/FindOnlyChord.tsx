@@ -7,15 +7,30 @@ import {isArray} from "lodash";
 import NoteByLocation from "@/components/reNote/NoteByLocation/NoteByLocation.tsx";
 import googleColors from "@/assets/colors/googleColors.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
+import collect from "collect.js";
+import music12 from "music12";
+import useChordConfig from "@/assets/stores/useChordConfig.ts";
+import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
+import {useNavigate} from "react-router-dom";
+import routerPath from "@/router/routerPath.ts";
 
 
 const FindOnlyChord = () => {
   const {findResult} = useFindChord()
+  const {setChordKey} = useChordConfig()
+  const {setNotePickerStep, setNotePickerAlter} = useGlobalSettings()
+  const navigate = useNavigate()
   const {setDetailChordKeyAndLocation, detailChordKeyAndLocation} = useFindChordConfig()
   return <div css={FindOnlyChord_css}>
     {findResult.map((x, y) => <div
       onClick={() => setDetailChordKeyAndLocation([x.rootNoteLocation, x.chordKey])}
-      onDoubleClick={() => alert("??")}
+      onDoubleClick={() => {
+        const rootNote = collect(music12.note.getNoteByLocation(x.rootNoteLocation)).random()
+        setNotePickerStep(rootNote.step as any)
+        setNotePickerAlter(rootNote.alter as any)
+        setChordKey(x.chordKey)
+        navigate(`/${routerPath.chordDisplay}`, {replace: true})
+      }}
       css={isSelected_css(isArray(detailChordKeyAndLocation) &&
         detailChordKeyAndLocation[0] === x.rootNoteLocation && detailChordKeyAndLocation[1] === x.chordKey)}
       className="line" key={`${x.chordKey}_${x.rootNoteLocation}`}>

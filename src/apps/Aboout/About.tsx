@@ -15,6 +15,10 @@ import {useNavigate} from "react-router-dom";
 
 const citeItems = [
   "jzz.js",
+  "jzz-input-kbd",
+  "KeyboardJS",
+  "react-hotkeys-hook",
+  "timidity",
   "React",
   "@emotion/react",
   "typescript",
@@ -41,7 +45,7 @@ const citeItems = [
   "@svgr/core",
   "react-device-detect",
   "tone",
-  "midi",
+  "midi.js",
   "midi-player-js",
   "webaudiofont",
   "@midival/core",

@@ -17,6 +17,8 @@ import MajorScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/MajorScaleSymbol
 import MinorScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/MinorScaleSymbol.tsx";
 import HalfDimScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/HalfDimScaleSymbol.tsx";
 
+const doNothing = () => {
+}
 const keyFontSize = 18
 const ScaleSvg = (props: {
   mode: string
@@ -31,7 +33,6 @@ const ScaleSvg = (props: {
   return <HalfDimScaleSymbol/>
 }
 const FindNotesOfScale = () => {
-  // const {findResult} = useFindChord()
   const [activeKey, setActiveKey] = useState([])
   const {pianoKeyIntervalList} = useFindChordConfig()
   useEffect(() => {
@@ -132,7 +133,7 @@ const FindNotesOfScale = () => {
               {music12.scale.getModeNameByModeKey(x.mode)}
             </div>
           </div>}>
-          <div style={{height: 160, ...cssPresets.flexCenter}} onDoubleClick={() => alert("??")}
+          <div style={{height: 160, ...cssPresets.flexCenter}} onDoubleClick={doNothing}
                className="line" key={`${x.mode}_${x.rootNoteLocation}`}>
             <OctavePiano
               isPureDisplay={true}

@@ -123,9 +123,12 @@ const interval_phone_css = (windowH: number) => css({
   height: `calc(100vh - ${windowH}px)`,
   overflowX: "hidden",
   overflowY: "hidden",
+  ...cssPresets.flexCenter,
+  flexDirection: "column",
   "& .main_frame": {
     width: "100%",
-    height: `calc(100% - ${pickerHeight}px)`,
+    marginTop:25,
+    marginBottom:25,
     ...cssPresets.flexCenter,
   },
   "& .picker_frame": {

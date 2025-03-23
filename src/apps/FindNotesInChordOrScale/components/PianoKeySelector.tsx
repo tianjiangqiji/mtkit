@@ -82,7 +82,7 @@ const PianoKeySelector = () => {
         }}>
           <LiaExchangeAltSolid color={googleColors.blue800} size={15}/>
           <div style={{marginLeft: 5}}>
-            {isFindChordInScale ? "在调式" : "仅和弦"}
+            {isFindChordInScale ? "在调式" : "在和弦"}
           </div>
         </div>
         <div className="reset_key" onClick={() => {

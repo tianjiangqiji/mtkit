@@ -12,6 +12,10 @@ import MajorScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/MajorScaleSymbol
 import useScaleConfig from "@/assets/stores/useScaleConfig.ts";
 import MinorScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/MinorScaleSymbol";
 import HalfDimScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/HalfDimScaleSymbol.tsx";
+import {useNavigate} from "react-router-dom";
+import routerPath from "@/router/routerPath.ts";
+import collect from "collect.js";
+import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 
 const halfDimBgColor = googleColors.purple50
 const halfDimStrokeColor = googleColors.purple800
@@ -21,6 +25,7 @@ const ScaleSvg = (props: {
   const {
     majorScaleBgColor, majorScaleStrokeColor, minorScaleBgColor, minorScaleStrokeColor
   } = useScaleConfig()
+
   if (props.mode === "major") return <MajorScaleSymbol
     color={majorScaleStrokeColor} fill={majorScaleBgColor}/>
   if (props.mode === "minor") return <MinorScaleSymbol
@@ -28,16 +33,24 @@ const ScaleSvg = (props: {
   return <HalfDimScaleSymbol/>
 }
 const FindChordInScale = () => {
+  const navigate = useNavigate()
   const {findInScaleResult} = useFindChord()
   const {
     detailModeKeyAndLocation,
     setDetailModeKeyAndLocation
   } = useFindChordConfig()
-
+  const {setMode} = useScaleConfig()
+  const {setNotePickerStep, setNotePickerAlter} = useGlobalSettings()
   return <div css={FindOnlyChord_css}>
     {findInScaleResult.map((x, y) => <div
       onClick={() => setDetailModeKeyAndLocation([x.rootNoteLocation, x.mode])}
-      onDoubleClick={() => alert("??")}
+      onDoubleClick={() => {
+        const rootNote = collect(music12.note.getNoteByLocation(x.rootNoteLocation)).random()
+        setNotePickerAlter(rootNote.alter as any)
+        setNotePickerStep(rootNote.step as any)
+        setMode(x.mode)
+        navigate(`/${routerPath.mobile_scaleTable}`, {replace: true})
+      }}
       css={isSelected_css(isArray(detailModeKeyAndLocation) && detailModeKeyAndLocation[0] === x.rootNoteLocation
         && detailModeKeyAndLocation[1] === x.mode)}
       className="line" key={`${x.mode}_${x.rootNoteLocation}`}>

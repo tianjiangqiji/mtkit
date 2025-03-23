@@ -8,6 +8,8 @@ import useScoreCheckerConfig from "./useScoreCheckerConfig.ts";
 import useChordConfig from "./useChordConfig.ts";
 import useHarmonicSeriesConfig from "./useHarmonicSeriesConfig.ts";
 import useFindChordConfig from "./useFindChordConfig.ts";
+import useMIDIConfig from "./useMIDIConfig.ts";
+import useExamConfig from "./useExamConfig.ts";
 
 const useResetAllStores = () => {
   const r1 = useCircleOfFifthsConfig()
@@ -20,6 +22,8 @@ const useResetAllStores = () => {
   const r8 = useChordConfig()
   const r9 = useHarmonicSeriesConfig()
   const r10 = useFindChordConfig()
+  const r11 = useMIDIConfig()
+  const r12 = useExamConfig()
   const resetAll = () => {
     r1.resetStore()
     r2.resetStore()
@@ -31,6 +35,8 @@ const useResetAllStores = () => {
     r8.resetStore()
     r9.resetStore()
     r10.resetStore()
+    r11.resetStore()
+    r12.resetStore()
   }
   return {resetAll}
 }

@@ -9,7 +9,7 @@ import googleColors from "@/assets/colors/googleColors.ts";
 import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
 import NumberNote from "@/components/reNote/NumberNote/NumberNote.tsx";
 import findFirstIndexLessThanLeft from "@/utils/findFirstIndexLessThanLeft.ts";
-import {isEmpty, sum} from "lodash";
+import {isEmpty, isNumber, sum} from "lodash";
 
 const useScaleInstance = (config?: {
   selectedKeyColor?: string
@@ -24,33 +24,31 @@ const useScaleInstance = (config?: {
   const scaleInstance = useMemo(() => {
     return music12.factory.getScale(notePickerStep, notePickerAlter, 4, mode)
   }, [mode, notePickerStep, notePickerAlter])
-  const {staveAlterDisplayBy, pianoNodeDisplayBy, setPianoNodeDisplayBy} = useScaleConfig()
+  const {staveAlterDisplayBy, pianoNodeDisplayBy} = useScaleConfig()
 
   //决定乐谱是用什么调号
   const keys = useMemo(() => {
     if (staveAlterDisplayBy === "alters") {
       if (Math.abs(scaleInstance.alterSum) > 7) {
-        return sum(scaleInstance.alterList)
+        return scaleInstance.alterSum
       }
       return scaleInstance.alterSum
     }
     if (staveAlterDisplayBy === "none") {
       return 0
     }
+
     if (scaleInstance.type === "major") {
       const obj = collect(music12.stave.getStaveAlterByNote(notePickerStep as any, notePickerAlter as any))
         .where("mode", "major").first().rawStaveAlters
-      if (isEmpty(obj)) return sum(scaleInstance.alterList)
-      return obj
+      if (isNumber(obj)) return obj
+      return sum(scaleInstance.alterList)
     }
     const obj = collect(music12.stave.getStaveAlterByNote(notePickerStep as any, notePickerAlter as any))
       .where("mode", "!=", "major").first().rawStaveAlters
-    if (isEmpty(obj)) {
-      return sum(scaleInstance.alterList)
-    }
-    return obj
-
-  }, [notePickerAlter, notePickerStep, scaleInstance.alterList, scaleInstance.alterSum, scaleInstance.type, staveAlterDisplayBy])
+    if (isNumber(obj)) return obj
+    return sum(scaleInstance.alterList)
+  }, [notePickerAlter, notePickerStep, scaleInstance, staveAlterDisplayBy])
 
   // 将调式用两个八度隔开的数组
   const slicedLocationList = useMemo(() => {
