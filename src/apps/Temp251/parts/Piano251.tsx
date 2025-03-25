@@ -10,6 +10,7 @@ import {min} from "lodash";
 
 const pianoConfig = {
   blackKeyBorderWidth: 2,
+  whiteKeyHeight: 100,
   whiteKeyBorderRadius: Array.from({length: 7}, () => [0, 0, 5, 5])
 }
 const selectedKeyColor = googleColors.amber200
