@@ -11,6 +11,7 @@ import byDefault from "@/utils/byDefault.ts";
 
 const NotePicker = (props: {
   isNormalOnly?: boolean
+  onSelect?: (step: string, alter: number) => any
 }) => {
   const {isNotePickerOpen, setNotePickerOpen} = useGlobalSettings();
   const isWideScreen = useIsWideScreen();
@@ -21,8 +22,8 @@ const NotePicker = (props: {
           opacity={0.5}
           destroyOnClose={true}>
       <div css={note_picker_css} onClick={() => setNotePickerOpen(false)}>
-        {isWideScreen && <TabletNotePicker isNormalOnly={isNormalOnly}/>}
-        {!isWideScreen && <PhoneNotePicker isNormalOnly={isNormalOnly}/>}
+        {isWideScreen && <TabletNotePicker onSelect={props.onSelect} isNormalOnly={isNormalOnly}/>}
+        {!isWideScreen && <PhoneNotePicker onSelect={props.onSelect} isNormalOnly={isNormalOnly}/>}
       </div>
     </Mask>
   </>)

@@ -13,8 +13,8 @@ import OptionBar from "@/apps/HarmonicSeries/components/OptionBar.tsx";
 
 const HarmonicSeries = () => {
   const {notesList} = useHarmonicSeriesConfig()
-  const {naviBarHeight} = useGlobalSettings()
-
+  const {naviBarHeight, setNotePickerOpen} = useGlobalSettings()
+  const {clearNotesList, addNotesList} = useHarmonicSeriesConfig()
   const harmonicSeries = useMemo(() => {
     if (notesList.length === 0) return []
     return notesList.map(x => {
@@ -24,7 +24,11 @@ const HarmonicSeries = () => {
   }, [notesList])
 
   return <>
-    <NotePicker isNormalOnly={true}/>
+    <NotePicker onSelect={(step, alter) => {
+      console.log(step, alter)
+      setNotePickerOpen(false)
+      addNotesList({step: step, alter: alter})
+    }} isNormalOnly={true}/>
     <div css={HarmonicSeries_css(naviBarHeight)}>
       <ConfigBar/>
       <OptionBar/>

@@ -5,7 +5,6 @@ import GoogleColors from "@/assets/colors/googleColors.ts";
 import {BiPlus} from "react-icons/bi";
 import {MdClear} from "react-icons/md";
 import useHarmonicSeriesConfig from "@/assets/stores/useHarmonicSeriesConfig.ts";
-import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 
 
@@ -18,10 +17,10 @@ const ConfigBar = () => {
         <MdClear/>
         <div style={{marginLeft: 5}}> 清空</div>
       </div>
-      <div className="note_window" onClick={() => setNotePickerOpen(true)}>
-        <NoteText step={notePickerStep} fontSize={35} alter={notePickerAlter}/>
-      </div>
-      <div className="option" onClick={() => addNotesList({step: notePickerStep, alter: notePickerAlter})}>
+      {/*<div className="note_window" onClick={() => setNotePickerOpen(true)}>*/}
+      {/*  <NoteText step={notePickerStep} fontSize={35} alter={notePickerAlter}/>*/}
+      {/*</div>*/}
+      <div className="option" onClick={() => setNotePickerOpen(true)}>
         <BiPlus/>
         <div style={{marginLeft: 5}}> 添加</div>
       </div>

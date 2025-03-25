@@ -6,10 +6,16 @@
     font-size: 16px;
     box-sizing: border-box;
     text-align: center;
-    user-select: none;
+    user-select: none !important;
+    -webkit-user-select: none !important;
     -webkit-overflow-scrolling: touch;
     font-family: "misans-m", "PingFang SC", "Heiti SC", "Microsoft YaHei", "微软雅黑", "Helvetica", "WenQuanYi Micro Hei", serif;
     /*font-family:  "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", serif;*/
+}
+
+:root {
+    user-select: none !important;
+    -webkit-user-select: none !important;
 }
 
 body::-webkit-scrollbar {

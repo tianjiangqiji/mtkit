@@ -127,8 +127,8 @@ const interval_phone_css = (windowH: number) => css({
   flexDirection: "column",
   "& .main_frame": {
     width: "100%",
-    marginTop:25,
-    marginBottom:25,
+    marginTop: 25,
+    marginBottom: 25,
     ...cssPresets.flexCenter,
   },
   "& .picker_frame": {

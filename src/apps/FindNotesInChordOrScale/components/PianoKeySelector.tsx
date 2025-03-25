@@ -45,7 +45,7 @@ const PianoKeySelector = () => {
     }
   }, [keyColorList, width])
   const handleClick = (k: number) => {
-    setDetailChordKeyAndLocation(void 0)
+    setDetailModeKeyAndLocation(void 0)
     if (pianoKeyList.length === 0) {
       setPianoKeyList([k])
       return

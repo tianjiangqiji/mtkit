@@ -48,10 +48,16 @@ const OptionBar_css = css({
   "& .option_bar_item": {
     width: 100,
     height: 40,
-    backgroundColor: "white",
+    backgroundColor:googleColors.blue50,
+    border: `1px solid ${googleColors.blue500}`,
     ...cssPresets.flexCenter,
     color: googleColors.blue800,
     borderRadius: 999,
-    ...cssPresets.defaultHoverAndActive as any
+    userSelect: "none",
+    cursor: "pointer",
+    ...cssPresets.transition,
+    "&:active": {
+      backgroundColor: googleColors.blue100,
+    }
   }
 })

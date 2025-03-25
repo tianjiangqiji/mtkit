@@ -20,8 +20,8 @@ export default defineConfig({
     },
     extensions: [".ts", ".tsx", ".js", "jsx"]
   },
-  base: '/MusicTheoryCalculatorPro/',
-  // base: '/',
+  // base: '/MusicTheoryCalculatorPro/',
+  base: './',
   build: {
     outDir: "docs",
     minify: isProduction,
