@@ -40,7 +40,7 @@ const WideScreenPopNaviContent = () => {
     </div>
     <div className="navi_items" onClick={closeNaviWindow}>
       {realConfig.map((x, y) => {
-          if (x["isEmpty"]) return <BlankWideScreenNaviItem itemH={70} itemW={250}/>
+          if (x["isEmpty"]) return <BlankWideScreenNaviItem key={y} itemH={70} itemW={250}/>
           return <div className="each_item" key={y}>
             <WideScreenNaviItem
               itemH={70}

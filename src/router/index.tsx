@@ -19,11 +19,12 @@ import HarmonicSeries from "@/apps/HarmonicSeries/HarmonicSeries.tsx";
 import Author from "@/apps/Author/Author.tsx";
 import MidiMessage from "@/apps/MidiMessage/MidiMessage.tsx";
 import StaveExam from "@/apps/StaveExam/StaveExam.tsx";
+import AutoRedirect from "@/apps/AutoRedirect/AutoRedirect.tsx";
 
 const r = createHashRouter([
   {
     path: "",
-    element: <Navigate to={`/${routerPath.interval}`}/>
+    element: <AutoRedirect/>
   },
   {
     path: "/",

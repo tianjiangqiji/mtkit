@@ -23,6 +23,8 @@ type GlobalSettingsType = {
   isWideScreen: boolean,
   setIsWideScreen: (newStatus: boolean) => void,
   octave: number,
+  lastViewURL: string,
+  setLastViewURL: (newURL: string) => void,
   setOctave: (newOctave: number) => void
 }
 const storeKey = 'globalSettings'
@@ -37,7 +39,8 @@ const defaultStore = {
   defaultNoteColor: googleColors.gray800,
   intervalFunctionsFullHeight: 900,
   isWideScreen: false,
-  octave: 4
+  octave: 4,
+  lastViewURL: "" //上次访问过的地址，可以用来保存
 }
 const useGlobalSettings = create<GlobalSettingsType>()(immer(persist(
     (set) => ({
@@ -45,6 +48,11 @@ const useGlobalSettings = create<GlobalSettingsType>()(immer(persist(
       setNaviWindowOpen: (newStatus: boolean) => {
         set((state) => {
           state.isNaviWindowOpen = newStatus
+        })
+      },
+      setLastViewURL: (newURL: string) => {
+        set((state) => {
+          state.lastViewURL = newURL
         })
       },
       setOctave: (newOctave: number) => {

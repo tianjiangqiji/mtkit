@@ -1,6 +1,6 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 
-import {Outlet, useNavigate} from "react-router-dom";
+import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {css} from "@emotion/react";
 import NaviBar from "@/components/reFrame/NaviBar/NaviBar.tsx";
 import cssPresets from "@/assets/styles/cssPresets.ts";
@@ -10,6 +10,7 @@ import TooShortWindow from "@/components/common/TooShortWindow.tsx";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import LandScreen from "@/components/common/LandScreen.tsx";
 import {ErrorBoundary} from "react-error-boundary";
+import {isEmpty} from "lodash";
 
 const FBR = () => {
   const navigator = useNavigate();
@@ -29,9 +30,14 @@ const fallbackRender = ({error}) => {
 
 const MainLayout = () => {
   const {height, width} = useWindowSize()
-  const {naviBarHeight, setNaviWindowOpen} = useGlobalSettings()
+  const {naviBarHeight, setNaviWindowOpen, setLastViewURL} = useGlobalSettings()
   const [tooShortWindow, setTooShortWindow] = useState(false)
   const [isLandScreen, setIsLandScreen] = useState(false)
+  const pathName = useLocation().pathname
+  useEffect(() => {
+    if (pathName === "/") return
+    setLastViewURL(pathName)
+  }, [pathName, setLastViewURL]);
   useEffect(() => {
     document.body.style.zoom = "1"
   }, [])
