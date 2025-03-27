@@ -3,7 +3,7 @@ import {css} from "@emotion/react";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import {range} from "lodash"
-import logo from "@/assets/svgs/logos/authorLogo.svg"
+import logo from "../../../public/svgs/logos/authorLogo.svg"
 import googleColors from "@/assets/colors/googleColors.ts";
 import {GiOgre} from "react-icons/gi";
 import shadowPresets from "@/assets/styles/shadowPresets.ts";

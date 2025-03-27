@@ -2,8 +2,8 @@
 
 import {css} from "@emotion/react";
 import cssPresets from "@/assets/styles/cssPresets.ts";
-import guohub8080 from "@/assets/svgs/logos/TextLogoFull.svg";
-import production from "@/assets/svgs/logos/Production.svg";
+import guohub8080 from "../../../public/svgs/logos/TextLogoFull.svg";
+import production from "../../../public/svgs/logos/Production.svg";
 
 const TooShortWindow = (props: {
 	isActive: boolean,

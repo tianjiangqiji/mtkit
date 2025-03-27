@@ -1,7 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 
-import logo from "@/assets/svgs/logos/Production.svg";
-import text_logo from "@/assets/svgs/logos/TextLogo.svg";
+import logo from "../../../public/svgs/logos/Production.svg";
+import text_logo from "../../../public/svgs/logos/TextLogo.svg";
 import {css} from "@emotion/react";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import googleColors from "@/assets/colors/googleColors.ts";

@@ -22,6 +22,7 @@ export default defineConfig({
   },
   // base: '/MusicTheoryCalculatorPro/',
   base: './',
+  publicDir:"public",
   build: {
     outDir: "docs",
     minify: isProduction,
