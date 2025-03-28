@@ -4,5 +4,3 @@
 
 [build.environment]
   NPM_FLAGS = "--ignore-scripts"
-  NODE_ENV = "production"
-  NODE_VERSION = "none"   # 禁用 Node.js
