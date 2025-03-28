@@ -1,5 +1,7 @@
 [build]
-  # 留空构建命令，跳过自动构建
+  # 关键：留空构建命令，跳过所有步骤
   command = ""
-  # 指定发布目录为已构建好的 docs 目录
+  # 指定已构建好的目录（根据实际情况修改）
   publish = "docs"
+  # 可选：设置 Node.js 版本（与 Netlify 默认一致）
+  node_bundler = "none"
