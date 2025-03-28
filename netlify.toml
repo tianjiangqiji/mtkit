@@ -1,26 +1,11 @@
 [build]
-  publish = "docs"  # 直接发布 docs 目录
-  command = ""       # 完全清空命令
-  environment = { NODE_ENV = "production" }
+  publish = "docs"
+  command = ""  # 空命令跳过构建
 
 [build.environment]
   NPM_FLAGS = "--ignore-scripts"
-  NODE_VERSION = "none"  # 禁用 Node.js 环境
-  RUBY_VERSION = "none"  # 禁用 Ruby 环境
-  GO_VERSION = "none"    # 禁用 Go 环境
-  PHP_VERSION = "none"   # 禁用 PHP 环境
-  PYTHON_VERSION = "none" # 禁用 Python 环境
-  PERL_VERSION = "none"  # 禁用 Perl 环境
-  RUST_VERSION = "none"  # 禁用 Rust 环境
-  JAVA_VERSION = "none"  # 禁用 Java 环境
-  DOTNET_VERSION = "none" # 禁用 .NET 环境
-  SCALA_VERSION = "none" # 禁用 Scala 环境
-  SWIFT_VERSION = "none" # 禁用 Swift 环境
-  KOTLIN_VERSION = "none" # 禁用 Kotlin 环境
-  R_VERSION = "none" # 禁用 R 环境
-  LUA_VERSION = "none" # 禁用 Lua 环境
-  DENO_VERSION = "none" # 禁用 Deno 环境
-  HUGO_VERSION = "none" # 禁用 Hugo 环境
-  HEX_VERSION = "none" # 禁用 Hex 环境
-  ERLANG_VERSION = "none" # 禁用 Erlang 环境
-  ELIXIR_VERSION = "none" # 禁用 Elixir 环境
+  NODE_ENV = "production"
+  NODE_VERSION = "none"   # 禁用 Node.js
+  RUBY_VERSION = "none"   # 禁用 Ruby
+  GO_VERSION = "none"     # 禁用 Go
+  PHP_VERSION = "none"    # 禁用 PHP
