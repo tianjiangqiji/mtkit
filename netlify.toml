@@ -6,6 +6,3 @@
   NPM_FLAGS = "--ignore-scripts"
   NODE_ENV = "production"
   NODE_VERSION = "none"   # 禁用 Node.js
-  RUBY_VERSION = "none"   # 禁用 Ruby
-  GO_VERSION = "none"     # 禁用 Go
-  PHP_VERSION = "none"    # 禁用 PHP
