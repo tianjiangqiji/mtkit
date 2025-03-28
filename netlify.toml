@@ -1,0 +1,5 @@
+[build]
+  # 留空构建命令，跳过自动构建
+  command = ""
+  # 指定发布目录为已构建好的 docs 目录
+  publish = "docs"
