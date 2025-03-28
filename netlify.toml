@@ -1,7 +1,8 @@
 [build]
-  # 关键：留空构建命令，跳过所有步骤
-  command = "pnpm install --frozen-lockfile"
-  # 指定已构建好的目录（根据实际情况修改）
-  publish = "docs"
-  # 可选：设置 Node.js 版本（与 Netlify 默认一致）
-  node_bundler = "none"
+  command = "echo '跳过构建步骤'"
+  publish = "docs"  # 直接发布 docs 目录中的文件
+  functions = "docs/functions"  # 若无 Serverless 函数可删除此行
+
+[build.environment]
+   NPM_FLAGS = "--ignore-scripts"  # 跳过 npm/pnpm 的依赖安装步骤
+   NODE_ENV = "production"         # 可选：阻止安装 devDependencies
