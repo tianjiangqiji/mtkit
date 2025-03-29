@@ -21,9 +21,9 @@ export default defineConfig({
     extensions: [".ts", ".tsx", ".js", "jsx"]
   },
   base: './',
-  publicDir:"",
+  publicDir:"public",
   build: {
-    outDir: "docs",
+    outDir: "",
     minify: isProduction,
     assetsInlineLimit: 4096, // 小于此阈值的导入或引用资源将内联为 base64 编码
     rollupOptions: {
