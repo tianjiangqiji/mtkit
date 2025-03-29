@@ -20,9 +20,11 @@ export default defineConfig({
     },
     extensions: [".ts", ".tsx", ".js", "jsx"]
   },
+  publicDir:resolve(__dirname, 'public'), // 绝对路径确保准确性
   base: './',
   build: {
     outDir: "docs",
+    copyPublicDir: true,
     minify: isProduction,
     assetsInlineLimit: 4096, // 小于此阈值的导入或引用资源将内联为 base64 编码
     rollupOptions: {
