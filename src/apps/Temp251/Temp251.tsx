@@ -6,7 +6,7 @@ import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import googleColors from "@/assets/colors/googleColors.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
-import music12 from "music12";
+import music12 from "@/music12";
 import Each251 from "@/apps/Temp251/parts/Each251.tsx";
 import {useWindowSize} from "react-use";
 import {Swiper} from "antd-mobile";

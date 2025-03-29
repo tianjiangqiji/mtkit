@@ -1,5 +1,5 @@
 import {useMemo} from "react";
-import music12 from "../../../../../music12";
+import music12 from "@/music12";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 
 const useScalesByNote = () => {

@@ -8,7 +8,7 @@ import MajorScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/MajorScaleSymbol
 import MinorScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/MinorScaleSymbol.tsx";
 import NumberScale from "@/apps/TabletScaleQuery/comps/ScalePicker/NumberScale.tsx";
 import HalfDimScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/HalfDimScaleSymbol.tsx";
-import music12 from "../../../../../../music12"
+import music12 from "@/music12"
 
 const numberScaleColor = googleColors.gray500
 const ScalePickerPopover = () => {

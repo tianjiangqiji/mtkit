@@ -1,7 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import {useMemo} from "react";
 import useFindChordConfig from "@/assets/stores/useFindChordConfig.ts";
-import music12 from "music12";
+import music12 from "@/music12";
 import {isEmpty, range} from "lodash";
 import {css} from "@emotion/react";
 import googleColors from "@/assets/colors/googleColors.ts";

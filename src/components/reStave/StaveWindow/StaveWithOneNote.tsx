@@ -6,7 +6,7 @@ import {OpenSheetMusicDisplay} from "opensheetmusicdisplay";
 import {create} from "xmlbuilder2";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import {isArray, isNull, isUndefined, range} from "lodash";
-import music12 from "music12"
+import music12 from "@/music12"
 
 const StaveWithOneNote = (props: {
   keys?: number

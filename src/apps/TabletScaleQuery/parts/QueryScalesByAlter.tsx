@@ -7,7 +7,7 @@ import AlterStaveWindow from "@/apps/MobileKSQuery/comps/AlterStaveWindow.tsx";
 import NoteSymbol from "@/components/reNote/NoteSymbol/NoteSymbol.tsx";
 import googleColors from "@/assets/colors/googleColors.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
-import music12 from "music12";
+import music12 from "@/music12";
 import {MdReadMore} from "react-icons/md";
 import {isMobile} from "react-device-detect";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";

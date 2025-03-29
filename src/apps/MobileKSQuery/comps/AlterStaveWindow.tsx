@@ -5,7 +5,7 @@ import {css} from "@emotion/react";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
 import {useMemo} from "react";
-import music12 from "music12";
+import music12 from "@/music12";
 import useScoreHelperConfig from "@/assets/stores/useScoreHelperConfig.ts";
 import ClefWindow from "@/components/reStave/ClefWindow/ClefWindow.tsx";
 

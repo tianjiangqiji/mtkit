@@ -3,7 +3,7 @@
 
 import {useMemo, useState} from "react";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
-import music12 from "music12"
+import music12 from "@/music12"
 
 const useScoreChecker = () => {
   const {

@@ -1,6 +1,0 @@
-[build]
-  publish = "docs"
-  command = "echo '跳过依赖安装' && exit 0"  # 强制返回成功状态码
-
-[build.environment]
-  NPM_FLAGS = "--ignore-scripts"

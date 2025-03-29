@@ -5,7 +5,7 @@ import StaveWithOneNote from "@/components/reStave/StaveWindow/StaveWithOneNote.
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import {useWindowSize} from "react-use";
 import useSwipeY from "@/utils/useSwipeY.ts";
-import music12 from "music12"
+import music12 from "@/music12"
 import useScoreChecker from "@/apps/MobileScoreChecker/useScoreChecker/useScoreChecker.tsx";
 import useScoreHelperConfig from "@/assets/stores/useScoreHelperConfig.ts";
 import useScoreCheckerConfig from "@/assets/stores/useScoreCheckerConfig.ts";

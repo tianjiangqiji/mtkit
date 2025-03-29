@@ -12,7 +12,7 @@ import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
 import byDefault from "@/utils/byDefault.ts";
 import {css} from "@emotion/react";
 import {isUndefined} from "lodash";
-import music12 from "music12";
+import music12 from "@/music12";
 import {useEffect, useMemo, useState} from "react";
 import {FaArrowUp} from "react-icons/fa";
 import {HiOutlineSwitchHorizontal} from "react-icons/hi";

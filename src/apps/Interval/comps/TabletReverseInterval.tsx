@@ -8,7 +8,7 @@ import cssPresets from "@/assets/styles/cssPresets.ts";
 import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
 import byDefault from "@/utils/byDefault.ts";
 import {css} from "@emotion/react";
-import music12 from "music12";
+import music12 from "@/music12";
 import {useEffect, useMemo, useState} from "react";
 import {isMobile} from "react-device-detect";
 import {MdArrowDownward, MdArrowUpward} from "react-icons/md";

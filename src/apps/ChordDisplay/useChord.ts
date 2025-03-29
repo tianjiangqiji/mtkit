@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import {useEffect, useMemo, useState} from "react";
-import music12 from "music12";
+import music12 from "@/music12";
 import useChordConfig from "@/assets/stores/useChordConfig.ts";
 import findFirstIndexLessThanLeft from "@/utils/findFirstIndexLessThanLeft.ts";
 import googleColors from "@/assets/colors/googleColors.ts";
