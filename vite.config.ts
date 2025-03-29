@@ -23,7 +23,7 @@ export default defineConfig({
   base: './',
   publicDir:"public",
   build: {
-    outDir: "",
+    outDir: "docs",
     minify: isProduction,
     assetsInlineLimit: 4096, // 小于此阈值的导入或引用资源将内联为 base64 编码
     rollupOptions: {
