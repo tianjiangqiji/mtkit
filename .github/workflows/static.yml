@@ -2,7 +2,7 @@ name: Deploy Static Site with Relative Paths
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
   workflow_dispatch:
 
 permissions:
@@ -36,7 +36,8 @@ jobs:
         run: |
           rm -rf node_modules package-lock.json
           npm cache clean --force
-          npx npm install --legacy-peer-deps
+          npx npm install --legacy-peer-deps  --force
+          npx  npm install vite @vitejs/plugin-react --save-dev  --force
           npx vite  build
         env:
           # 强制 Vite 使用生产环境配置
