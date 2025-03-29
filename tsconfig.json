@@ -10,6 +10,7 @@
     "allowJs": true,
     "module": "ESNext",
     "skipLibCheck": true,
+    "noEmitOnError": true,
     "baseUrl": ".",
     "paths": {
       "@/*": [
