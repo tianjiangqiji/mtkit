@@ -2,7 +2,7 @@ import {useList} from "react-use";
 import JZZ from "jzz";
 import {useEffect, useMemo, useState} from "react";
 import useMIDIReady from "./useMIDIReady";
-import useMIDIConfig from "../../assets/stores/useMIDIConfig";
+import useMIDIConfig from "@/assets/stores/useMIDIConfig";
 import {isEmpty} from "lodash";
 
 type port = {
