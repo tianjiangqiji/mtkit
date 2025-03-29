@@ -21,7 +21,6 @@ export default defineConfig({
     extensions: [".ts", ".tsx", ".js", "jsx"]
   },
   base: './',
-  publicDir:"./public",
   build: {
     outDir: "docs",
     minify: isProduction,
