@@ -1,5 +1,5 @@
 [build]
-  command = "npm install -g pnpm && pnpm i  --no-frozen-lockfile && pnpm build"
+  command = "pnpm i  --no-frozen-lockfile && pnpm build"
   publish = "docs"
 
 
