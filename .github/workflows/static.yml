@@ -37,9 +37,10 @@ jobs:
           rm -rf node_modules package-lock.json
           npm cache clean --force
           npm install -g pnpm --force
-          pnpm add vite@6.2.3 --force
           npx vite --version
-          pnpm i  --legacy-peer-deps  --force
+          pnpm config set strict-peer-dependencies false
+          pnpm config set auto-install-peers true 
+          pnpm install --frozen-lockfile
           pnpm  build
         env:
           # 强制 Vite 使用生产环境配置
