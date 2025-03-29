@@ -1,7 +1,7 @@
 [build]
-command = "pnpm install --no-scripts --no-frozen-lockfile && pnpm build"
+command = "pnpm install --no-optional --prefer-offline && pnpm build"
 publish = "docs"
 
 
 [build.environment]
-NPM_FLAGS = "--legacy-peer-deps"
+NPM_FLAGS = "--no-optional"
