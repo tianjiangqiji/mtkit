@@ -2,6 +2,7 @@ import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
 import terser from '@rollup/plugin-terser';
 import {resolve} from "path"
+import svgr from 'vite-plugin-svgr' // 处理 SVG 为组件
 
 const isProduction = process.env.NODE_ENV === 'production';
 // https://vitejs.dev/config/
@@ -11,7 +12,8 @@ export default defineConfig({
       jsxImportSource: "@emotion/react",
       babel: {plugins: ["@emotion/babel-plugin"]}
     }),
-    isProduction && terser() // 只在生产环境下使用 terser 压缩
+    svgr(),
+    isProduction && terser(), // 只在生产环境下使用 terser 压缩
   ],
   resolve: {
     alias: {
@@ -20,7 +22,7 @@ export default defineConfig({
     },
     extensions: [".ts", ".tsx", ".js", "jsx"]
   },
-  publicDir:resolve(__dirname, 'public'), // 绝对路径确保准确性
+  publicDir: resolve(__dirname, 'public'), // 绝对路径确保准确性
   base: './',
   build: {
     outDir: "docs",
