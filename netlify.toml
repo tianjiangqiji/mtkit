@@ -1,7 +1,8 @@
 [build]
-command = "pnpm install --no-optional --prefer-offline && pnpm build"
+command = "pnpm install --frozen-lockfile=false --strict-peer-dependencies=false && pnpm build"
 publish = "docs"
 
 
 [build.environment]
 NPM_FLAGS = "--no-optional"
+NODE_VERSION = "18.18.0"  # Using a specific LTS version
