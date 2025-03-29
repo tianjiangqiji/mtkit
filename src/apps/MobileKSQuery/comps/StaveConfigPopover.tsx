@@ -7,9 +7,9 @@ import cssPresets from "@/assets/styles/cssPresets.ts";
 import NoteSymbol from "@/components/reNote/NoteSymbol/NoteSymbol.tsx";
 import {css} from "@emotion/react";
 import {Mask} from "antd-mobile";
-import b_svg from "/public/svgs/keySignatures/b.svg";
-import h_svg from "/public/svgs/keySignatures/h.svg";
-import m_svg from "/public/svgs/keySignatures/m.svg";
+import b_svg from "/svgs/keySignatures/b.svg";
+import h_svg from "/svgs/keySignatures/h.svg";
+import m_svg from "/svgs/keySignatures/m.svg";
 import {isMobile} from "react-device-detect";
 
 const selectedColor = googleColors.amber200;

@@ -3,11 +3,9 @@ import JZZ from "jzz";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // import Kdb from "jzz-input-kbd";
 import "jzz-synth-tiny";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+// @ts-nocheck
 import {Tiny} from 'jzz-synth-tiny'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+// @ts-nocheck
 import {Gear} from 'jzz-midi-gear';
 import useMIDIConfig from "../../assets/stores/useMIDIConfig";
 
