@@ -30,7 +30,7 @@ const TabletNotePicker = (props: {
   }
   return <div css={wide_note_picker_css(width)}>
     <div className="piano_selector">
-      <PianoPicker/>
+      <PianoPicker onSelect={props.onSelect}/>
     </div>
     <div className="note_selector">
       {/*==================== ROW1 SHARP ============================*/}

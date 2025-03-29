@@ -51,7 +51,6 @@
     "stream-browserify": "^3.0.0",
     "styled-components": "^6.1.13",
     "usehooks-ts": "^2.16.0",
-    "verovio": "^5.0.0",
     "vexflow": "^4.2.5",
     "webmidi": "^3.1.12",
     "xmlbuilder2": "^3.1.1",

@@ -1,5 +1,6 @@
 {/* eslint-disable no-mixed-spaces-and-tabs */
 }
+import {isFunction} from "lodash";
 import * as React from "react"
 import usePianoPicker from "@/assets/stores/usePianoPicker.ts";
 import googleColors from "@/assets/colors/googleColors.ts";
@@ -12,7 +13,9 @@ const styles = {
   transition: "all 0.1s ease-in-out",
   cursor: "pointer",
 }
-const SvgComponent = (props) => {
+const SvgComponent = (props:{
+  onSelect?: (step: string, alter: number) => any
+}) => {
   const pianoPickerConfig = usePianoPicker();
   const {setNotePicker} = useGlobalSettings();
   return (
@@ -22,17 +25,20 @@ const SvgComponent = (props) => {
       x="0px"
       y="0px"
       viewBox="0 0 591.65 396.67"
-      style={{
-        enableBackground: "new 0 0 591.65 396.67",
-      }}
+      // style={{
+      //   enableBackground: "new 0 0 591.65 396.67",
+      // }}
       xmlSpace="preserve"
-      {...props}
     >
       <g id="white_x5F_keys">
         <path
           onMouseEnter={() => pianoPickerConfig.set_w_color("C", select_key_color)}
           onMouseLeave={() => pianoPickerConfig.set_w_color("C")}
           onClick={() => {
+            if(isFunction(props.onSelect)) {
+              props.onSelect("C", 0)
+              return;
+            }
             setNotePicker("C", 0);
             pianoPickerConfig.reset_color();
           }}
@@ -51,6 +57,10 @@ const SvgComponent = (props) => {
           onMouseEnter={() => pianoPickerConfig.set_w_color("D", select_key_color)}
           onMouseLeave={() => pianoPickerConfig.set_w_color("D")}
           onClick={() => {
+            if(isFunction(props.onSelect)) {
+              props.onSelect("D", 0)
+              return;
+            }
             setNotePicker("D", 0);
             pianoPickerConfig.reset_color();
           }}
@@ -68,6 +78,10 @@ const SvgComponent = (props) => {
           onMouseEnter={() => pianoPickerConfig.set_w_color("E", select_key_color)}
           onMouseLeave={() => pianoPickerConfig.set_w_color("E")}
           onClick={() => {
+            if(isFunction(props.onSelect)) {
+              props.onSelect("E", 0)
+              return;
+            }
             setNotePicker("E", 0);
             pianoPickerConfig.reset_color();
           }}
@@ -85,6 +99,10 @@ const SvgComponent = (props) => {
           onMouseEnter={() => pianoPickerConfig.set_w_color("F", select_key_color)}
           onMouseLeave={() => pianoPickerConfig.set_w_color("F")}
           onClick={() => {
+            if(isFunction(props.onSelect)) {
+              props.onSelect("F", 0)
+              return;
+            }
             setNotePicker("F", 0);
             pianoPickerConfig.reset_color();
           }}
@@ -102,6 +120,10 @@ const SvgComponent = (props) => {
           onMouseEnter={() => pianoPickerConfig.set_w_color("G", select_key_color)}
           onMouseLeave={() => pianoPickerConfig.set_w_color("G")}
           onClick={() => {
+            if(isFunction(props.onSelect)) {
+              props.onSelect("G", 0)
+              return;
+            }
             setNotePicker("G", 0);
             pianoPickerConfig.reset_color();
           }}
@@ -119,6 +141,10 @@ const SvgComponent = (props) => {
           onMouseEnter={() => pianoPickerConfig.set_w_color("A", select_key_color)}
           onMouseLeave={() => pianoPickerConfig.set_w_color("A")}
           onClick={() => {
+            if(isFunction(props.onSelect)) {
+              props.onSelect("A", 0)
+              return;
+            }
             setNotePicker("A", 0);
             pianoPickerConfig.reset_color();
           }}
@@ -136,6 +162,10 @@ const SvgComponent = (props) => {
           onMouseEnter={() => pianoPickerConfig.set_w_color("B", select_key_color)}
           onMouseLeave={() => pianoPickerConfig.set_w_color("B")}
           onClick={() => {
+            if(isFunction(props.onSelect)) {
+              props.onSelect("B", 0)
+              return;
+            }
             setNotePicker("B", 0);
             pianoPickerConfig.reset_color();
           }}
@@ -207,6 +237,10 @@ const SvgComponent = (props) => {
              onMouseEnter={() => pianoPickerConfig.set_b_color("CDs", select_black_key_color)}
              onMouseLeave={() => pianoPickerConfig.set_b_color("CDs")}
              onClick={() => {
+               if(isFunction(props.onSelect)) {
+                 props.onSelect("C", 1)
+                 return;
+               }
                setNotePicker("C", 1);
                pianoPickerConfig.reset_color();
              }}>
@@ -230,6 +264,10 @@ const SvgComponent = (props) => {
           <g id="flat_x5F_group" onMouseEnter={() => pianoPickerConfig.set_b_color("CDf", select_black_key_color)}
              onMouseLeave={() => pianoPickerConfig.set_b_color("CDf")}
              onClick={() => {
+               if(isFunction(props.onSelect)) {
+                 props.onSelect("D", -1)
+                 return;
+               }
                setNotePicker("D", -1);
                pianoPickerConfig.reset_color();
              }}>
@@ -256,6 +294,10 @@ const SvgComponent = (props) => {
              onMouseEnter={() => pianoPickerConfig.set_b_color("des", select_black_key_color)}
              onMouseLeave={() => pianoPickerConfig.set_b_color("des")}
              onClick={() => {
+               if(isFunction(props.onSelect)) {
+                 props.onSelect("D", 1)
+                 return;
+               }
                setNotePicker("D", 1);
                pianoPickerConfig.reset_color();
              }}>
@@ -280,6 +322,10 @@ const SvgComponent = (props) => {
              onMouseEnter={() => pianoPickerConfig.set_b_color("def", select_black_key_color)}
              onMouseLeave={() => pianoPickerConfig.set_b_color("def")}
              onClick={() => {
+               if(isFunction(props.onSelect)) {
+                 props.onSelect("E", -1)
+                 return;
+               }
                setNotePicker("E", -1);
                pianoPickerConfig.reset_color();
              }}>
@@ -306,6 +352,10 @@ const SvgComponent = (props) => {
              onMouseEnter={() => pianoPickerConfig.set_b_color("fgs", select_black_key_color)}
              onMouseLeave={() => pianoPickerConfig.set_b_color("fgs")}
              onClick={() => {
+               if(isFunction(props.onSelect)) {
+                 props.onSelect("F", 1)
+                 return;
+               }
                setNotePicker("F", 1);
                pianoPickerConfig.reset_color();
              }}>
@@ -330,6 +380,10 @@ const SvgComponent = (props) => {
              onMouseEnter={() => pianoPickerConfig.set_b_color("fgf", select_black_key_color)}
              onMouseLeave={() => pianoPickerConfig.set_b_color("fgf")}
              onClick={() => {
+               if(isFunction(props.onSelect)) {
+                 props.onSelect("G", -1)
+                 return;
+               }
                setNotePicker("G", -1);
                pianoPickerConfig.reset_color();
              }}>
@@ -356,6 +410,10 @@ const SvgComponent = (props) => {
              onMouseEnter={() => pianoPickerConfig.set_b_color("gas", select_black_key_color)}
              onMouseLeave={() => pianoPickerConfig.set_b_color("gas")}
              onClick={() => {
+               if(isFunction(props.onSelect)) {
+                 props.onSelect("G", 1)
+                 return;
+               }
                setNotePicker("G", 1);
                pianoPickerConfig.reset_color();
              }}>
@@ -380,6 +438,10 @@ const SvgComponent = (props) => {
              onMouseEnter={() => pianoPickerConfig.set_b_color("gaf", select_black_key_color)}
              onMouseLeave={() => pianoPickerConfig.set_b_color("gaf")}
              onClick={() => {
+               if(isFunction(props.onSelect)) {
+                 props.onSelect("A", -1)
+                 return;
+               }
                setNotePicker("A", -1);
                pianoPickerConfig.reset_color();
              }}>
@@ -406,6 +468,10 @@ const SvgComponent = (props) => {
              onMouseEnter={() => pianoPickerConfig.set_b_color("abs", select_black_key_color)}
              onMouseLeave={() => pianoPickerConfig.set_b_color("abs")}
              onClick={() => {
+               if(isFunction(props.onSelect)) {
+                 props.onSelect("A", 1)
+                 return;
+               }
                setNotePicker("A", 1);
                pianoPickerConfig.reset_color();
              }}>
@@ -430,6 +496,10 @@ const SvgComponent = (props) => {
              onMouseEnter={() => pianoPickerConfig.set_b_color("abf", select_black_key_color)}
              onMouseLeave={() => pianoPickerConfig.set_b_color("abf")}
              onClick={() => {
+               if(isFunction(props.onSelect)) {
+                 props.onSelect("B", -1)
+                 return;
+               }
                setNotePicker("B", -1);
                pianoPickerConfig.reset_color();
              }}>
