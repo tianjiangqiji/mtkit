@@ -37,7 +37,7 @@ jobs:
           rm -rf node_modules package-lock.json
           npm cache clean --force
           npx npm install --legacy-peer-deps  --force
-          npm install vite@6.2.3 --force --legacy-peer-deps
+          npm install vite@6.2.3 --force
           npx vite  build
         env:
           # 强制 Vite 使用生产环境配置
