@@ -3,8 +3,8 @@
 import {css} from "@emotion/react";
 import googleColors from "@/assets/colors/googleColors.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
-import production from "/svgs/logos/Production.svg";
-import text_logo from "/svgs/logos/TextLogoFull.svg";
+import production from "@/assets/svgs/logos/Production.svg";
+import text_logo from "@/assets/svgs/logos/TextLogoFull.svg";
 
 const LandScreen = () => {
 	return <div css={land_screen_css}>

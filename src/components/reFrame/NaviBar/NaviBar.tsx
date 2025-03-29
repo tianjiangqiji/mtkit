@@ -10,8 +10,8 @@ import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import useIsWideScreen from "@/utils/useIsWideScreen.tsx";
 import PhonePopNaviContent from "@/components/reFrame/NaviBar/comps/PhonePopNaviContent.tsx";
 import WideScreenPopNaviContent from "@/components/reFrame/NaviBar/comps/WideScreenPopNaviContent.tsx";
-import pure_text_logo from "/svgs/logos/TextLogo.svg";
-import production from "/svgs/logos/Production.svg";
+import pure_text_logo from "@/assets/svgs/logos/TextLogo.svg";
+import production from "@/assets/svgs/logos/Production.svg";
 
 const naviWindowHeight = 40
 const naviWindowIconSize = 25
