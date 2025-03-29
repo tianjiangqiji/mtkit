@@ -1,0 +1,6 @@
+[build]
+# 设置 NPM_FLAGS 环境变量
+environment = { NPM_FLAGS = "--dry-run" }
+# 构建命令，使用设置好的 NPM_FLAGS
+command = "pnpm i --no-frozen-lockfile && pnpm build"
+publish = "docs"

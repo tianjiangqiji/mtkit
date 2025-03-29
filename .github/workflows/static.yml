@@ -37,7 +37,6 @@ jobs:
           rm -rf node_modules package-lock.json
           npm cache clean --force
           npm install -g pnpm --force
-          npx vite --version
           pnpm config set strict-peer-dependencies false
           pnpm config set auto-install-peers true 
           pnpm install  --no-frozen-lockfile
