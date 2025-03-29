@@ -39,6 +39,7 @@ jobs:
         env:
           # 强制 Vite 使用生产环境配置
           NODE_ENV: production
+          CI: true
 
       # 4. 仅上传构建后的目录（而非整个仓库）
       - name: Upload Artifact
