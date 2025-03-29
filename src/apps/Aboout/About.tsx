@@ -2,11 +2,11 @@
 
 import {css} from "@emotion/react";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
-import logo from "../../../public/svgs/logos/Production.svg";
-import text_logo from "../../../public/svgs/logos/TextLogoFull.svg";
+import logo from "/public/svgs/logos/Production.svg";
+import text_logo from "/public/svgs/logos/TextLogoFull.svg";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import googleColors from "@/assets/colors/googleColors.ts";
-import guohub8080 from "../../../public/svgs/logos/authorLogo.svg";
+import guohub8080 from "/public/svgs/logos/authorLogo.svg";
 import collect from "collect.js";
 import {useMemo} from "react";
 import UseResetAllStores from "@/assets/stores/useResetAllStores.tsx";
