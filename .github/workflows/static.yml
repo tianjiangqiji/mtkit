@@ -40,7 +40,7 @@ jobs:
           npx vite --version
           pnpm config set strict-peer-dependencies false
           pnpm config set auto-install-peers true 
-          pnpm install 
+          pnpm install  --no-frozen-lockfile
           pnpm  build
         env:
           # 强制 Vite 使用生产环境配置
