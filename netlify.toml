@@ -1,8 +1,8 @@
 [build]
-command = "npm install && npm run build"
+command = "CI='' pnpm install && pnpm build"
 publish = "docs"
 
 
 [build.environment]
-NPM_FLAGS = "--no-optional"
+NPM_FLAGS = "--legacy-peer-deps --force"  # 强制安装并忽略 peerDependency 冲突
 NODE_VERSION = "18.18.0"  # Using a specific LTS version
