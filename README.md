@@ -1,4 +1,4 @@
-![cover](.\readme_imgs\cover.png)
+![cover](./readme_imgs/cover.png)
 
 # 项目名称 Project Name
 
