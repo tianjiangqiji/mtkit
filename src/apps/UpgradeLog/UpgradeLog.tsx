@@ -6,12 +6,14 @@ import cssPresets from "@/assets/styles/cssPresets.ts";
 import {css} from "@emotion/react";
 import {range} from "lodash";
 import updateObj from "@/apps/UpgradeLog/updateObj.ts";
+import {useMemo} from "react";
 
 const UpgradeLog = () => {
 	const {naviBarHeight} = useGlobalSettings()
+	const upd = useMemo(() => updateObj.reverse(), [])
 	return <>
 		<div css={UpgradeLog_css(naviBarHeight)}>
-			{updateObj.reverse().map((x, y) => <div
+			{upd.map((x, y) => <div
 				style={{width: "100%", ...cssPresets.flexCenter}}
 				key={y}>
 				<UpdateCard v={x.v} data={x.data}/>
