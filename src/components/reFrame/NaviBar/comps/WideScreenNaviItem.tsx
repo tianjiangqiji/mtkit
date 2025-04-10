@@ -49,8 +49,7 @@ const navi_item_css = (itemH: number, itemW: number, iconH: number) => css({
   boxSizing: "border-box",
   ...cssPresets.flexCenter,
   paddingLeft:20,
-  // paddingLeft: 40,
-  // paddingRight: 40,
+  margin:0,
   cursor: "pointer",
   "&:active": {
     backgroundColor: "#e5e5e5",

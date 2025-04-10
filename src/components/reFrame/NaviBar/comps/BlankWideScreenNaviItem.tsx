@@ -26,6 +26,7 @@ const navi_item_css = (itemH: number, itemW: number) => css({
   width: itemW,
   height: itemH,
   userSelect: "none",
+  margin:0,
   backgroundColor: googleColors.gray200,
   boxSizing: "border-box",
   ...cssPresets.flexCenter,

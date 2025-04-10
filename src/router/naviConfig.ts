@@ -10,6 +10,8 @@ import series_svg from "@/router/svgComps/series_svg.svg"
 import temp251_svg from "@/router/svgComps/temp251_svg.svg"
 import midi_svg from "@/router/svgComps/midi_svg.svg"
 import exam_svg from "@/router/svgComps/exam_svg.svg"
+import upgrade_svg from "@/router/svgComps/update_svg.svg"
+import sets_svg from "@/router/svgComps/settings_svg.svg"
 import score_svg from "@/router/svgComps/score_svg.svg"
 import circle_svg from "@/router/svgComps/circle_svg.svg"
 import interval_svg from "@/router/svgComps/interval_svg.svg"
@@ -112,14 +114,26 @@ export default [
   // },
   {
     link: `/${routerPath.about}`,
+    title: "设置",
+    subtitle: "功能支持状态/声音模式",
+    imgURL: sets_svg,
+    type: "all"
+  }, {
+    link: `/${routerPath.about}`,
     title: "关于项目",
-    subtitle: "项目介绍/引用库说明",
+    subtitle: "备案公示/引用库公示",
     imgURL: about_svg,
     type: "all"
   }, {
+    link: `/${routerPath.upgradeLog}`,
+    title: "更新日志",
+    subtitle: "每次提交GitHub更新的内容",
+    imgURL: upgrade_svg,
+    type: "all"
+  },{
     link: `/${routerPath.author}`,
     title: "关于作者",
-    subtitle: "作者介绍/联系开发者",
+    subtitle: "作者介绍/联系开发者/提交Bug",
     imgURL: author_svg,
     type: "all"
   },

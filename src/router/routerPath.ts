@@ -14,5 +14,6 @@ export default {
   findNotes: "n.find",
   findNotesWithInterval: "n.i.find",
   harmonicSeries: "h.series",
-  staveExam: "exam"
+  staveExam: "exam",
+  upgradeLog: "log",
 }

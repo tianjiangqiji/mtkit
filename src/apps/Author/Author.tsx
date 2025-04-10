@@ -44,12 +44,12 @@ const Author = () => {
         </div>
         <div className="intro">
           <div className="cap">
-            <div className="title">Github</div>
+            <div className="title">GitHub</div>
             <div className="content">@guohub8080</div>
           </div>
           <div className="cap">
             <div className="title">电子邮箱</div>
-            <div className="content">guo2018@88.com</div>
+            <div className="content">guohub@foxmail.com</div>
           </div>
           <div className="cap">
             <div className="title">微信公众号</div>
@@ -129,9 +129,9 @@ const Author_css = (naviBarHeight: number) => css({
       marginBottom: 25,
       gap: 15,
       "& .cap": {
-        width: 200,
+        width: 220,
         height: 100,
-        backgroundColor: googleColors.gray100,
+        backgroundColor: "white",
         ...cssPresets.flexCenter,
         flexDirection: "column",
         borderRadius: 8,
@@ -139,12 +139,13 @@ const Author_css = (naviBarHeight: number) => css({
         boxShadow:shadowPresets.sm,
         "& .title": {
           fontSize: 18,
-          color: googleColors.gray800,
+          color: googleColors.blue600,
           width: 120,
           paddingLeft: 15,
           paddingRight: 15,
           marginLeft: "auto",
           marginRight: "auto",
+          marginBottom: 3,
           // borderBottom:`8px solid ${googleColors.blue800}`
         },
         "& .content": {

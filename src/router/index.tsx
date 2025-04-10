@@ -1,6 +1,7 @@
 import About from "@/apps/Aboout/About.tsx";
 import Interval from "@/apps/Interval/Interval.tsx";
 import TabletScaleQuery from "@/apps/TabletScaleQuery/TabletScaleQuery.tsx";
+import UpgradeLog from "@/apps/UpgradeLog/UpgradeLog.tsx";
 import MainLayout from "@/components/reFrame/MainLayout.tsx";
 import {createHashRouter, Navigate} from 'react-router-dom'
 import CircleOfFifths from "@/apps/CircleOfFifths/CircleOfFifths.tsx";
@@ -22,85 +23,89 @@ import StaveExam from "@/apps/StaveExam/StaveExam.tsx";
 import AutoRedirect from "@/apps/AutoRedirect/AutoRedirect.tsx";
 
 const r = createHashRouter([
-  {
-    path: "",
-    element: <AutoRedirect/>
-  },
-  {
-    path: "/",
-    element: <MainLayout/>,
-    caseSensitive: false,
-    children: [
-      {
-        path: routerPath.about,
-        element: <About/>,
-      },
-      {
-        path: routerPath.interval,
-        element: <Interval/>
-      }, {
-        path: routerPath.findNotesWithInterval,
-        element: <FindNotesWithInterval/>
-      },
-      {
-        path: routerPath.findNotes,
-        element: <FindNotesInChordOrScale/>
-      },
-      {
-        path: routerPath.mobile_ksQuery,
-        element: <Mobile_KS_Query/>,
-        caseSensitive: false
-      },
-      {
-        path: routerPath.tablet_scaleQuery,
-        element: <TabletScaleQuery/>
-      },
-      {
-        path: routerPath.chordDisplay,
-        element: <ChordDisplay/>
-      },
-      {
-        path: routerPath.author,
-        element: <Author/>
-      },
-      {
-        path: routerPath.mobile_scaleTable,
-        element: <MobileScaleOverview/>
-      },
-      {
-        path: routerPath.harmonicSeries,
-        element: <HarmonicSeries/>
-      },
-      {
-        path: routerPath.circle,
-        element: <CircleOfFifths/>
-      },
-      {
-        path: routerPath.mobile_scoreChecker,
-        element: <MobileScoreChecker/>
-      },
-      // {
-      //   path: routerPath.staveExam,
-      //   element: <StaveExam/>
-      // },
-      // {
-      //   path: routerPath.midi,
-      //   element: <MidiMessage/>
-      // },
-      {
-        path: routerPath.temp251,
-        element: <Temp251/>
-      },
-    ],
-  },
-  {
-    path: "/error",
-    element: <ErrorPage/>
-  },
-  {
-    path: "*",
-    element: <Navigate to="/error"/>
-  }
+	{
+		path: "",
+		element: <AutoRedirect/>
+	},
+	{
+		path: "/",
+		element: <MainLayout/>,
+		caseSensitive: false,
+		children: [
+			{
+				path: routerPath.about,
+				element: <About/>,
+			},
+			{
+				path: routerPath.interval,
+				element: <Interval/>
+			}, {
+				path: routerPath.findNotesWithInterval,
+				element: <FindNotesWithInterval/>
+			},
+			{
+				path: routerPath.findNotes,
+				element: <FindNotesInChordOrScale/>
+			},
+			{
+				path: routerPath.mobile_ksQuery,
+				element: <Mobile_KS_Query/>,
+				caseSensitive: false
+			}, {
+				path: routerPath.upgradeLog,
+				element: <UpgradeLog/>,
+				caseSensitive: false
+			},
+			{
+				path: routerPath.tablet_scaleQuery,
+				element: <TabletScaleQuery/>
+			},
+			{
+				path: routerPath.chordDisplay,
+				element: <ChordDisplay/>
+			},
+			{
+				path: routerPath.author,
+				element: <Author/>
+			},
+			{
+				path: routerPath.mobile_scaleTable,
+				element: <MobileScaleOverview/>
+			},
+			{
+				path: routerPath.harmonicSeries,
+				element: <HarmonicSeries/>
+			},
+			{
+				path: routerPath.circle,
+				element: <CircleOfFifths/>
+			},
+			{
+				path: routerPath.mobile_scoreChecker,
+				element: <MobileScoreChecker/>
+			},
+			// {
+			//   path: routerPath.staveExam,
+			//   element: <StaveExam/>
+			// },
+			// {
+			//   path: routerPath.midi,
+			//   element: <MidiMessage/>
+			// },
+			{
+				path: routerPath.temp251,
+				element: <Temp251/>
+			},
+		],
+	},
+	{
+		path: "/error",
+		element: <ErrorPage/>
+	},
+	{
+		path: "*",
+		element: <Navigate to="/error"/>
+	}
 ])
 
 export default r
