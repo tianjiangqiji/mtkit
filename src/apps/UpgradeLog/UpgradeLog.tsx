@@ -10,7 +10,7 @@ import {useMemo} from "react";
 
 const UpgradeLog = () => {
 	const {naviBarHeight} = useGlobalSettings()
-	const upd = useMemo(() => updateObj.reverse(), [])
+	const upd = useMemo(() => updateObj.reverse(), [updateObj])
 	return <>
 		<div css={UpgradeLog_css(naviBarHeight)}>
 			{upd.map((x, y) => <div

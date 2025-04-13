@@ -113,7 +113,7 @@ export default [
   //   type: "all"
   // },
   {
-    link: `/${routerPath.about}`,
+    link: `/${routerPath.settings}`,
     title: "设置",
     subtitle: "功能支持状态/声音模式",
     imgURL: sets_svg,

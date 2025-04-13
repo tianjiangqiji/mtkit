@@ -10,7 +10,7 @@ import routerPath from "./routerPath.ts";
 import Mobile_KS_Query from "@/apps/MobileKSQuery/Mobile_KS_Query.tsx";
 import MobileScaleOverview from "@/apps/MobileScaleOverview/MobileScaleOverview.tsx";
 import MobileScoreChecker from "@/apps/MobileScoreChecker/MobileScoreChecker.tsx";
-import Settings from "@/apps/MidiMessage/MidiMessage.tsx";
+import Settings from "@/apps/Settings/Settings.tsx";
 import Temp251 from "@/apps/Temp251/Temp251.tsx";
 import ChordDisplay from "@/apps/ChordDisplay/ChordDisplay.tsx";
 // import FindInScale from "@/apps/FindInScale/FindInScale.tsx";
@@ -63,6 +63,10 @@ const r = createHashRouter([
 			{
 				path: routerPath.chordDisplay,
 				element: <ChordDisplay/>
+			},
+			{
+				path: routerPath.settings,
+				element: <Settings/>
 			},
 			{
 				path: routerPath.author,

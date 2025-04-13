@@ -138,6 +138,7 @@ const TabletReverseInterval = () => {
 				}
 			}
 		}
+		console.log(result)
 		return result
 	}, [notePickerAlter, notePickerStep]);
 	return <div css={tablet_reverse_interval_css(isDirectionArrowShow, isDoubleAlterShown)}>
@@ -156,15 +157,15 @@ const TabletReverseInterval = () => {
 								<div className="icon">
 									<MdArrowUpward size={13} color={arrowColor_up}/>
 								</div>
-								<div className="interval_text">{getReverseIntervalItem(x, "upward", y)}</div>
-								<div className="semitone_gap">{getReverseSemitone(x, "upward", y)} </div>
+								<div className="interval_text">{getReverseIntervalItem(x, "downward", y)}</div>
+								<div className="semitone_gap">{getReverseSemitone(x, "downward", y)} </div>
 							</div>
 							<div className="downward direction">
 								<div className="icon">
 									<MdArrowDownward size={13} color={arrowColor_down}/>
 								</div>
-								<div className="interval_text">{getReverseIntervalItem(x, "downward", y)}</div>
-								<div className="semitone_gap">{getReverseSemitone(x, "downward", y)}</div>
+								<div className="interval_text">{getReverseIntervalItem(x, "upward", y)}</div>
+								<div className="semitone_gap">{getReverseSemitone(x, "upward", y)}</div>
 							</div>
 						</div>
 					</div>

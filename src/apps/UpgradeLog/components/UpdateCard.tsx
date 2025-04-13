@@ -23,7 +23,7 @@ export default UpdateCard
 
 const UpdateCard_css = css({
 	width: "100%",
-	maxWidth: 450,
+	maxWidth: 550,
 	backgroundColor: "white",
 	justifyContent: "start",
 	...cssFunctions.px(20),
@@ -49,8 +49,10 @@ const UpdateCard_css = css({
 		marginBottom:8,
 		"&>.i": {
 			display: "block",
-			color: googleColors.gray800,
+			color: googleColors.blue800,
 			marginRight:2,
+			minWidth:20,
+			texAlign: "left",
 		},
 		"&>.each": {
 			display: "block",
