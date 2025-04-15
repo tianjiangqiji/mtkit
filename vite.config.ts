@@ -14,10 +14,10 @@ export default defineConfig({
 		}),
 		svgr(),
 		isProduction && terser({
-			format:{
-				comments:false
+			format: {
+				comments: false
 			},
-			mangle:{
+			mangle: {
 				toplevel: true
 			}
 		}), // 只在生产环境下使用 terser 压缩
@@ -34,7 +34,7 @@ export default defineConfig({
 	build: {
 		outDir: "docs",
 		copyPublicDir: true,
-		terserOptions:{
+		terserOptions: {
 			compress: {
 				drop_console: true,
 				drop_debugger: true,
@@ -44,8 +44,8 @@ export default defineConfig({
 		assetsInlineLimit: 4096, // 小于此阈值的导入或引用资源将内联为 base64 编码
 		rollupOptions: {
 			output: {
-				chunkFileNames: 'assets/js/[name].js',
-				entryFileNames: 'assets/js/[name].js',
+				chunkFileNames: 'scripts/[name].js',
+				entryFileNames: 'main.js',
 				assetFileNames: 'assets/[ext]/[name][extname]',
 				// 将第三方依赖库单独打包成一个文件
 				// 核心：按文件夹分块（新增 music12 分块）
@@ -54,10 +54,10 @@ export default defineConfig({
 					if (id.includes('node_modules')) {
 						if (id.includes('react')) {
 							return 'react';
-						}else if(id.includes("hook")){
-							return 'hooks'
 						} else if (id.includes('lodash') || id.includes('ramda') || id.includes("zustand")) {
 							return 'base_tool';
+						} else if (id.includes("hook")) {
+							return 'hooks'
 						} else if (id.includes("jzz")) {
 							return "jzz"
 						} else if (id.includes("antd")) {
@@ -74,6 +74,7 @@ export default defineConfig({
 						return 'music12'; // 分块名为 music12，输出为 music12.js
 					}
 				},
+
 			}
 		},
 		commonjsOptions: {
