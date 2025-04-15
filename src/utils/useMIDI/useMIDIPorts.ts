@@ -1,9 +1,8 @@
-import {useList} from "react-use";
 import JZZ from "jzz";
-import {useEffect, useMemo, useState} from "react";
-import useMIDIReady from "./useMIDIReady";
-import useMIDIConfig from "@/assets/stores/useMIDIConfig";
 import {isEmpty} from "lodash";
+import {useEffect, useMemo, useState} from "react";
+import {useList} from "react-use";
+import useMIDIReady from "./useMIDIReady";
 
 type port = {
   engine: string
@@ -54,13 +53,13 @@ export default () => {
     if (!(isWebMidiSupport && isJzzEngineReady)) return;
     if (outputs.length > 0 && selectedOutPortIndex <= outputs.length - 1) {
       JZZ({sysex: true}).openMidiOut(outputs[selectedOutPortIndex]["name"]).then((op) => {
-        console.log("op:", outputs[selectedOutPortIndex])
+        // console.log("op:", outputs[selectedOutPortIndex])
         return setCurrentOutPort(op as any)
       })
     }
     if (inputs.length > 0 && selectedInPortIndex <= inputs.length - 1) {
       JZZ({sysex: true}).openMidiIn(inputs[selectedInPortIndex]["name"]).then((oi) => {
-        console.log("oi:", inputs[selectedInPortIndex])
+        // console.log("oi:", inputs[selectedInPortIndex])
         return setCurrentInPort(oi as any)
       })
     }

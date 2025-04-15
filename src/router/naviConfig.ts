@@ -118,23 +118,27 @@ export default [
     subtitle: "功能支持状态/声音模式",
     imgURL: sets_svg,
     type: "all"
-  }, {
-    link: `/${routerPath.about}`,
-    title: "关于项目",
-    subtitle: "备案公示/引用库公示",
-    imgURL: about_svg,
-    type: "all"
-  }, {
+  },
+  {
     link: `/${routerPath.upgradeLog}`,
     title: "更新日志",
     subtitle: "每次提交GitHub更新的内容",
     imgURL: upgrade_svg,
     type: "all"
-  },{
+  },
+
+  {
     link: `/${routerPath.author}`,
     title: "关于作者",
     subtitle: "作者介绍/联系开发者/提交Bug",
     imgURL: author_svg,
+    type: "all"
+  },
+  {
+    link: `/${routerPath.about}`,
+    title: "关于项目",
+    subtitle: "备案公示/引用库公示",
+    imgURL: about_svg,
     type: "all"
   },
 ]

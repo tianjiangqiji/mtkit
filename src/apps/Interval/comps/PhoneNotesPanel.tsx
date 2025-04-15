@@ -6,7 +6,7 @@ import cssPresets from "@/assets/styles/cssPresets.ts";
 import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
 import {css} from "@emotion/react";
 import {clamp, isUndefined} from "lodash";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 import {useEffect, useMemo, useState} from "react";
 import {isMobile} from "react-device-detect";
 import {useWindowSize} from "react-use";

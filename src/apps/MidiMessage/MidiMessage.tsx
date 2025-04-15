@@ -6,7 +6,7 @@ import JZZ from "jzz"
 import useMIDIReady from "@/utils/useMIDI/useMIDIReady.ts";
 import useMIDIPorts from "@/utils/useMIDI/useMIDIPorts.ts";
 import {WebMidi} from "webmidi";
-import NotSupportMidi from "@/apps/MidiMessage/components/NotSupportMidi.tsx";
+import NotSupportMidi from "@/apps/Settings/components/NotSupportMidi.tsx";
 import {useHotkeys} from 'react-hotkeys-hook';
 import {isArray, keys, random} from "lodash";
 import {Button, Input} from "antd-mobile";

@@ -1,7 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import {css} from "@emotion/react";
 import {useEffect, useMemo, useRef, useState} from "react";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
 import byDefault from "@/utils/byDefault.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";

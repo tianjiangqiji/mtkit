@@ -1,6 +1,6 @@
 import useScoreHelperConfig from "@/assets/stores/useScoreHelperConfig.ts";
 import {useMemo} from "react";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 
 const useScaleByStaveAlter = () => {
   const {staveAlters, isStaveSharp} = useScoreHelperConfig();

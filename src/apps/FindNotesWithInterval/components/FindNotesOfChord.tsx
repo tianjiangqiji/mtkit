@@ -6,7 +6,7 @@ import {isArray, isEmpty, isNull, isNumber, isUndefined, min, range, sum} from "
 import NoteByLocation from "@/components/reNote/NoteByLocation/NoteByLocation.tsx";
 import googleColors from "@/assets/colors/googleColors.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 import NoResult from "@/apps/FindNotesWithInterval/components/NoResult.tsx";
 import {Collapse} from "antd-mobile";
 import OctavePiano from "@/components/rePiano/OctavePiano.tsx";

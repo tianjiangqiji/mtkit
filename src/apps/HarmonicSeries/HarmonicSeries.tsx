@@ -1,7 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import {css} from "@emotion/react";
 import {useMemo} from "react";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 import ConfigBar from "@/apps/HarmonicSeries/components/ConfigBar.tsx";
 import useHarmonicSeriesConfig from "@/assets/stores/useHarmonicSeriesConfig.ts";
 import NotePicker from "@/components/reNote/NotePicker/NotePicker.tsx";

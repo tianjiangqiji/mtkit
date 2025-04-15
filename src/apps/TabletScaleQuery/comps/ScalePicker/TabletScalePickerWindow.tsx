@@ -7,7 +7,7 @@ import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import googleColors from "@/assets/colors/googleColors.ts";
 import React, {forwardRef, useMemo} from "react";
 import MajorScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/MajorScaleSymbol.tsx";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 import MinorScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/MinorScaleSymbol.tsx";
 import HalfDimScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/HalfDimScaleSymbol.tsx";
 

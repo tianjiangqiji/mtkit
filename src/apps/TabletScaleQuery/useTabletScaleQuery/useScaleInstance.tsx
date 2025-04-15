@@ -2,7 +2,7 @@
 import React, {useMemo} from "react";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import useScaleConfig from "@/assets/stores/useScaleConfig.ts";
-import music12 from "@/music12"
+import * as music12 from "@/music12";
 import collect from "collect.js";
 import byDefault from "@/utils/byDefault.ts";
 import googleColors from "@/assets/colors/googleColors.ts";

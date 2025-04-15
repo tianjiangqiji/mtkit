@@ -4,7 +4,7 @@ import React, {useMemo} from "react";
 import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
 import useChordConfig from "@/assets/stores/useChordConfig.ts";
 import collect from "collect.js";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import googleColors from "@/assets/colors/googleColors.ts";
 import {isMobile} from "react-device-detect";

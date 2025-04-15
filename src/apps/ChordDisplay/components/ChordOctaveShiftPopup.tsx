@@ -4,7 +4,7 @@ import {css} from "@emotion/react";
 import {Mask} from "antd-mobile";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import useChordConfig from "@/assets/stores/useChordConfig.ts";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 import googleColors from "@/assets/colors/googleColors.ts";
 import GoogleColors from "@/assets/colors/googleColors.ts";
 import {useWindowSize} from "react-use";

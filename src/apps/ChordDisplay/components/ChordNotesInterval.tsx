@@ -3,7 +3,7 @@ import {css} from "@emotion/react";
 import useChord from "@/apps/ChordDisplay/useChord.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 import googleColors from "@/assets/colors/googleColors.ts";
 import {useWindowSize} from "react-use";
 

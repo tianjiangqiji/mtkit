@@ -8,7 +8,7 @@ import NoteByLocation from "@/components/reNote/NoteByLocation/NoteByLocation.ts
 import googleColors from "@/assets/colors/googleColors.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import collect from "collect.js";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 import useChordConfig from "@/assets/stores/useChordConfig.ts";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import {useNavigate} from "react-router-dom";

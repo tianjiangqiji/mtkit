@@ -7,7 +7,7 @@ import {isArray} from "lodash";
 import NoteByLocation from "@/components/reNote/NoteByLocation/NoteByLocation.tsx";
 import googleColors from "@/assets/colors/googleColors.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
-import music12 from "@/music12";
+import * as music12 from "@/music12";
 import MajorScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/MajorScaleSymbol.tsx";
 import useScaleConfig from "@/assets/stores/useScaleConfig.ts";
 import MinorScaleSymbol from "@/apps/TabletScaleQuery/symbolSVG/MinorScaleSymbol";

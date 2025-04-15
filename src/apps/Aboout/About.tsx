@@ -3,19 +3,21 @@
 import citeItems from "@/apps/Aboout/citeItems.ts";
 import WebAddrCard from "@/apps/Aboout/comps/WebAddrCard.tsx";
 import WideScreenAboutTop from "@/apps/Aboout/comps/WideScreenAboutTop.tsx";
-import cssFunctions from "@/assets/styles/cssFunctions.ts";
-import {css} from "@emotion/react";
-import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
-import logo from "@/assets/svgs/logos/Production.svg";
-import text_logo from "@/assets/svgs/logos/TextLogoFull.svg";
-import cssPresets from "@/assets/styles/cssPresets.ts";
 import googleColors from "@/assets/colors/googleColors.ts";
+import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
+import UseResetAllStores from "@/assets/stores/useResetAllStores.tsx";
+import cssFunctions from "@/assets/styles/cssFunctions.ts";
+import cssPresets from "@/assets/styles/cssPresets.ts";
 import guohub8080 from "@/assets/svgs/logos/authorLogo.svg";
+import {css} from "@emotion/react";
 import collect from "collect.js";
 import {useMemo} from "react";
-import UseResetAllStores from "@/assets/stores/useResetAllStores.tsx";
 import toast, {Toaster} from 'react-hot-toast';
 import {useNavigate} from "react-router-dom";
+import cloudflare from "./icons/cloudflare.svg";
+import vercel from "./icons/vercel.svg";
+import netlify from "./icons/netlify_light.svg";
+import github from "@/apps/Author/icons/github_logo.svg";
 
 
 const About = () => {
@@ -37,16 +39,29 @@ const About = () => {
 		<div className="inner_frame">
 			<WideScreenAboutTop/>
 			<div className="webcard_frame">
-				<WebAddrCard url={"https://mtkit.top"} title="项目主页"/>
-				<WebAddrCard url={"https://github.com/guohub8080/mtkit"} title="GitHub仓库"/>
-				<WebAddrCard url={"https://guohub8080.github.io/mtkit/"} title="GitHub Pages镜像"/>
-				<WebAddrCard url={"https://mtkit.pages.dev/"} title="Cloudfare Pages镜像"/>
-				<WebAddrCard url={"https://mtkit.vercel.app/"} title="Vercel镜像"/>
-				<WebAddrCard url={"https://mtkit.netlify.app/"} title="Netlify镜像"/>
+				<WebAddrCard
+					url={"https://mtkit.top"} title="项目主页"/>
+				<WebAddrCard
+					img={github}
+					url={"https://github.com/guohub8080/mtkit"} title="GitHub仓库"/>
+				<WebAddrCard
+					img={github}
+					url={"https://guohub8080.github.io/mtkit/"} title="GitHub Pages镜像"/>
+				<WebAddrCard
+					img={cloudflare}
+					url={"https://mtkit.pages.dev/"} title="Cloudflare Pages镜像"/>
+				<WebAddrCard
+					img={vercel}
+					url={"https://mtkit.vercel.app/"} title="Vercel镜像"/>
+				<WebAddrCard
+					img={netlify}
+					url={"https://mtkit.netlify.app/"} title="Netlify镜像"/>
 			</div>
 			<div className="cite_title">乐理计算</div>
 			<div style={{width: "100%", ...cssPresets.flexCenter, ...cssFunctions.px(15), marginBottom: 25}}>
-				<WebAddrCard w={"100%"} url={"https://github.com/guohub8080/music12"} title="music12.js"/>
+				<WebAddrCard
+					img={github}
+					w={"100%"} url={"https://github.com/guohub8080/music12"} title="music12.js"/>
 			</div>
 			<div style={{...cssFunctions.px(25), color: googleColors.gray700, lineHeight: 1.6}}>
 				<span>
@@ -80,16 +95,7 @@ const About = () => {
 			<div className="cite_frame">
 				<div className="cite_item">GPL-3.0</div>
 			</div>
-			<div className="reset">
-				<div className="reset_desc">
-					<span style={{whiteSpace: "nowrap"}}>如果该项目出现问题，</span>
-					<span style={{whiteSpace: "nowrap"}}>可通过重置按钮</span>
-					<span style={{whiteSpace: "nowrap"}}>恢复到初始状态。</span>
-				</div>
-				<div className="btn" onClick={reset}>重置应用</div>
-			</div>
-
-			<div style={{marginTop: 50, marginBottom: 100, width: '100%', height: 45}}>
+			<div style={{marginTop: 100, marginBottom: 100, width: '100%', height: 45}}>
 				<img src={guohub8080} style={{
 					height: "100%", width: "auto",
 					//drop shadow
@@ -171,7 +177,6 @@ const frame_css = (naviBarHeight: number) => css({
 			...cssFunctions.px(20),
 			flexWrap: "wrap",
 		},
-
 		"& .items": {
 			...cssPresets.flexCenter,
 			flexWrap: "wrap",

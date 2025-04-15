@@ -7,6 +7,10 @@ export default {
     alignItems: "center",
     justifyContent: "center"
   },
+  mxAuto:{
+    marginLeft: "auto",
+    marginRight: "auto"
+  },
   flexCenterColumn: {
     display: "flex",
     alignItems: "center",

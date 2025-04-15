@@ -4,24 +4,33 @@ import cssFunctions from "@/assets/styles/cssFunctions.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import byDefault from "@/utils/byDefault.ts";
 import {css} from "@emotion/react";
+import {isUndefined} from "lodash";
 import {QRCodeSVG} from 'qrcode.react';
 import toast from "react-hot-toast";
-import {useWindowSize} from "react-use";
-import copy from 'copy-to-clipboard';
+import {useCopyToClipboard} from "usehooks-ts"
 
 const WebAddrCard = (props: {
 	url: string
 	title: string
 	w?: string
+	showText?: string
+	copyContent?: string
+	copyInfo?: string
+	img?: string
 }) => {
 	const w = byDefault(props.w, "260px")
+	const [copiedText, copy] = useCopyToClipboard()
 	const handClick = () => {
-		const copyResult = copy(props.url);
-		if (copyResult) {
-			toast.success('复制成功');
-		} else {
-			toast.error('复制失败，请检查当前浏览环境');
-		}
+		const copyContent = byDefault(props.copyContent, props.url)
+		copy(copyContent)
+			.then(() => {
+				console.log('复制成功')
+				toast.success(byDefault(props.copyInfo, "复制成功"))
+			})
+			.catch(error => {
+				console.error('无法复制，请检查浏览权限', error)
+				toast.error('无法复制，请检查浏览权限', error)
+			})
 	}
 	return <div css={wide_css(w)} onClick={handClick}>
 		<QRCodeSVG
@@ -30,11 +39,17 @@ const WebAddrCard = (props: {
 			size={128}
 			bgColor={"#ffffff"}
 			fgColor={"#000000"}
-			level={"M"}
+			level={"H"}
+			imageSettings={isUndefined(props.img) ? void 0 as any: {
+				src: props.img as string,
+				height:30,
+				width:30,
+				excavate:true
+			}}
 		/>
 		<div className="right">
 			<div className="title">{props.title}</div>
-			<div className="addr">{props.url}</div>
+			<div className="addr">{byDefault(props.showText, props.url)}</div>
 		</div>
 	</div>
 }
@@ -42,9 +57,9 @@ const WebAddrCard = (props: {
 export default WebAddrCard
 
 
-const wide_css = (w:string)=>css({
+const wide_css = (w: string) => css({
 	width: w,
-	maxWidth:300,
+	maxWidth: 300,
 	paddingTop: 25,
 	paddingBottom: 25,
 	borderRadius: 8,
