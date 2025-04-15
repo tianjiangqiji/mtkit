@@ -1,4 +1,5 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+import ResetApp from "@/apps/Settings/components/ResetApp.tsx";
 import MidiSelection from "@/apps/Settings/parts/MidiSelection.tsx";
 import googleColors from "@/assets/colors/googleColors.ts";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
@@ -10,29 +11,13 @@ import toast, {Toaster} from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 
 const Settings = (props: {}) => {
-	const {resetAll} = UseResetAllStores()
 	const {naviBarHeight} = useGlobalSettings()
-	const navigate = useNavigate()
-	const reset = () => {
-		resetAll()
-		toast.success('重置成功');
-		setTimeout(() => {
-			navigate("/", {replace: true})
-		}, 2000)
-	}
 	return <>
 		<Toaster/>
 		<div css={Settings_css(naviBarHeight)}>
 			<div className="inner_frame">
 				<MidiSelection/>
-				<div className="reset">
-					<div className="reset_desc">
-						<span style={{whiteSpace: "nowrap"}}>如果该项目出现问题，</span>
-						<span style={{whiteSpace: "nowrap"}}>可通过重置按钮</span>
-						<span style={{whiteSpace: "nowrap"}}>恢复到初始状态。</span>
-					</div>
-					<div className="btn" onClick={reset}>重置应用</div>
-				</div>
+				<ResetApp/>
 			</div>
 
 		</div>

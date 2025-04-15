@@ -93,7 +93,7 @@ const About = () => {
 			</div>
 			<div className="cite_title">项目协议</div>
 			<div className="cite_frame">
-				<div className="cite_item">GPL-3.0</div>
+				<div className="cite_item">MIT</div>
 			</div>
 			<div style={{marginTop: 100, marginBottom: 100, width: '100%', height: 45}}>
 				<img src={guohub8080} style={{
