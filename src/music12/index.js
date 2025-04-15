@@ -20,6 +20,7 @@ __export(note_exports, {
   getBlackRandomNote: () => getBlackRandomNote,
   getCasualRandomNote: () => getCasualRandomNote,
   getNormalRandomNote: () => getNormalRandomNote,
+  getNoteByLocation: () => getNoteByLocation,
   getWhiteRandomNote: () => getWhiteRandomNote
 });
 
@@ -1578,6 +1579,13 @@ var getBlackRandomNote = (octave = 4, isNormal = true) => {
 var getNormalRandomNote = (octave = 4) => {
   const noteObj = noteMeta_default.where("isNormal", true).random();
   return new Note(noteObj.step, noteObj.alter, dealOctave(octave));
+};
+var getNoteByLocation = (location, octave) => {
+  if (!range2(12).includes(location)) throw new Error("location must be in range of 0 - 11.");
+  const defaultOctave = byDefault_default(octave, 4);
+  return noteMeta_default.where("isNormal", true).where("locationId", location).all().map((x) => {
+    return new Note(x.step, x.alter, defaultOctave);
+  });
 };
 
 // src/interval/index.ts

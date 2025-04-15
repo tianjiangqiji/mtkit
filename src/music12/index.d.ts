@@ -52,15 +52,17 @@ declare const getCasualRandomNote: (octave?: number | number[]) => Note;
 declare const getWhiteRandomNote: (octave?: number | number[], isNormal?: boolean) => Note;
 declare const getBlackRandomNote: (octave?: number | number[], isNormal?: boolean) => Note;
 declare const getNormalRandomNote: (octave?: number | number[]) => Note;
+declare const getNoteByLocation: (location: number, octave?: number) => InstanceType<typeof Note>[];
 
 type index$4_Note = Note;
 declare const index$4_Note: typeof Note;
 declare const index$4_getBlackRandomNote: typeof getBlackRandomNote;
 declare const index$4_getCasualRandomNote: typeof getCasualRandomNote;
 declare const index$4_getNormalRandomNote: typeof getNormalRandomNote;
+declare const index$4_getNoteByLocation: typeof getNoteByLocation;
 declare const index$4_getWhiteRandomNote: typeof getWhiteRandomNote;
 declare namespace index$4 {
-  export { index$4_Note as Note, index$4_getBlackRandomNote as getBlackRandomNote, index$4_getCasualRandomNote as getCasualRandomNote, index$4_getNormalRandomNote as getNormalRandomNote, index$4_getWhiteRandomNote as getWhiteRandomNote };
+  export { index$4_Note as Note, index$4_getBlackRandomNote as getBlackRandomNote, index$4_getCasualRandomNote as getCasualRandomNote, index$4_getNormalRandomNote as getNormalRandomNote, index$4_getNoteByLocation as getNoteByLocation, index$4_getWhiteRandomNote as getWhiteRandomNote };
 }
 
 declare const getIntervalByComparingNotes: (note1: InstanceType<typeof Note>, note2: InstanceType<typeof Note>) => InstanceType<typeof Interval>;
