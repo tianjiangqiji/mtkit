@@ -6,8 +6,13 @@ import cssPresets from "@/assets/styles/cssPresets.ts";
 import logo from "@/assets/svgs/logos/Production.svg";
 import text_logo from "@/assets/svgs/logos/TextLogoFull.svg";
 import {css} from "@emotion/react";
+import updateObj from "@/apps/UpgradeLog/updateObj.ts";
+import {useMemo} from "react";
 
-const WideScreenAboutTop = (props: {}) => {
+const WideScreenAboutTop = () => {
+	const v = useMemo(() => {
+		return updateObj[updateObj.length - 1]['v']
+	}, [updateObj])
 	return <>
 		<div css={WideScreenAboutTop_css}>
 			<div className="left">
@@ -20,8 +25,8 @@ const WideScreenAboutTop = (props: {}) => {
 			</div>
 			<div className="right">
 				<div className="title">版本号</div>
-				<div className="content">{infos.version}</div>
-				<div style={{width:"100%",height:15}}></div>
+				<div className="content">{v}</div>
+				<div style={{width: "100%", height: 15}}></div>
 
 				<div className="title">备案信息</div>
 				<div className="content">{infos.reg}</div>
@@ -74,24 +79,24 @@ const WideScreenAboutTop_css = css({
 	},
 	"& .right": {
 		width: 220,
-		paddingTop:10,
+		paddingTop: 10,
 		// backgroundColor: googleColors.gray200,
 		...cssPresets.flexCenterColumn as any,
-		"& .title":{
-			color:googleColors.blue800,
-			marginBottom:5,
-			fontSize:13,
+		"& .title": {
+			color: googleColors.blue800,
+			marginBottom: 5,
+			fontSize: 13,
 			...cssFunctions.px(15),
 			// borderLeft:`6px solid ${googleColors.blue800}`,
-			backgroundColor:googleColors.blue50,
-			borderRadius:999,
+			backgroundColor: googleColors.blue50,
+			borderRadius: 999,
 			...cssFunctions.py(3)
 		},
-		"& .content":{
+		"& .content": {
 			...cssFunctions.px(6),
 			...cssFunctions.py(2),
-			fontSize:14,
-			color:googleColors.gray800,
+			fontSize: 14,
+			color: googleColors.gray800,
 			// borderLeft:`6px solid ${googleColors.blue200}`,
 			// backgroundColor:googleColors.gray100
 		}
