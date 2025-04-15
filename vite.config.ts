@@ -54,7 +54,9 @@ export default defineConfig({
 					if (id.includes('node_modules')) {
 						if (id.includes('react')) {
 							return 'react';
-						} else if (id.includes('lodash') || id.includes('ramda') || id.includes('hook') || id.includes("zustand")) {
+						}else if(id.includes("hook")){
+							return 'hooks'
+						} else if (id.includes('lodash') || id.includes('ramda') || id.includes("zustand")) {
 							return 'base_tool';
 						} else if (id.includes("jzz")) {
 							return "jzz"
