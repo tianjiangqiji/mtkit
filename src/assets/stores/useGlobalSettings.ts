@@ -31,6 +31,8 @@ type GlobalSettingsType = {
 	setMainVolume: (newVolume: number) => void,
 	instrument: string,
 	setInstrument: (newInstrument: string) => void,
+	chordPlayStyle: string[],
+	setChordPlayStyle: (newStyle: string[]) => void
 }
 const storeKey = 'globalSettings'
 const defaultStore = {
@@ -47,7 +49,8 @@ const defaultStore = {
 	octave: 4,
 	lastViewURL: "", //上次访问过的地址，可以用来保存
 	mainVolume: 0,// 主音量
-	instrument: instrumentsObj.piano,
+	instrument: instrumentsObj.piano, //乐器
+	chordPlayStyle: ["column", "split_up", "split_down"] //和弦播放样式
 }
 const useGlobalSettings = create<GlobalSettingsType>()(immer(persist(
 		(set) => ({
@@ -55,6 +58,11 @@ const useGlobalSettings = create<GlobalSettingsType>()(immer(persist(
 			setNaviWindowOpen: (newStatus: boolean) => {
 				set((state) => {
 					state.isNaviWindowOpen = newStatus
+				})
+			},
+			setChordPlayStyle: (newStyle: string[]) => {
+				set((state) => {
+					state.chordPlayStyle = newStyle
 				})
 			},
 			setMainVolume: (newVolume: number) => {

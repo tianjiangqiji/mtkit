@@ -1,4 +1,5 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+import ChordPlayStyleCard from "@/apps/Settings/components/ChordPlayStyleCard.tsx";
 import instrumentsObj from "@/apps/Settings/datas/instrumentsObj.ts";
 import googleColors from "@/assets/colors/googleColors.ts";
 import strings_ins_svg from "@/assets/instruments/instrument_imgs/cello.svg"
@@ -22,9 +23,8 @@ import cssFunctions from "@/assets/styles/cssFunctions.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import SoundPicker from "@/components/reSound/soundPicker/SoundPicker.tsx";
 import {css} from "@emotion/react";
-import {useState} from "react";
-import {useWindowSize} from "react-use";
-// import guitarSampler from "@/assets/samplers/guitarSampler.ts";
+import {useMemo} from "react";
+
 const maxW = 110
 
 const notesList1 = ["C3", "E3", "G3", "C4", "E4", "C5"]
@@ -38,11 +38,17 @@ const SoundConfig = (props: {}) => {
 	const warmSynth = useWarmSynth()
 	const sineSynth = useSineSynth()
 	const dingDongSynth = useDingDongSynth()
-	const {width} = useWindowSize()
-	const {setMainVolume, instrument, setInstrument} = useGlobalSettings()
+	const {setMainVolume, instrument, setInstrument, chordPlayStyle, setChordPlayStyle} = useGlobalSettings()
 	const setRandomVolume = () => {
 		setMainVolume(0)
 	}
+	const forbiddenPlayStyle = useMemo(() => {
+		return {
+			column: false,
+			split_up: false,
+			split_down: false,
+		}
+	}, [instrument])
 	const harpSamplerClick = () => {
 		setInstrument(instrumentsObj.harp)
 		notesList1.forEach((note, index) => {
@@ -66,6 +72,7 @@ const SoundConfig = (props: {}) => {
 
 	const stringSamplerClick = () => {
 		setInstrument(instrumentsObj.strings)
+		// setChordPlayStyle(chordPlayStyle.filter(x => x !== "split_up" && x !== "split_down"))
 		stringsSampler.player.triggerAttackRelease(notesList1, '2n')
 	}
 
@@ -170,6 +177,22 @@ const SoundConfig = (props: {}) => {
 					onClick={warmSynthClick}
 				/>
 			</div>
+			<div style={{color: googleColors.blue800, marginTop: 30, marginBottom: 5}}>和弦播放模式</div>
+
+			<div className="chord_play_style">
+				<ChordPlayStyleCard
+					type="column"
+					isForbidden={forbiddenPlayStyle.column}
+					isActive={chordPlayStyle.includes("column")}/>
+				<ChordPlayStyleCard
+					type="split_up"
+					isForbidden={forbiddenPlayStyle.split_up}
+					isActive={chordPlayStyle.includes("split_up")}/>
+				<ChordPlayStyleCard
+					type="split_down"
+					isForbidden={forbiddenPlayStyle.split_down}
+					isActive={chordPlayStyle.includes("split_down")}/>
+			</div>
 		</div>
 	</>
 }
@@ -179,8 +202,9 @@ export default SoundConfig
 const SoundConfig_css = css({
 	...cssFunctions.px(10),
 	...cssFunctions.py(15),
+	paddingBottom: 10,
 	backgroundColor: "white",
-	marginTop: 25,
+	marginTop: 15,
 	borderRadius: 8,
 	"& .picker_frame": {
 		width: "100%",
@@ -188,5 +212,11 @@ const SoundConfig_css = css({
 		flexWrap: "wrap",
 		flexGrow: 1,
 		gap: 5,
+	},
+	"& .chord_play_style": {
+		...cssPresets.flexCenter,
+		gap: 10,
 	}
 })
+
+

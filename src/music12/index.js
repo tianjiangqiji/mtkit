@@ -17682,10 +17682,12 @@ var Scale = class {
     return cls_findOneChordInScale_default(this.notesList, scaleDegree, false);
   }
   getScaleDegreeChord3(scaleDegree) {
-    return new Chord(this.rootNote, this.getScaleDegreeChord3Key(scaleDegree));
+    const scaleRadix = new ScaleRadix(scaleDegree).scaleDegree;
+    return new Chord(this.notesList[scaleRadix - 1], this.getScaleDegreeChord3Key(scaleDegree));
   }
   getScaleDegreeChord7(scaleDegree) {
-    return new Chord(this.rootNote, this.getScaleDegreeChord7Key(scaleDegree));
+    const scaleRadix = new ScaleRadix(scaleDegree).scaleDegree;
+    return new Chord(this.notesList[scaleRadix - 1], this.getScaleDegreeChord7Key(scaleDegree));
   }
 };
 _modeUID = new WeakMap();

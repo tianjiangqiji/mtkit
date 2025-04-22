@@ -58,6 +58,7 @@ const SoundPicker_css = (w: string,
 		filter: isLoaded ? "none" : "grayscale(100%)",
 		...cssFunctions.py(15),
 		...cssPresets.flexCenterColumn as any,
+		...cssPresets.transition,
 		cursor: "pointer",
 		border: `1px solid ${isSelected ? googleColors.blue300 : 'white'}`,
 		"&:hover": {

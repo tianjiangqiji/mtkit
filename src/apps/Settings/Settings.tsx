@@ -7,55 +7,19 @@ import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import cssFunctions from "@/assets/styles/cssFunctions.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import {css} from "@emotion/react";
-import {Button} from "antd-mobile";
-import {useEffect, useRef, useState} from "react";
+import {useEffect} from "react";
 import {Toaster} from "react-hot-toast";
 import * as Tone from "tone"
 
 const Settings = (props: {}) => {
 	const {naviBarHeight} = useGlobalSettings()
-	// const wa = new WebAudioTinySynth()
-	const [isAudioStarted, setIsAudioStarted] = useState(false);
-	const [notePlaying, setNotePlaying] = useState(false);
-	const waRef = useRef(null);
-	// 创建一个 PolySynth 实例，用于同时播放多个音符
 
-	// useEffect(() => {
-	// 	if (!isAudioStarted) {
-	// 		try {
-	// 			waRef.current = new WebAudioTinySynth();
-	// 			setIsAudioStarted(true);
-	// 			waRef.current.programChange(0, 3);
-	// 			console.log('Audio context started successfully');
-	// 		} catch (error) {
-	// 			console.error('Error starting audio context:', error);
-	// 		}
-	// 	}
-	// }, []);
 
 	useEffect(() => {
 		// 加载音频文件
-		Tone.start().then(()=>console.log(1))
+		Tone.start().then(() => console.log("Tone.js引擎加载成功。"))
 	})
 
-	const playNote = () => {
-		// sampler.triggerAttackRelease("C4", "8n")
-
-		// pianoSampler.triggerAttackRelease(["C3" ,"E4", "G4"], "4n")
-		// ["C3","E3","G3","C4","E4","G4"].forEach((note, index) => {
-		// 	pianoSampler.triggerAttackRelease(note, '4n', '+0.' + index)
-		// })
-
-		// if (isAudioStarted &&!notePlaying) {
-		// 	// MIDI 音符编号 60 代表中央 C
-		// 	waRef.current.noteOn(0, 60, 127);
-		// 	setNotePlaying(true);
-		// 	setTimeout(() => {
-		// 		waRef.current.noteOff(0, 60);
-		// 		setNotePlaying(false);
-		// 	}, 500);
-		// }
-	};
 
 	return <>
 		<Toaster/>
@@ -65,10 +29,6 @@ const Settings = (props: {}) => {
 				<MidiSelection/>
 				<ResetApp/>
 			</div>
-			{/*<div>{isAudioStarted ? "ok" : "no"}*/}
-			{/*	<Button onClick={playNote}>按下</Button>*/}
-			{/*</div>*/}
-
 		</div>
 	</>
 }
@@ -82,10 +42,10 @@ const Settings_css = (h: number) => css({
 	"& .inner_frame": {
 		...cssPresets.mxAuto,
 		width: "100%",
-		height:"auto",
+		height: "auto",
 		maxWidth: 550,
 		...cssFunctions.px(15),
-		paddingBottom:150
+		paddingBottom: 150
 	},
 	"& .reset": {
 		width: "100%",
