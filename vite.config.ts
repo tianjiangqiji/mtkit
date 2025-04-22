@@ -5,6 +5,8 @@ import {resolve} from "path"
 import svgr from 'vite-plugin-svgr' // 处理 SVG 为组件
 
 const isProduction = process.env.NODE_ENV === 'production';
+const isGitHubPages = process.env.VITE_GITHUB_PAGES === 'true';
+
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
@@ -30,7 +32,7 @@ export default defineConfig({
 		extensions: [".ts", ".tsx", ".js", "jsx"]
 	},
 	publicDir: resolve(__dirname, 'public'), // 绝对路径确保准确性
-	base: './',
+	base: isGitHubPages ? '/mtkit/' : './',
 	build: {
 		outDir: "docs",
 		copyPublicDir: true,

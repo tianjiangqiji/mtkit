@@ -45,6 +45,7 @@ jobs:
           # 强制 Vite 使用生产环境配置
           NODE_ENV: production
           CI: true
+          VITE_GITHUB_PAGES: true  # 设置 VITE_GITHUB_PAGES 环境变量
 
       # 4. 仅上传构建后的目录（而非整个仓库）
       - name: Upload Artifact
