@@ -32,7 +32,7 @@ export default defineConfig({
 		extensions: [".ts", ".tsx", ".js", "jsx"]
 	},
 	publicDir: resolve(__dirname, 'public'), // 绝对路径确保准确性
-	base: isGitHubPages ? '/mtkit/' : './',
+	base: isGitHubPages ? './mtkit/' : './',
 	build: {
 		outDir: "docs",
 		copyPublicDir: true,

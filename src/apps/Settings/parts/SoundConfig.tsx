@@ -58,6 +58,7 @@ const SoundConfig = (props: {}) => {
 	}
 
 	const guitarSamplerClick = () => {
+		setInstrument(instrumentsObj.guitar)
 		notesList1.forEach((note, index) => {
 			guitarSampler.player.triggerAttackRelease(note, '4n', '+0.' + index)
 		})
