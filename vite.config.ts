@@ -6,7 +6,9 @@ import svgr from 'vite-plugin-svgr' // 处理 SVG 为组件
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isGitHubPages = process.env.VITE_GITHUB_PAGES === 'true';
-
+if (isGitHubPages) {
+	console.log("GitHub Pages 模式下，base 为 /mtkit/")
+}
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
