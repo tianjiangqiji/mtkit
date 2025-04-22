@@ -15,7 +15,7 @@ interval calculation, chord calculation, scale calculation, etc.
 
 - 推荐 Recommended:  [https://mtkit.top ](https://mtkit.top)
 - GitHub Pages: [https://guohub8080.github.io/mtkit/](https://guohub8080.github.io/mtkit/)
-- Cloudfare Pages: [https://mtkit.pages.dev/](https://mtkit.pages.dev/)
+- Cloudflare Pages: [https://mtkit.pages.dev/](https://mtkit.pages.dev/)
 - Vercel: [https://mtkit.vercel.app/](https://mtkit.vercel.app/)
 - Netlify: [https://mtkit.netlify.app/](https://mtkit.netlify.app/)
 

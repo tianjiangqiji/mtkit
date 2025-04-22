@@ -49,8 +49,10 @@
     "react-use": "^17.6.0",
     "stream-browserify": "^3.0.0",
     "styled-components": "^6.1.13",
+    "tone": "^15.0.4",
     "usehooks-ts": "^2.16.0",
     "vexflow": "^4.2.5",
+    "webaudio-tinysynth": "^1.1.3",
     "webmidi": "^3.1.12",
     "xmlbuilder2": "^3.1.1",
     "zustand": "^4.5.5"

@@ -27,8 +27,11 @@
 		</div>
 		<script type="text/javascript">
 			setTimeout(function () {
-				var s = document.getElementById("no_net")
-				s.style.opacity = "1"
+				try {
+					var s = document.getElementById("no_net")
+					s.style.opacity = "1"
+				} catch (e) {
+				}
 			}, 2500)
 		</script>
 		<div id="no_net"
