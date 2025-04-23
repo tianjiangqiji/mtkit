@@ -8,12 +8,17 @@ import cssFunctions from "@/assets/styles/cssFunctions.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import * as music12 from "@/music12"
 import findFirstIndexLessThanLeft from "@/utils/findFirstIndexLessThanLeft.ts";
+import warningToast from "@/utils/warningToast.tsx";
 import {css} from "@emotion/react";
 import collect from "collect.js";
 import {range, reverse} from "lodash";
 import {useMemo, useState} from "react";
 import toast, {Toaster} from "react-hot-toast";
 import {AiFillSound, AiFillWarning, AiOutlineMinus, AiOutlinePlus} from "react-icons/ai";
+import {BiSolidMoviePlay} from "react-icons/bi";
+import {BsFillPlayBtnFill, BsPlayFill} from "react-icons/bs";
+import {LiaPlaySolid} from "react-icons/lia";
+import {PiLayoutFill} from "react-icons/pi";
 import * as Tone from "tone";
 
 
@@ -38,7 +43,7 @@ const MobileScalePlay = (props: {}) => {
 		}
 		const notesList = scaleInstance.notesList.map(x => Tone.Frequency(x.pitchValue + octaveShift * 12, "midi").toNote())
 		return [...notesList, Tone.Frequency(scaleInstance.rootNote.pitchValue + 12 + octaveShift * 12, "midi").toNote(), ...reverse(notesList)]
-	},[mode, scaleInstance, octaveShift])
+	}, [mode, scaleInstance, octaveShift])
 	const handleOctaveShift = (value: number) => {
 		setOctaveShift(prev => {
 			if (prev + value > 3) return 3
@@ -55,29 +60,29 @@ const MobileScalePlay = (props: {}) => {
 
 	const playChord = (chordDegree: number, isChord3: boolean) => {
 		if (!isLoaded) {
-			toast("乐器尚未加载成功，请等待或切换合成器音色", {
-				duration: 5000,
-				icon: <AiFillWarning color={googleColors.red300}/>, style: {
-					boxShadow: "0 0 10px rgba(0,0,0,0.05  )",
-				}
-			})
+			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
 			return;
 		}
 		const chordNotes = isChord3 ? scaleInstance.getScaleDegreeChord3(chordDegree).notesList : scaleInstance.getScaleDegreeChord7(chordDegree).notesList
 		const pitchList = chordNotes.map(x => Tone.Frequency(x.pitchValue + octaveShift * 12, "midi").toNote())
 		const playStyle = collect(chordPlayStyle).random()
-		if (playStyle === "column") {
-			player.triggerAttackRelease(pitchList, "2n")
-		} else if (playStyle === "split_up") {
-			pitchList.forEach((note, index) => {
-				const timeAlter = "+" + index / 10
-				player.triggerAttackRelease(note, '4n', timeAlter)
-			})
-		} else {
-			reverse(pitchList).forEach((note, index) => {
-				const timeAlter = "+" + index / 10
-				player.triggerAttackRelease(note, '4n', timeAlter)
-			})
+		try {
+			if (playStyle === "column") {
+				player.triggerAttackRelease(pitchList, "2n")
+			} else if (playStyle === "split_up") {
+				pitchList.forEach((note, index) => {
+					const timeAlter = "+" + index / 10
+					player.triggerAttackRelease(note, '4n', timeAlter)
+				})
+			} else {
+				reverse(pitchList).forEach((note, index) => {
+					const timeAlter = "+" + index / 10
+					player.triggerAttackRelease(note, '4n', timeAlter)
+				})
+			}
+		} catch (e) {
+			warningToast("播放失败，请刷新或改为合成器音色")
+			console.log(e)
 		}
 	}
 	return <>
@@ -105,7 +110,7 @@ const MobileScalePlay = (props: {}) => {
 			</div>
 			{/* =====================  播放音阶  =================================*/}
 			<div className="play_scale" onClick={playScale}>
-				<AiFillSound size={25} color={googleColors.blue800}/>
+				<BsPlayFill size={25} color={googleColors.blue800}/>
 				音阶声响效果
 			</div>
 			{/* ======================== 播放调内三和弦 -============================*/}
@@ -119,7 +124,7 @@ const MobileScalePlay = (props: {}) => {
 						</td>
 						{range(3).map(x => <td key={x}>
 							<div className="inner_chord" onClick={() => playChord(x + 1, true)}>
-								<AiFillSound size={20} color={googleColors.blue800}/>
+								<BsPlayFill size={20} color={googleColors.blue800}/>
 								<div className="num">{x + 1}级</div>
 							</div>
 						</td>)}
@@ -127,7 +132,7 @@ const MobileScalePlay = (props: {}) => {
 					<tr>
 						{range(4).map(x => <td key={x}>
 							<div className="inner_chord" onClick={() => playChord(x + 4, true)}>
-								<AiFillSound size={20} color={googleColors.blue800}/>
+								<BsPlayFill size={20} color={googleColors.blue800}/>
 								<div className="num">{x + 4}级</div>
 							</div>
 						</td>)}
@@ -146,7 +151,7 @@ const MobileScalePlay = (props: {}) => {
 						</td>
 						{range(3).map(x => <td key={x}>
 							<div className="inner_chord" onClick={() => playChord(x + 1, false)}>
-								<AiFillSound size={20} color={googleColors.blue800}/>
+								<BsPlayFill size={20} color={googleColors.blue800}/>
 								<div className="num">{x + 1}级</div>
 							</div>
 						</td>)}
@@ -154,7 +159,7 @@ const MobileScalePlay = (props: {}) => {
 					<tr>
 						{range(4).map(x => <td key={x}>
 							<div className="inner_chord" onClick={() => playChord(x + 4, false)}>
-								<AiFillSound size={20} color={googleColors.blue800}/>
+								<BsPlayFill size={20} color={googleColors.blue800}/>
 								<div className="num">{x + 4}级</div>
 							</div>
 						</td>)}

@@ -1,4 +1,5 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+import ScalePlayer from "@/apps/TabletScaleQuery/comps/ScalePlayer.tsx";
 import {css} from "@emotion/react";
 import React, {useMemo} from "react";
 import RoughStaveClefAndScale from "@/components/reStave/StaveWindow/RoughStaveClefAndScale.tsx";
@@ -28,10 +29,12 @@ const QueryScaleByNote = () => {
   // 默认的钢琴键盘配置
   const pianoConfig = {
     whiteKeyWidth: 34,
+    whiteKeyHeight: 95,
     blackKeyBorderWidth: 2,
     whiteKeyBorderRadius: Array.from({length: 7}, () => [0, 0, 5, 5])
   }
   return <div css={QueryScaleByAlters_css}>
+    <ScalePlayer/>
     <ScaleNotesTable/>
     {!scaleInstance.isTonicReplaced && <>
         <RoughStaveClefAndScale

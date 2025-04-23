@@ -54,6 +54,7 @@ const TabletScaleQuery = () => {
           </div>
           <div style={{
             maxHeight: !isStaveQueryReverse ? 999 : 0,
+
             transition: "all ease 0.3s",
             transitionDelay: !isStaveQueryReverse ? "0.3s" : "0s",
             transform: !isStaveQueryReverse ? "scale(1)" : "scale(0)",
