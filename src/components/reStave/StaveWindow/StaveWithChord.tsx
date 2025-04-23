@@ -2,6 +2,7 @@
 import useChord from "@/apps/ChordDisplay/useChord.ts";
 import useChordConfig from "@/assets/stores/useChordConfig.ts";
 import {css} from "@emotion/react";
+import {clamp} from "lodash";
 import {useCallback, useEffect, useMemo, useRef, useState} from "react";
 import byDefault from "@/utils/byDefault.ts";
 import {OpenSheetMusicDisplay} from "opensheetmusicdisplay";
@@ -96,12 +97,10 @@ const StaveWithChord = (props: {
 		return create({version: '1.0', encoding: 'UTF-8'}, musicXMLObject)
 			.end({prettyPrint: true});
 	}, [chordVoicing, clef, keys, notes])// 确保依赖于 props.notesList
-
 	// 渲染函数
 	const renderRef = useCallback(async () => {
 		const container = divRef.current;
 		if (!container) return;
-
 		// 如果实例不存在则创建
 		if (!osmdRef.current) {
 			osmdRef.current = new OpenSheetMusicDisplay(container, {
@@ -115,6 +114,7 @@ const StaveWithChord = (props: {
 				drawTimeSignatures: false,
 				drawLyricist: false,
 				renderSingleHorizontalStaffline: true,
+
 			});
 			// 配置 EngravingRules
 			const rules = osmdRef.current.EngravingRules;
@@ -122,12 +122,15 @@ const StaveWithChord = (props: {
 			rules.PageBottomMargin = 1;
 			rules.PageLeftMargin = 2;
 			rules.PageRightMargin = 2;
+			rules.FixedMeasureWidth = true
+			rules.FixedMeasureWidthFixedValue = 4
+			rules.MeasureRightMargin = 0
 		}
 
 		// 更新 MusicXML
 		await osmdRef.current.load(musicXML);
 		osmdRef.current.render();
-	}, [musicXML, props])
+	}, [musicXML, props,keys])
 	useEffect(() => {
 		renderRef().then()
 	}, [renderRef, keys, clef, n1_step, n1_alter, n1_octave,

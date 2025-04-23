@@ -8,14 +8,10 @@ import useScoreCheckerConfig from "@/assets/stores/useScoreCheckerConfig.ts";
 import useScoreHelperConfig from "@/assets/stores/useScoreHelperConfig.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import StaveWithChord from "@/components/reStave/StaveWindow/StaveWithChord.tsx";
-import warningToast from "@/utils/warningToast.tsx";
+import * as music12 from "@/music12";
 import {css} from "@emotion/react";
-import collect from "collect.js";
-import {reverse} from "lodash";
 import {Toaster} from "react-hot-toast";
 import {AiFillSound} from "react-icons/ai";
-import * as music12 from "@/music12";
-import * as Tone from "tone";
 
 const ChordStave = () => {
 	const {chord, chordVoicing} = useChord()
@@ -29,33 +25,6 @@ const ChordStave = () => {
 			return music12.factory.getNote(note.step, note.alter, note.octave).pitchValue
 		})
 		play(playList, {column: "2n", split_up: "4n", split_down: "4n"}, 10)
-		// if (!isLoaded) {
-		// 	warningToast("音色未能加载，请刷新或选择合成器音色")
-		// 	return;
-		// }
-		// try {
-		// 	const playStyle = collect(chordPlayStyle).random()
-		// 	const pitchList = chordVoicing.map(note => {
-		// 		const noteInstance = music12.factory.getNote(note.step, note.alter, note.octave)
-		// 		return Tone.Frequency(noteInstance.pitchValue, "midi").toNote()
-		// 	})
-		// 	if (playStyle === "column") {
-		// 		player.triggerAttackRelease(pitchList, "2n")
-		// 	} else if (playStyle === "split_up") {
-		// 		pitchList.forEach((note, index) => {
-		// 			const timeAlter = "+" + index / 10
-		// 			player.triggerAttackRelease(note, '4n', timeAlter)
-		// 		})
-		// 	} else {
-		// 		reverse(pitchList).forEach((note, index) => {
-		// 			const timeAlter = "+" + index / 10
-		// 			player.triggerAttackRelease(note, '4n', timeAlter)
-		// 		})
-		// 	}
-		// } catch (e) {
-		// 	warningToast("播放失败，请刷新或选择合成器音色")
-		// 	console.log(e)
-		// }
 	}
 	return <>
 		<Toaster/>
