@@ -10,10 +10,14 @@ import useDingDongSynth from "@/assets/instruments/synths/useDingDongSynth.ts";
 import useSineSynth from "@/assets/instruments/synths/useSineSynth.ts";
 import useWarmSynth from "@/assets/instruments/synths/useWarmSynth.ts";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
+import warningToast from "@/utils/warningToast.tsx";
+import collect from "collect.js";
+import {reverse} from "lodash";
 import {useMemo} from "react";
+import * as Tone from "tone";
 
 const useInstrument = () => {
-	const {instrument} = useGlobalSettings()
+	const {instrument, playMode, playModeByTurnIndex, chordPlayStyle, setPlayModeByTurnIndex} = useGlobalSettings()
 	const guitarSampler = useGuitarSampler()
 	const pianoSampler = usePianoSampler()
 	const ePianoSampler = useEPianoSampler()
@@ -47,9 +51,60 @@ const useInstrument = () => {
 				return dingDongSynth
 		}
 	}, [instrument, dingDongSynth, ePianoSampler, fluteSampler, guitarSampler, harpSampler, pianoSampler, sineSynth, stringsSampler, warmSynth])
+	const play = (playList: number[], duration: {
+		column: string,
+		split_up: string,
+		split_down: string
+	}, timeDelta: number) => {
+		if (!currentInstrument.isLoaded) {
+			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
+			return;
+		}
+		const toneList = playList.map(n => Tone.Frequency(n, "midi").toNote())
+		//确定播放模式
+		let finalPlayStyle: string
+		if (playMode === "random") {
+			finalPlayStyle = collect(chordPlayStyle).random().toString()
+		} else if (playMode === "byTurn") {
+			if (chordPlayStyle.length === 1) {
+				finalPlayStyle = chordPlayStyle[0]
+			} else {
+				finalPlayStyle = chordPlayStyle[playModeByTurnIndex]
+			}
+		}
+		try {
+			if (finalPlayStyle === "column") {
+				currentInstrument.player.triggerAttackRelease(toneList, duration.column)
+			} else if (finalPlayStyle === "split_up") {
+				toneList.forEach((note, index) => {
+					const timeAlter = "+" + index / timeDelta
+					currentInstrument.player.triggerAttackRelease(note, duration.split_up, timeAlter)
+				})
+			} else if (finalPlayStyle === "split_down") {
+				reverse(toneList).forEach((note, index) => {
+					const timeAlter = "+" + index / timeDelta
+					currentInstrument.player.triggerAttackRelease(note, duration.split_down, timeAlter)
+				})
+			} else {
+				throw new Error("播放模式错误")
+			}
+		} catch (e) {
+			warningToast("播放出错，请刷新或更换合成器音色")
+		}
+
+
+		//如果播放模式是轮换的话，播放完毕要更新顺序
+		if (playMode === "byTurn") {
+			if (playModeByTurnIndex < 0) return setPlayModeByTurnIndex(0)
+			const newIndex = playModeByTurnIndex + 1
+			if (newIndex >= chordPlayStyle.length) return setPlayModeByTurnIndex(0)
+			setPlayModeByTurnIndex(newIndex)
+		}
+	}
 	return {
 		player: currentInstrument.player,
 		isLoaded: currentInstrument.isLoaded,
+		play
 	}
 }
 

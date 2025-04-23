@@ -23,7 +23,7 @@ import * as Tone from "tone";
 
 
 const MobileScalePlay = (props: {}) => {
-	const {player, isLoaded} = useInstrument()
+	const {player, play} = useInstrument()
 	const {mode} = UseScaleConfig()
 	const {scaleInstance} = useScaleInstance()
 	const [octaveShift, setOctaveShift] = useState(0)
@@ -59,31 +59,9 @@ const MobileScalePlay = (props: {}) => {
 	}
 
 	const playChord = (chordDegree: number, isChord3: boolean) => {
-		if (!isLoaded) {
-			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
-			return;
-		}
 		const chordNotes = isChord3 ? scaleInstance.getScaleDegreeChord3(chordDegree).notesList : scaleInstance.getScaleDegreeChord7(chordDegree).notesList
-		const pitchList = chordNotes.map(x => Tone.Frequency(x.pitchValue + octaveShift * 12, "midi").toNote())
-		const playStyle = collect(chordPlayStyle).random()
-		try {
-			if (playStyle === "column") {
-				player.triggerAttackRelease(pitchList, "2n")
-			} else if (playStyle === "split_up") {
-				pitchList.forEach((note, index) => {
-					const timeAlter = "+" + index / 10
-					player.triggerAttackRelease(note, '4n', timeAlter)
-				})
-			} else {
-				reverse(pitchList).forEach((note, index) => {
-					const timeAlter = "+" + index / 10
-					player.triggerAttackRelease(note, '4n', timeAlter)
-				})
-			}
-		} catch (e) {
-			warningToast("播放失败，请刷新或改为合成器音色")
-			console.log(e)
-		}
+		const pitchList = chordNotes.map(x => x.pitchValue + octaveShift * 12, "midi")
+		play(pitchList, {column: "2n", split_up: "4n", split_down: "4n"}, 10)
 	}
 	return <>
 		<Toaster/>

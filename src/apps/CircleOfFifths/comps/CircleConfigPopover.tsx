@@ -62,13 +62,19 @@ const CircleConfigPopover = () => {
                 <span style={{color: googleColors.blue800}}>步长</span>
                 <IoFootstepsSharp size={26} color={googleColors.blue800}/>
               </td>
-              {range(1, 6).map(x => <td className="n" key={x} onClick={() => {
+              {range(1, 4).map(x => <td className="n" key={x} onClick={() => {
                 setRotateLength(x)
                 setRotateLengthConfigOpen(false)
               }}>{x}</td>)}
             </tr>
             <tr>
-              {range(6, 12).map(x => <td className="n" key={x} onClick={() => {
+              {range(4, 8).map(x => <td className="n" key={x} onClick={() => {
+                setRotateLength(x)
+                setRotateLengthConfigOpen(false)
+              }}>{x}</td>)}
+            </tr>
+            <tr>
+              {range(8, 12).map(x => <td className="n" key={x} onClick={() => {
                 setRotateLength(x)
                 setRotateLengthConfigOpen(false)
               }}>{x}</td>)}
@@ -96,8 +102,8 @@ const RotateLengthPopover_css = (isCursorShow: boolean) => css({
     "& table": {
       borderCollapse: "collapse",
       ...cssPresets.transition,
-      "& tr:first-of-type": {
-        borderBottom: `1px solid ${googleColors.gray300}`,
+      "& tr:not(:first-of-type)": {
+        borderTop: `1px solid ${googleColors.gray300}`,
       },
       "& tr td:not(:first-of-type)": {
         borderLeft: `1px solid ${googleColors.gray300}`,
@@ -106,7 +112,7 @@ const RotateLengthPopover_css = (isCursorShow: boolean) => css({
         fontFamily: "misans-m",
         fontSize: 30,
         minWidth: 60,
-        width: "calc(100vw / 6)",
+        width: "calc(100vw / 4)",
         maxWidth: 80,
         height: 80,
         color: googleColors.gray700,

@@ -38,7 +38,15 @@ const SoundConfig = (props: {}) => {
 	const warmSynth = useWarmSynth()
 	const sineSynth = useSineSynth()
 	const dingDongSynth = useDingDongSynth()
-	const {setMainVolume, instrument, setInstrument, chordPlayStyle, setChordPlayStyle} = useGlobalSettings()
+	const {
+		setMainVolume,
+		instrument,
+		setInstrument,
+		chordPlayStyle,
+		setChordPlayStyle,
+		playMode,
+		setPlayMode
+	} = useGlobalSettings()
 	const setRandomVolume = () => {
 		setMainVolume(0)
 	}
@@ -193,6 +201,11 @@ const SoundConfig = (props: {}) => {
 					isForbidden={forbiddenPlayStyle.split_down}
 					isActive={chordPlayStyle.includes("split_down")}/>
 			</div>
+
+			<div className="play_mode">
+				<div css={mode_css(playMode === "random")} onClick={() => setPlayMode("random")}>随机</div>
+				<div css={mode_css(playMode === "byTurn")} onClick={() => setPlayMode("byTurn")}>轮换</div>
+			</div>
 		</div>
 	</>
 }
@@ -216,7 +229,28 @@ const SoundConfig_css = css({
 	"& .chord_play_style": {
 		...cssPresets.flexCenter,
 		gap: 10,
+	},
+	"& .play_mode": {
+		...cssPresets.flexCenter,
+		...cssPresets.mxAuto,
+		marginTop: 10,
+		gap: 10,
+		"& div": {
+			...cssPresets.flexCenter,
+		}
 	}
 })
 
+const mode_css = (i: boolean) => css({
+	backgroundColor: i ? googleColors.blue50 : googleColors.gray100,
+	width: 80,
+	height: 30,
+	fontSize: 12,
+	cursor: "pointer",
+	...cssPresets.transition,
+	color:i?googleColors.blue800:googleColors.gray400,
+	borderRadius: 999,
+	border: `1px solid ${i ? googleColors.blue800 : googleColors.gray300}`,
+	overflow: "hidden"
+})
 

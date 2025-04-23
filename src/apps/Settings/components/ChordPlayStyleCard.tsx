@@ -6,6 +6,7 @@ import googleColors from "@/assets/colors/googleColors.ts";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import byDefault from "@/utils/byDefault.ts";
+import warningToast from "@/utils/warningToast.tsx";
 import {css} from "@emotion/react";
 import toast, {Toaster} from "react-hot-toast";
 import {AiFillWarning} from "react-icons/ai";
@@ -23,11 +24,7 @@ const ChordPlayStyleCard = (props: {
 		if (isForbidden) return;
 		if (chordPlayStyle.includes(props.type)) {
 			if (chordPlayStyle.length === 1) {
-				toast("至少需要保留一个播放样式", {
-					icon: <AiFillWarning color={googleColors.red300}/>, style: {
-						boxShadow: "0 0 10px rgba(0,0,0,0.05  )",
-					}
-				})
+				warningToast("至少需要保留一个播放样式")
 				return;
 			}
 			setChordPlayStyle(chordPlayStyle.filter(x => x !== props.type))
@@ -35,7 +32,7 @@ const ChordPlayStyleCard = (props: {
 		}
 		setChordPlayStyle([...chordPlayStyle, props.type])
 	}
-	const iconColor = isActive ? googleColors.blue800 : isForbidden ? googleColors.gray400 : googleColors.gray300
+	const iconColor = isActive ? googleColors.blue800 : isForbidden ? googleColors.gray400 : googleColors.gray400
 	return <>
 		<Toaster/>
 		<div css={ChordPlayStyleCard_css(isActive, isForbidden)} onClick={handleClick}>
@@ -66,15 +63,15 @@ const ChordPlayStyleCard_css = (isActive: boolean, isForbidden: boolean) => css(
 	paddingTop: 10,
 	transition: "all 0.2s ease-in-out",
 	cursor: isForbidden ? "not-allowed" : "pointer",
-	border: `1px solid ${isForbidden ? googleColors.gray200 : isActive ? googleColors.blue500 : googleColors.gray200}`,
-	backgroundColor: isForbidden ? googleColors.gray200 : isActive ? googleColors.blue50 : "white",
+	border: `1px solid ${isForbidden ? googleColors.gray200 : isActive ? googleColors.blue500 : googleColors.gray300}`,
+	backgroundColor: isForbidden ? googleColors.gray200 : isActive ? googleColors.blue50 : googleColors.gray100,
 	"&>.icon": {
 		width: 25,
 		height: 25,
 		...cssPresets.mxAuto,
 	},
 	"&>.tag": {
-		color: isActive ? googleColors.blue800 : isForbidden ? googleColors.gray400 : googleColors.gray300,
+		color: isActive ? googleColors.blue800 : isForbidden ? googleColors.gray400 : googleColors.gray400,
 		fontSize: 12,
 		marginTop: 10,
 		textAlign: "center",

@@ -35,6 +35,10 @@ type GlobalSettingsType = {
 	setChordPlayStyle: (newStyle: string[]) => void
 	playOctaveShift: number,
 	setPlayOctaveShift: (newShift: number) => void
+	playMode: string,
+	setPlayMode: (newMode: string) => void,
+	playModeByTurnIndex: number,
+	setPlayModeByTurnIndex: (newIndex: number) => void
 }
 const storeKey = 'globalSettings'
 const defaultStore = {
@@ -54,6 +58,8 @@ const defaultStore = {
 	instrument: instrumentsObj.piano, //乐器
 	chordPlayStyle: ["column", "split_up", "split_down"],//和弦播放样式
 	playOctaveShift: 0, //播放器的八度偏移量
+	playMode: "byTurn", //多次点击播放的模式：随机/轮换
+	playModeByTurnIndex: 0 //如果是轮换，记录一下上次的索引
 }
 const useGlobalSettings = create<GlobalSettingsType>()(immer(persist(
 		(set) => ({
@@ -61,6 +67,16 @@ const useGlobalSettings = create<GlobalSettingsType>()(immer(persist(
 			setNaviWindowOpen: (newStatus: boolean) => {
 				set((state) => {
 					state.isNaviWindowOpen = newStatus
+				})
+			},
+			setPlayMode: (newMode: string) => {
+				set((state) => {
+					state.playMode = newMode
+				})
+			},
+			setPlayModeByTurnIndex: (newIndex: number) => {
+				set((state) => {
+					state.playModeByTurnIndex = newIndex
 				})
 			},
 			setPlayOctaveShift: (newShift: number) => {

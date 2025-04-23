@@ -38,8 +38,6 @@ const ChordPiano = () => {
                        ml={-2}/>
           <div className="o3">3</div>
         </div>
-
-
       </div>
 
     </div>
@@ -50,7 +48,7 @@ export default ChordPiano
 
 const ChordPiano_css = (w) => css({
   width: "calc(100vw)",
-  overflowY: "scroll",
+  overflowY: "auto",
   display: "block",
   marginLeft: "auto",
   marginRight: "auto",

@@ -23,21 +23,13 @@ const staveAlterSelectedColor = googleColors.deepOrange800
 const staveAlterUnselectedColor = googleColors.gray400
 const noWrapStyle = {whiteSpace: "nowrap"}
 const ChordStaveConfigPopup = () => {
-  // const {isNotePickerOpen, setNotePickerOpen} = useGlobalSettings();
   const {
-    isChordSelectorOpen,
-    setIsChordSelectorOpen,
-    setChordKey,
-    chordKey,
     isChordStaveConfigOpen,
     setIsChordStaveConfigOpen
   } = useChordConfig()
   const {clef, setClef} = useScoreHelperConfig()
   const {keys, setKeys} = useScoreCheckerConfig()
-  // const isWideScreen = useIsWideScreen();
   const {width} = useWindowSize();
-  const chordMeta = music12.chord.chordMeta
-  // console.log(chordMeta)
   return (<>
     <Mask visible={isChordStaveConfigOpen}
           style={{...cssPresets.defaultBlur}}

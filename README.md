@@ -58,7 +58,7 @@ Tips:
     <script type="text/javascript">
       // H5 plus事件处理
       function plusReady() {
-        // 设置系统状态栏背景为红色
+        // 设置系统状态栏背景为白底黑字
         plus.navigator.setStatusBarBackground('#FFFFFF');
         plus.navigator.setStatusBarStyle('dark');
       }

@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.14.0",
     "@svgdotjs/svg.js": "^3.2.4",
     "@typescript-eslint/parser": "^8.28.0",
+    "@uidotdev/usehooks": "^2.4.1",
     "abcjs": "^6.4.4",
     "ahooks": "^3.8.4",
     "antd-mobile": "^5.38.1",
@@ -55,7 +56,7 @@
     "webaudio-tinysynth": "^1.1.3",
     "webmidi": "^3.1.12",
     "xmlbuilder2": "^3.1.1",
-    "zustand": "^4.5.5"
+    "zustand": "^4.5.6"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.13.5",
