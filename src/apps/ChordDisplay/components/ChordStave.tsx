@@ -10,6 +10,7 @@ import cssPresets from "@/assets/styles/cssPresets.ts";
 import StaveWithChord from "@/components/reStave/StaveWindow/StaveWithChord.tsx";
 import * as music12 from "@/music12";
 import {css} from "@emotion/react";
+import {sortBy} from "lodash";
 import {Toaster} from "react-hot-toast";
 import {AiFillSound} from "react-icons/ai";
 
@@ -21,9 +22,9 @@ const ChordStave = () => {
 	const {chordPlayStyle} = useGlobalSettings()
 	const {isLoaded, player, play} = useInstrument()
 	const playChord = () => {
-		const playList = chordVoicing.map(note => {
+		const playList = sortBy(chordVoicing.map(note => {
 			return music12.factory.getNote(note.step, note.alter, note.octave).pitchValue
-		})
+		}))
 		play(playList, {column: "2n", split_up: "4n", split_down: "4n"}, 10)
 	}
 	return <>
