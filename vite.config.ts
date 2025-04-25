@@ -26,6 +26,9 @@ export default defineConfig({
 			}
 		}), // 只在生产环境下使用 terser 压缩
 	],
+	optimizeDeps: {
+		include: ['react', 'react-dom']
+	},
 	resolve: {
 		alias: {
 			"@": resolve(__dirname, "src"),
