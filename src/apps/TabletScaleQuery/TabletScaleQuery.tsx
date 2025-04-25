@@ -1,10 +1,10 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+import StaveConfigPopover from "@/apps/MobileKSQuery/comps/StaveConfigPopover.tsx";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import useIsWideScreen from "@/utils/useIsWideScreen.tsx";
 import NotePicker from "@/components/reNote/NotePicker/NotePicker.tsx";
 import {css} from "@emotion/react";
 import React, {useEffect} from "react";
-import StaveConfigPopover from "@/apps/TabletScaleQuery/comps/ScalePicker/StaveConfigPopover.tsx";
 import {useNavigate} from "react-router-dom";
 import routerPath from "@/router/routerPath.ts";
 import TabletScorePickerBar from "@/apps/TabletScaleQuery/parts/TabletScorePickerBar.tsx";
