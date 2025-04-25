@@ -103,7 +103,6 @@ const useCircleOfFifthsConfig = create<circleOfFifthsConfig>()(immer(persist(
         state.translateX = 0
         state.translateY = 0
         state.circleID = 0
-        state.rotateLength = 1
         state.cursorID = 0
         state.isCursorMoveMode = true
         state.isCursorShow = true

@@ -93,8 +93,12 @@ const CircleOfFifthsWindow = () => {
         default:
           return;
       }
+    }else{
+      setZoomValue(0.95)
+      setTranslateX(0)
+      setTranslateY(0)
     }
-    resetCircle()
+    // resetCircle()
 
   }, [isZoomIn, resetCircle, setTranslateX, setTranslateY, setZoomValue, width, zoomLocation, zoomTranslate]);
 

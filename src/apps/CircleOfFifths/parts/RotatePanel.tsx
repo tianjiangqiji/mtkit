@@ -34,21 +34,14 @@ const RotatePanel = () => {
 					}
 					setCircleID(circleID - rotateLength)
 				}}>
-					<TbClockMinus size={iconSize} color={iconColor}/>
+					-{rotateLength}
 				</div>
 				{/*中间的部分*/}
 				<div className="middle_window" onClick={switchNum}>
 					<div className="settings">
 						<GrConfigure size={25}/>
 					</div>
-					<div className="step_length">
-						<div className="step_icon">
-							<IoFootstepsSharp size={20}/>
-							<div style={{fontFamily: "misans-m"}}>步长</div>
-						</div>
 
-						<div className="n">{rotateLength}</div>
-					</div>
 
 				</div>
 				{/*做加法的按钮*/}
@@ -58,7 +51,7 @@ const RotatePanel = () => {
 					}
 					setCircleID(circleID + rotateLength)
 				}}>
-					<TbClockPlus size={iconSize} color={iconColor}/>
+					+{rotateLength}
 				</div>
 			</div>
 		</div>
@@ -77,12 +70,14 @@ const RotatePanel_css = css({
 	"& .inner_frame": {
 		...cssPresets.flexCenter,
 		"& .do": {
-			width: 70,
+			width: 100,
 			height: 70,
 			backgroundColor: "#fff",
-			marginLeft: 5,
-			marginRight: 5,
-			borderRadius: 10,
+			marginLeft: 15,
+			marginRight: 15,
+			borderRadius: 999,
+			fontSize:35,
+			color: googleColors.blue800,
 			...cssPresets.flexCenter,
 			...cssPresets.transition,
 			border: `1px solid ${googleColors.gray300}`,
@@ -96,13 +91,13 @@ const RotatePanel_css = css({
 		},
 		"& .middle_window": {
 			...cssPresets.flexCenter,
-			height: 80,
+			height: 60,
 			overflow: "hidden",
 			color: googleColors.blue800,
 			marginLeft: 10,
 			marginRight: 10,
 			backgroundColor: "white",
-			borderRadius: 8,
+			borderRadius: 999,
 			...cssPresets.transition,
 			border: `1px solid ${googleColors.gray300}`,
 			cursor: "pointer",
@@ -110,12 +105,12 @@ const RotatePanel_css = css({
 				height: "100%",
 				width: 60,
 				...cssPresets.flexCenter,
-				borderRight: `1px solid ${googleColors.gray300}`,
+				// borderRight: `1px solid ${googleColors.gray300}`,
 			},
-			"& .step_length": {
-				width: 120,
-				...cssPresets.flexCenter,
-			},
+			// "& .step_length": {
+			// 	width: 120,
+			// 	...cssPresets.flexCenter,
+			// },
 			"&:hover": isMobile ? "" : {
 				backgroundColor: googleColors.gray200,
 			},
