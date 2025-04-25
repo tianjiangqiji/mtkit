@@ -107,6 +107,8 @@ const StaveWithOneNote = (props: {
       rules.PageBottomMargin = 1;
       rules.PageLeftMargin = 2;
       rules.PageRightMargin = 2;
+      rules.FixedMeasureWidth=true;
+      rules.FixedMeasureWidthFixedValue = 3
     }
 
     // 更新 MusicXML

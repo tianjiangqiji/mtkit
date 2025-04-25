@@ -1,17 +1,16 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
-import {css} from "@emotion/react";
-import {useEffect, useRef, useState} from "react";
-import googleColors from "@/assets/colors/googleColors.ts";
-import RoughStaveClefAndScale from "@/components/reStave/StaveWindow/RoughStaveClefAndScale.tsx";
-import {useWindowSize} from "react-use";
 import useScaleInstance from "@/apps/TabletScaleQuery/useTabletScaleQuery/useScaleInstance.tsx";
-import useScoreHelperConfig from "@/assets/stores/useScoreHelperConfig.ts";
-import useScaleConfig from "@/assets/stores/useScaleConfig.ts";
-import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
-import NumberNote from "@/components/reNote/NumberNote/NumberNote.tsx";
+import googleColors from "@/assets/colors/googleColors.ts";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
+import useScaleConfig from "@/assets/stores/useScaleConfig.ts";
+import useScoreHelperConfig from "@/assets/stores/useScoreHelperConfig.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import shadowPresets from "@/assets/styles/shadowPresets.ts";
+import NoteText from "@/components/reNote/NoteText/NoteText.tsx";
+import NumberNote from "@/components/reNote/NumberNote/NumberNote.tsx";
+import RoughStaveClefAndScale from "@/components/reStave/StaveWindow/RoughStaveClefAndScale.tsx";
+import {css} from "@emotion/react";
+import {useWindowSize} from "react-use";
 
 const pianoFontSize = 22
 const pianoFontColor = googleColors.blue800
@@ -20,9 +19,9 @@ const MobileScaleStave = () => {
   const {setNotePickerStep, setNotePickerAlter} = useGlobalSettings()
   const {clef, changeClef} = useScoreHelperConfig()
   const {setIsMobileStaveConfigWindowOpen, pianoNodeDisplayBy} = useScaleConfig()
-  const {scaleInstance, keys} = useScaleInstance()
-  const notesList1 = scaleInstance.notesList.slice(0, 3).map(x => ({step: x.step, alter: x.alter}))
-  const notesList2 = scaleInstance.notesList.slice(3).map(x => ({step: x.step, alter: x.alter}))
+  const {scaleInstance, keys,notesList} = useScaleInstance()
+  const notesList1 = notesList.slice(0, 3).map(x => ({step: x.step, alter: x.alter}))
+  const notesList2 = notesList.slice(3).map(x => ({step: x.step, alter: x.alter}))
   return <>
     <div css={MobileScaleStave_css(Math.abs(keys))}>
       <RoughStaveClefAndScale
