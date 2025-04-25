@@ -108,16 +108,16 @@ const ScaleConfigPopover = () => {
                 强制无调号
               </div>
             </div>
-            <div className="option"
-                 onClick={() => setStaveAlterDisplayBy("alters")}
-                 css={selected_css(staveAlterDisplayBy === "alters")}>
-              <div className="img">
-                <OptionNoteClefSvg color={staveAlterDisplayBy === "alters" ? selectedColor : unselectedColor}/>
-              </div>
-              <div className="text">
-                按调内升降数
-              </div>
-            </div>
+            {/*<div className="option"*/}
+            {/*     onClick={() => setStaveAlterDisplayBy("alters")}*/}
+            {/*     css={selected_css(staveAlterDisplayBy === "alters")}>*/}
+            {/*  <div className="img">*/}
+            {/*    <OptionNoteClefSvg color={staveAlterDisplayBy === "alters" ? selectedColor : unselectedColor}/>*/}
+            {/*  </div>*/}
+            {/*  <div className="text">*/}
+            {/*    按调内升降数*/}
+            {/*  </div>*/}
+            {/*</div>*/}
             <div className="option"
                  onClick={() => setStaveAlterDisplayBy("natural")}
                  css={selected_css(staveAlterDisplayBy === "natural")}>

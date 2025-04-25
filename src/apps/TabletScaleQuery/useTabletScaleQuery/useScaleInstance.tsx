@@ -26,6 +26,18 @@ const useScaleInstance = (config?: {
 	}, [mode, notePickerStep, notePickerAlter])
 	const {staveAlterDisplayBy, pianoNodeDisplayBy} = useScaleConfig()
 
+
+	//决定是什么音阶：
+	const notesList = useMemo(() => {
+		if (staveAlterDisplayBy !== "alters") return scaleInstance.notesList
+		try {
+			const newScale = collect(music12.stave.getScaleByStaveAlters(scaleInstance.alterSum)).where("mode", "major").first()
+			return music12.factory.getScale(newScale.actualNoteStep, newScale.actualNoteAlter, 4, music12.scale.ScaleMode.NaturalMajor).notesList
+		} catch {
+			return scaleInstance.notesList
+		}
+	}, [scaleInstance, staveAlterDisplayBy])
+
 	//决定乐谱是用什么调号
 	const keys = useMemo(() => {
 		if (staveAlterDisplayBy === "alters") {
@@ -52,13 +64,13 @@ const useScaleInstance = (config?: {
 
 	// 将调式用两个八度隔开的数组
 	const slicedLocationList = useMemo(() => {
-		const locationIDList = scaleInstance.notesList.map(x => x.locationId)
+		const locationIDList = notesList.map(x => x.locationId)
 		const sliceIndex = findFirstIndexLessThanLeft(locationIDList)
 		if (sliceIndex === -1) {
 			return [locationIDList, []]
 		}
 		return [locationIDList.slice(0, sliceIndex), locationIDList.slice(sliceIndex)]
-	}, [scaleInstance.notesList])
+	}, [notesList])
 
 
 	// 决定钢琴键盘是什么颜色的函数
@@ -78,57 +90,45 @@ const useScaleInstance = (config?: {
 		const li = [Array.from({length: 12}, () => void 0), Array.from({length: 12}, () => void 0)]
 		if (pianoNodeDisplayBy === "note") {
 			slicedLocationList[0].forEach((x, y) => {
-				li[0][x] = <NoteText step={scaleInstance.notesList[y].step}
+				li[0][x] = <NoteText step={notesList[y].step}
 				                     fontSize={pianoNodeFontSize}
 				                     color={pianoNodeFontColor}
-				                     alter={scaleInstance.notesList[y].alter}
+				                     alter={notesList[y].alter}
 				/>
 			})
 			slicedLocationList[1].forEach((x, y) => {
 				const l = slicedLocationList[0].length
-				li[1][x] = <NoteText step={scaleInstance.notesList[y + l].step}
+				li[1][x] = <NoteText step={notesList[y + l].step}
 				                     color={pianoNodeFontColor}
 				                     fontSize={pianoNodeFontSize}
-				                     alter={scaleInstance.notesList[y + l].alter}
+				                     alter={notesList[y + l].alter}
 				/>
 			})
 			return li
 		} else if (["number", "rome"].includes(pianoNodeDisplayBy)) {
 			slicedLocationList[0].forEach((x, y) => {
-				li[0][x] = <NumberNote num={y + 1}
-				                       isRomeStyle={pianoNodeDisplayBy === "rome"
-				                       }
-				                       fontSize={pianoNodeFontSize - 1}
-				                       color={pianoNodeFontColor}
-				                       alter={scaleInstance.alterList[y]}/>
+				li[0][x] = <NumberNote
+					num={y + 1}
+					isRomeStyle={pianoNodeDisplayBy === "rome"
+					}
+					fontSize={pianoNodeFontSize - 1}
+					color={pianoNodeFontColor}
+					alter={notesList[y].alter}/>
 			})
 			slicedLocationList[1].forEach((x, y) => {
 				const l = slicedLocationList[0].length
-				li[1][x] = <NumberNote num={y + 1 + l}
-				                       color={pianoNodeFontColor}
-				                       isRomeStyle={pianoNodeDisplayBy === "rome"
-				                       }
-				                       fontSize={pianoNodeFontSize - 1}
-				                       alter={scaleInstance.alterList[y + l]}/>
+				li[1][x] = <NumberNote
+					num={y + 1 + l}
+					color={pianoNodeFontColor}
+					isRomeStyle={pianoNodeDisplayBy === "rome"}
+					fontSize={pianoNodeFontSize - 1}
+					alter={notesList[y + l].alter}/>
 			})
 			return li
 		}
 		return li
-	}, [pianoNodeDisplayBy, pianoNodeFontColor, pianoNodeFontSize, scaleInstance.alterList, scaleInstance.notesList, slicedLocationList])
+	}, [pianoNodeDisplayBy, pianoNodeFontColor, pianoNodeFontSize, scaleInstance.alterList, notesList, slicedLocationList])
 
-	//决定是什么音阶：
-	const notesList = useMemo(() => {
-		if (staveAlterDisplayBy !== "alters") return scaleInstance.notesList.map(x => ({step: x.step, alter: x.alter}))
-		try {
-			const newScale = collect(music12.stave.getScaleByStaveAlters(scaleInstance.alterSum)).where("mode", "major").first()
-			return music12.factory.getScale(newScale.actualNoteStep, newScale.actualNoteAlter, 4, music12.scale.ScaleMode.NaturalMajor).notesList.map(x => ({
-				step: x.step,
-				alter: x.alter
-			}))
-		} catch {
-			return scaleInstance.notesList.map(x => ({step: x.step, alter: x.alter}))
-		}
-	}, [scaleInstance, staveAlterDisplayBy])
 
 	return {
 		scaleInstance, keys, slicedLocationList, colorList, nodeList, notesList

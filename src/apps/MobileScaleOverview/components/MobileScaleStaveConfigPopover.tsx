@@ -93,19 +93,19 @@ const MobileScaleStaveConfigPopover = () => {
                 <span style={noWrapStyle}>不显示调号</span>
               </div>
             </div>
-            <div className="option long"
-                 onClick={() => {
-                   setStaveAlterDisplayBy("alters")
-                 }}
-                 css={selected_css(staveAlterDisplayBy === "alters")}>
-              <div className="img">
-                <OptionNoteClefSvg color={staveAlterDisplayBy === "alters" ? selectedColor : unselectedColor}/>
-              </div>
-              <div className="text">
-                <span style={noWrapStyle}>按调内</span>
-                <span style={noWrapStyle}>升降数</span>
-              </div>
-            </div>
+            {/*<div className="option long"*/}
+            {/*     onClick={() => {*/}
+            {/*       setStaveAlterDisplayBy("alters")*/}
+            {/*     }}*/}
+            {/*     css={selected_css(staveAlterDisplayBy === "alters")}>*/}
+            {/*  <div className="img">*/}
+            {/*    <OptionNoteClefSvg color={staveAlterDisplayBy === "alters" ? selectedColor : unselectedColor}/>*/}
+            {/*  </div>*/}
+            {/*  <div className="text">*/}
+            {/*    <span style={noWrapStyle}>按调内</span>*/}
+            {/*    <span style={noWrapStyle}>升降数</span>*/}
+            {/*  </div>*/}
+            {/*</div>*/}
             <div className="option long"
                  onClick={() => {
                    setStaveAlterDisplayBy("natural")
@@ -205,7 +205,7 @@ const MobileScaleStaveConfigPopover_css = css({
         "& .text": {}
       },
       "& .long": {
-        width: 110
+        width: 130
       }
     },
     "& .option_long_frame": {
