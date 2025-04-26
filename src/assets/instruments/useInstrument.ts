@@ -13,7 +13,7 @@ import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import warningToast from "@/utils/warningToast.tsx";
 import collect from "collect.js";
 import {reverse} from "lodash";
-import {useMemo} from "react";
+import {useEffect, useMemo} from "react";
 import * as Tone from "tone";
 
 const useInstrument = () => {
@@ -27,6 +27,10 @@ const useInstrument = () => {
 	const warmSynth = useWarmSynth()
 	const sineSynth = useSineSynth()
 	const dingDongSynth = useDingDongSynth()
+	useEffect(() => {
+		Tone.start().then(() => {
+		})
+	}, []);
 	const currentInstrument = useMemo(() => {
 		switch (instrument) {
 			case instrumentsObj.piano:
@@ -102,8 +106,8 @@ const useInstrument = () => {
 		}
 	}
 	return {
-		player: currentInstrument.player,
-		isLoaded: currentInstrument.isLoaded,
+		player: currentInstrument?.player,
+		isLoaded: currentInstrument?.isLoaded || false,
 		play
 	}
 }
