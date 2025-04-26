@@ -40,7 +40,7 @@ jobs:
           pnpm config set strict-peer-dependencies false
           pnpm config set auto-install-peers true 
           pnpm install  --no-frozen-lockfile
-          pnpm  build
+          pnpm  gh
         env:
           # 强制 Vite 使用生产环境配置
           NODE_ENV: production
