@@ -134,6 +134,12 @@ const updateObj: {
 			"优化了部分界面和逻辑操作。",
 		]
 	},
+	{
+		v: "149.0.9",
+		data: [
+			"优化了打包Uniapp时，采样乐器声音替换为Base64编码的逻辑。",
+		]
+	},
 ]
 
 export default updateObj

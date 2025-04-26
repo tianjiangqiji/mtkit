@@ -6,8 +6,12 @@ import svgr from 'vite-plugin-svgr' // 处理 SVG 为组件
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isGitHubPages = process.env.VITE_GITHUB_PAGES === 'true';
+const isUniapp = process.env.VITE_UNIAPP === 'true';
 if (isGitHubPages) {
 	console.log("GitHub Pages 模式下，base 为 /mtkit/")
+}
+if (isUniapp) {
+	console.log("Uniapp 模式")
 }
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -48,6 +52,7 @@ export default defineConfig({
 			},
 		},
 		minify: true,
+		// minify: false, //如果是uniapp就不压缩了
 		assetsInlineLimit: 4096, // 小于此阈值的导入或引用资源将内联为 base64 编码
 		rollupOptions: {
 			output: {
