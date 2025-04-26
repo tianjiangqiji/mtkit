@@ -12,7 +12,7 @@ import useWarmSynth from "@/assets/instruments/synths/useWarmSynth.ts";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import warningToast from "@/utils/warningToast.tsx";
 import collect from "collect.js";
-import {reverse} from "lodash";
+import {isNull, isUndefined, reverse} from "lodash";
 import {useEffect, useMemo} from "react";
 import * as Tone from "tone";
 
@@ -60,7 +60,11 @@ const useInstrument = () => {
 		split_up: string,
 		split_down: string
 	}, timeDelta: number) => {
-		if (!currentInstrument.isLoaded) {
+		if(isUndefined(currentInstrument) || isNull(currentInstrument)){
+			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
+			return;
+		}
+		if (currentInstrument && !currentInstrument.isLoaded) {
 			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
 			return;
 		}
@@ -105,9 +109,19 @@ const useInstrument = () => {
 			setPlayModeByTurnIndex(newIndex)
 		}
 	}
+
+	const player = useMemo(()=>{
+		if(currentInstrument)return currentInstrument.player
+		return null
+	},[currentInstrument])
+
+	const isLoaded = useMemo(()=>{
+		if(currentInstrument)return currentInstrument.isLoaded
+		return false
+	},[currentInstrument])
 	return {
-		player: currentInstrument?.player,
-		isLoaded: currentInstrument?.isLoaded || false,
+		player,
+		isLoaded,
 		play
 	}
 }

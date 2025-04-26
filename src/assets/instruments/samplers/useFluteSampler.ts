@@ -11,7 +11,7 @@ const useFluteSampler = () => {
 	if (import.meta.env.VITE_UNIAPP === 'true') {
 		return useSampler(fluteBase64URLs, {volume: -16})
 	}
-	useSampler(fixedUrls, {volume: -16})
+	return useSampler(fixedUrls, {volume: -16})
 }
 
 

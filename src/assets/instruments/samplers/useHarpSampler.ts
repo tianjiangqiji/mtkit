@@ -11,7 +11,7 @@ const useHarpSampler = () => {
 	if (import.meta.env.VITE_UNIAPP === 'true') {
 		return useSampler(harpBase64URLs, {volume: -10, release: 1})
 	}
-	useSampler(fixedUrls, {volume: -10, release: 1})
+	return useSampler(fixedUrls, {volume: -10, release: 1})
 }
 
 

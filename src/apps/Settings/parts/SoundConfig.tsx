@@ -22,6 +22,7 @@ import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import cssFunctions from "@/assets/styles/cssFunctions.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
 import SoundPicker from "@/components/reSound/soundPicker/SoundPicker.tsx";
+import warningToast from "@/utils/warningToast.tsx";
 import {css} from "@emotion/react";
 import {useMemo} from "react";
 
@@ -59,41 +60,74 @@ const SoundConfig = (props: {}) => {
 	}, [instrument])
 	const harpSamplerClick = () => {
 		setInstrument(instrumentsObj.harp)
-		notesList1.forEach((note, index) => {
-			const timeAlter = "+" + index / 10
-			harpSampler.player.triggerAttackRelease(note, '4n', timeAlter)
-		})
+		try {
+			notesList1.forEach((note, index) => {
+				const timeAlter = "+" + index / 10
+				harpSampler.player.triggerAttackRelease(note, '4n', timeAlter)
+			})
+		} catch (e) {
+			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
+			console.log(e)
+		}
 	}
 	const pianoSamplerClick = () => {
 		setInstrument(instrumentsObj.piano)
-		notesList1.forEach((note, index) => {
-			pianoSampler.player.triggerAttackRelease(note, '4n', '+0.' + index)
-		})
+		try {
+
+			notesList1.forEach((note, index) => {
+				pianoSampler.player.triggerAttackRelease(note, '4n', '+0.' + index)
+			})
+		} catch (e) {
+			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
+			console.log(e)
+		}
 	}
 
 	const guitarSamplerClick = () => {
 		setInstrument(instrumentsObj.guitar)
-		notesList1.forEach((note, index) => {
-			guitarSampler.player.triggerAttackRelease(note, '4n', '+0.' + index)
-		})
+		try {
+			notesList1.forEach((note, index) => {
+				guitarSampler.player.triggerAttackRelease(note, '4n', '+0.' + index)
+			})
+		} catch (e) {
+			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
+			console.log(e)
+		}
 	}
 
 	const stringSamplerClick = () => {
 		setInstrument(instrumentsObj.strings)
-		// setChordPlayStyle(chordPlayStyle.filter(x => x !== "split_up" && x !== "split_down"))
-		stringsSampler.player.triggerAttackRelease(notesList1, '2n')
+		try {
+
+			stringsSampler.player.triggerAttackRelease(notesList1, '2n')
+		} catch (e) {
+			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
+			console.log(e)
+		}
 	}
 
 	const EPianoSamplerClick = () => {
 		setInstrument(instrumentsObj.ePiano)
-		notesList1.forEach((note, index) => {
-			ePianoSampler.player.triggerAttackRelease(note, '4n', '+0.' + index)
-		})
+		try {
+			notesList1.forEach((note, index) => {
+				ePianoSampler.player.triggerAttackRelease(note, '4n', '+0.' + index)
+			})
+		} catch (e) {
+			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
+			console.log(e)
+		}
+
 	}
 
 	const fluteSamplerClick = () => {
 		setInstrument(instrumentsObj.flute)
-		fluteSampler.player.triggerAttackRelease(notesList1, '2n')
+		try {
+
+			fluteSampler.player.triggerAttackRelease(notesList1, '2n')
+		} catch (e) {
+			warningToast("乐器尚未加载成功，请等待或切换合成器音色")
+			console.log(e)
+		}
 	}
 	const dingDongSynthClick = () => {
 		setInstrument(instrumentsObj.dingDongSynth)
@@ -248,7 +282,7 @@ const mode_css = (i: boolean) => css({
 	fontSize: 12,
 	cursor: "pointer",
 	...cssPresets.transition,
-	color:i?googleColors.blue800:googleColors.gray400,
+	color: i ? googleColors.blue800 : googleColors.gray400,
 	borderRadius: 999,
 	border: `1px solid ${i ? googleColors.blue800 : googleColors.gray300}`,
 	overflow: "hidden"

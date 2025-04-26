@@ -14,7 +14,7 @@ const usePianoSampler = () => {
 	if (import.meta.env.VITE_UNIAPP === 'true') {
 		return useSampler(PianoBase64URLs, {volume: -5})
 	}
-	useSampler(fixedUrls, {volume: -5})
+	return useSampler(fixedUrls, {volume: -5})
 }
 
 export default usePianoSampler;
