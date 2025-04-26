@@ -165,7 +165,7 @@ const RotateLengthPopover_css = (isCursorShow: boolean, rotateLength: number) =>
 		borderRadius: 8,
 		overflow: "hidden",
 		width: 320,
-		marginBottom: 25,
+		marginBottom: 15,
 		"& .option": {
 			width: "33.3%",
 			height: 100,

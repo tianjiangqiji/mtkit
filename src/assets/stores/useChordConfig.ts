@@ -36,6 +36,8 @@ type scaleConfigType = {
 	n7_alter: number
 	n7_octave: number
 	setNoteOctave: (noteIndex: number, octave: number) => void
+	chordSelectorRefHeight: number
+	setChordSelectorRefHeight: (height: number) => void
 }
 
 type chordNoteStep = "C" | "D" | "E" | "F" | "G" | "A" | "B" | "none" | string
@@ -66,6 +68,8 @@ const defaultStore = {
 	n7_step: "none",
 	n7_alter: 0,
 	n7_octave: 4,
+	chordSelectorRefHeight: 0,
+
 }
 const useChordConfig = create<scaleConfigType>()(immer(persist(
 	(set) => ({
@@ -75,6 +79,11 @@ const useChordConfig = create<scaleConfigType>()(immer(persist(
 					state.chordKey = newStatus
 				}
 			)
+		},
+		setChordSelectorRefHeight: (height: number) => {
+			set((state) => {
+				state.chordSelectorRefHeight = height
+			})
 		},
 		setNoteOctave: (noteIndex: number, octave: number) => {
 			set((state) => {

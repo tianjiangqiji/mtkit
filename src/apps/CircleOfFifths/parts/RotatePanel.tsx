@@ -64,14 +64,15 @@ const RotatePanel_css = css({
 	width: "100%",
 	paddingLeft: 10,
 	paddingRight: 10,
-	marginTop: 15,
+	marginTop: 5,
+	marginBottom:15,
 	userSelect: "none",
 	...cssPresets.flexCenter,
 	"& .inner_frame": {
 		...cssPresets.flexCenter,
 		"& .do": {
-			width: 100,
-			height: 70,
+			width: 120,
+			height: 60,
 			backgroundColor: "#fff",
 			marginLeft: 15,
 			marginRight: 15,

@@ -110,7 +110,7 @@ const ZoomConfig_css = (w: number) => css({
 	"& .inner_frame": {
 		...cssPresets.flexCenter,
 		width: "fit-content",
-		marginTop: 10,
+		// marginTop: 5,
 		borderRadius: 15,
 		border: `1px solid ${googleColors.gray300}`,
 		overflow: "hidden",
