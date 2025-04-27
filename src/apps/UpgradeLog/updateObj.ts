@@ -140,6 +140,13 @@ const updateObj: {
 			"优化了打包Uniapp时，采样乐器声音替换为Base64编码的逻辑。",
 		]
 	},
+	{
+		v: "149.0.10",
+		data: [
+			"优化了字体加载逻辑。",
+			"优化了「泛音列」中的提示信息。",
+		]
+	},
 ]
 
 export default updateObj

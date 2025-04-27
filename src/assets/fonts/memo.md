@@ -24,6 +24,7 @@ https://gitcode.net/linxinfa/fontmaker/-/blob/master/FontSubsetPack.zip
 # 常用符号
 1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ*()_+-={}[]|/:";'<>?,.~`!
 @#$%^&‖！￥、。—…‘’“”（）〔〕〈〉《》『』〖〗「」【】
+°ø∅♯♭Λ
 
 # 缺失字符补充
-哔哩°ø∅♯♭钮
+哔哩钮
