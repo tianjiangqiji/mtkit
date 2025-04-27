@@ -233,7 +233,7 @@ const mode_selector_css = (isClassicModeOn: boolean) => css({
     width: 120, height: 60,
     cursor: "pointer",
     ...cssPresets.flexCenter,
-    fontFamily: "misans-m",
+    
     fontSize: 17,
     color: googleColors.gray700,
     ...cssPresets.transition,
@@ -272,7 +272,7 @@ const ScalePicker_css = css({
       ...cssPresets.defaultHoverAndActive as any,
       ...cssPresets.flexCenter,
       gap: 10,
-      fontFamily: "misans-m",
+      
       "& .right_area": {
         width: 170,
         ...cssPresets.flexCenter,

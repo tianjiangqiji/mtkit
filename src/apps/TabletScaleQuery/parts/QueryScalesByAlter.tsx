@@ -84,7 +84,7 @@ const QueryScalesByAlter = () => {
                       color={googleColors.gray600}/>
           </div>
         })}
-        {alteredNotes.length === 0 && <div style={{fontFamily: "misans-m", color: googleColors.gray600}}>无升降</div>}
+        {alteredNotes.length === 0 && <div style={{ color: googleColors.gray600}}>无升降</div>}
       </div>
       {/*大调卡片*/}
       <div className="scale_card">
@@ -124,7 +124,7 @@ export default QueryScalesByAlter
 
 const ScaleStave_css = css({
   "& .description": {
-    fontFamily: "misans-m",
+    
     fontSize: 30,
     height: 40, marginBottom: 8,
     color: googleColors.blue800,
@@ -137,7 +137,7 @@ const ScaleStave_css = css({
     }
   },
   "& .altered_notes_frame": {
-    fontFamily: "misans-m",
+    
     marginLeft: "auto",
     marginRight: "auto",
     // ...cssPresets.flexCenter,
@@ -161,7 +161,7 @@ const ScaleStave_css = css({
     "& .details": {
       ...cssPresets.flexCenter,
       userSelect: "none",
-      fontFamily: "misans-m",
+      
       borderRadius: 8,
       flexDirection: "column",
       paddingTop: 10,
@@ -189,7 +189,7 @@ const ScaleStave_css = css({
         width: 45,
       },
       "& .scale_description": {
-        fontFamily: "misans-m",
+        
         width: 170,
         textAlign: "center",
         fontSize: 20,

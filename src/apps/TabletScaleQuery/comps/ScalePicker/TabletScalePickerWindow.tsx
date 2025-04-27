@@ -120,7 +120,7 @@ const ConfigBar_css = (h: number, b: boolean) => css({
         transition: "all ease 0.3s"
       },
       "& .desc": {
-        fontFamily: "misans-m",
+        
         fontSize: b ? 0 : 18,
         marginLeft: 6,
         color: googleColors.gray800,

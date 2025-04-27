@@ -173,7 +173,7 @@ const score_helper_picker_css = css({
         },
         "td": {
           backgroundColor: "white",
-          fontFamily: "misans-m",
+          
           fontSize: 35,
           width: 90,
           height: 85,

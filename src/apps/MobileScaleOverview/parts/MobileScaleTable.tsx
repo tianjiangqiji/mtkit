@@ -136,7 +136,7 @@ const MobileScaleTable_css = (isToicReplaced: boolean, h: number) => css({
     "& tr.table_head": {
       ...cssPresets.flexCenter,
       height: 40,
-      fontFamily: "misans-m",
+      
       "& td:first-of-type": {
         width: 50
       }, "& td:nth-of-type(2)": {

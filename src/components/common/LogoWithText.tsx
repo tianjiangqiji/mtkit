@@ -57,7 +57,7 @@ const logo_css = (naviBarHeight: number) => css({
 		width: "fit-content",
 		backgroundColor: googleColors.blue400,
 		borderRadius: 999,
-		fontFamily: "misans-m",
+		
 		margin: "0 auto",
 		paddingLeft: 15, paddingRight: 15,
 		paddingTop: 3, paddingBottom: 3,

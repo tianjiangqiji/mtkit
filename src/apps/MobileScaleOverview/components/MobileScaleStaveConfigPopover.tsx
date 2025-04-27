@@ -166,7 +166,7 @@ const MobileScaleStaveConfigPopover_css = css({
   backgroundColor: "white",
   borderRadius: 8,
   userSelect: "none",
-  fontFamily: "misans-m",
+  
   paddingBottom: 35,
   width: "calc(100vw)",
   maxWidth: 400,

@@ -51,7 +51,7 @@ const ErrorPage_css = css({
   },
   "& .error_message": {
     fontSize: 20,
-    fontFamily: "misans-m",
+    
     color: googleColors.redA100,
     margin: 10,
     marginTop: 20,
@@ -64,7 +64,7 @@ const ErrorPage_css = css({
     ...cssPresets.flexCenter,
     userSelect: "none",
     cursor: "pointer",
-    fontFamily: "misans-m",
+    
     color: "white",
     fontSize: 22,
     borderRadius: 15,

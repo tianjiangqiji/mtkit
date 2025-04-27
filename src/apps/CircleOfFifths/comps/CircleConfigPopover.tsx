@@ -148,7 +148,7 @@ const RotateLengthPopover_css = (isCursorShow: boolean, rotateLength: number) =>
 				borderLeft: `1px solid ${googleColors.gray300}`,
 			},
 			"& td": {
-				fontFamily: "misans-m",
+				
 				minWidth: 80,
 				maxWidth: 80,
 				height: 80,
@@ -200,7 +200,7 @@ const cursor_on_css = (isOn: boolean) => css({
 	...cssPresets.flexCenter,
 	flexDirection: "column",
 	"& .text": {
-		fontFamily: "misans-m",
+		
 		marginTop: 10,
 		color: isOn ? ifCursorMoveSelectedColor : googleColors.gray600
 	},

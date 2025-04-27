@@ -193,7 +193,7 @@ const ScaleConfigPopover_css = css({
   borderRadius: 8,
   overflow: "hidden",
   userSelect: "none",
-  fontFamily: "misans-m",
+  
   "& .line:not(:first-of-type)": {
     marginTop: 30
   },

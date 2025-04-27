@@ -22,7 +22,7 @@ const about_items_css = css({
 	maxWidth: "100%",
 	userSelect: "none",
 	"& .title": {
-		fontFamily: "misans-m",
+		
 		fontSize: 14,
 		width: "fit-content",
 		margin:"0 auto",
@@ -35,7 +35,7 @@ const about_items_css = css({
 		backgroundColor: googleColors.blue50,
 	},
 	"& .content_str": {
-		fontFamily: "misans-m",
+		
 		fontSize:14
 	}
 })

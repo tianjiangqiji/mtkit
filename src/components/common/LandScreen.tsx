@@ -46,7 +46,7 @@ const land_screen_css = css({
 		},
 	},
 	"& .description": {
-		fontFamily: "misans-m",
+		
 		fontSize: 16,
 		width: "fit-content",
 		borderRadius: 999,

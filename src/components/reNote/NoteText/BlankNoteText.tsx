@@ -30,7 +30,7 @@ const note_text_css = (fontSize: number, noteColor: string) => css({
   "& .step": {
     fontSize: fontSize,
     textAlign: "center",
-    fontFamily: "misans-m",
+    
     color: noteColor,
   },
 

@@ -187,7 +187,7 @@ const tablet_reverse_interval_css = (isDirectionArrowShow: boolean, isDoubleAlte
 	"& .title": {
 		fontSize: 16,
 		userSelect: "none",
-		fontFamily: "misans-m",
+		
 		backgroundColor: "white",
 		boxSizing: "border-box",
 		border: `1px solid ${googleColors.gray300}`,
@@ -198,7 +198,7 @@ const tablet_reverse_interval_css = (isDirectionArrowShow: boolean, isDoubleAlte
 		paddingBottom: 5,
 		...cssPresets.flexCenter,
 		"& span": {
-			fontFamily: "misans-m",
+			
 			fontSize: "inherit",
 		}
 	},
@@ -245,7 +245,7 @@ const tablet_reverse_interval_css = (isDirectionArrowShow: boolean, isDoubleAlte
 					transform: isDirectionArrowShow ? "scale(1)" : "scale(0)",
 					opacity: isDirectionArrowShow ? 1 : 0,
 				},
-				fontFamily: "misans-m",
+				
 				"& .interval_text": {
 					fontSize: 14,
 					userSelect: "none",

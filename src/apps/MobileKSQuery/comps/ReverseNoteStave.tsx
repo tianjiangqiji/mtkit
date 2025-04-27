@@ -91,7 +91,7 @@ const ReverseNoteStave_css = css({
     ...cssPresets.flexCenter,
     flexDirection: "column",
     "& .tonic_replaced": {
-      fontFamily: "misans-m",
+      
       fontSize: 15,
       color: tonicReplacedColor,
       ...cssPresets.flexCenter,
@@ -100,7 +100,7 @@ const ReverseNoteStave_css = css({
     "& .replaced_notes_list": {
       ...cssPresets.flexCenter,
       userSelect: "none",
-      fontFamily: "misans-m",
+      
       gap: 15,
     },
     "& .stave_frame": {
@@ -113,7 +113,7 @@ const ReverseNoteStave_css = css({
       }
     },
     "& .details": {
-      fontFamily: "misans-m",
+      
       userSelect: "none",
       fontSize: 20,
       color: googleColors.blue800,
@@ -139,7 +139,7 @@ const ReverseNoteStave_css = css({
       ...cssPresets.flexCenter,
       marginBottom: 5,
       "&>span": {
-        fontFamily: "misans-m",
+        
         marginLeft: 5,
         fontSize: scaleTitleFontSize,
         color: scaleTitleColor,
@@ -154,7 +154,7 @@ const ReverseNoteStave_css = css({
         minWidth: 30,
         fontSize: 25,
         color: googleColors.blue800,
-        fontFamily: "misans-m",
+        
       },
       "&>div:first-of-type": {
         height: 25,

@@ -112,7 +112,7 @@ const ConfigWindow_css = css({
 			userSelect: "none",
 			cursor: "pointer",
 			color: googleColors.blue800,
-			fontFamily: "misans-m",
+			
 			...cssPresets.transition,
 			"&:hover": {
 				backgroundColor: isMobile ? void 0 : googleColors.gray200,

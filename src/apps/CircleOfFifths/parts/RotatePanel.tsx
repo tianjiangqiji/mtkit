@@ -120,7 +120,7 @@ const RotatePanel_css = css({
 			},
 			"& .n": {
 				fontSize: 40,
-				fontFamily: "misans-m",
+				
 				marginLeft: 10,
 			}
 		}

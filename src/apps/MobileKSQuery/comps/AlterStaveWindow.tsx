@@ -64,7 +64,7 @@ const AlterStaveWindow = (props: {
                     color={googleColors.gray600}/>
         </div>
       })}
-      {alteredNotes.length === 0 && <div style={{fontFamily: "misans-m", color: googleColors.gray600}}>无升降</div>}
+      {alteredNotes.length === 0 && <div style={{ color: googleColors.gray600}}>无升降</div>}
     </div>
   </div>
 }
@@ -72,7 +72,7 @@ export default AlterStaveWindow;
 
 const alter_stave_window_css = css({
   "& .description": {
-    fontFamily: "misans-m",
+    
     fontSize: 30,
     height: 40, marginBottom: 8,
     color: googleColors.blue800,
@@ -90,7 +90,7 @@ const alter_stave_window_css = css({
     ...cssPresets.flexCenter,
   },
   "& .altered_notes_frame": {
-    fontFamily: "misans-m",
+    
     // ...cssPresets.flexCenter,
     marginBottom: 20,
     // gap: 20,

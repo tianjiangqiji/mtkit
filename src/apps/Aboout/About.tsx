@@ -184,7 +184,7 @@ const frame_css = (naviBarHeight: number) => css({
 		}
 	},
 	"& .cite_title": {
-		fontFamily: "misans-m",
+		
 		fontSize: 16,
 		width: "100%",
 		margin: "0 auto",
@@ -200,7 +200,7 @@ const frame_css = (naviBarHeight: number) => css({
 	"& .cite_frame": {
 		marginLeft: 15, marginRight: 15,
 		...cssPresets.flexCenter,
-		fontFamily: "misans-m",
+		
 		userSelect: "none",
 		gap: 10,
 		flexWrap: "wrap",

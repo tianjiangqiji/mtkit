@@ -287,12 +287,12 @@ const phone_reverse_interval_css = (frameHeight: number) => css({
 						height: "100%",
 						...cssPresets.flexCenter,
 						color: googleColors.gray700,
-						fontFamily: "misans-m",
+						
 						userSelect: "none",
 						"&>.interval_type": {
 							width: 120,
 							fontSize: 18,
-							fontFamily: "misans-m",
+							
 							color: googleColors.blueGray800,
 							...cssPresets.flexCenter,
 							justifyContent: "end",
@@ -301,7 +301,7 @@ const phone_reverse_interval_css = (frameHeight: number) => css({
 						"&>.semitone": {
 							fontSize: 18,
 							width: 25,
-							fontFamily: "misans-m",
+							
 							...cssPresets.flexCenter,
 							justifyContent: "end",
 							color: googleColors.blue800

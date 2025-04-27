@@ -37,7 +37,7 @@ const scale_card_css = css({
     ...cssPresets.flexCenter,
     flexDirection: "column",
     "& .details": {
-      fontFamily: "misans-m",
+      
       userSelect: "none",
       fontSize: 20,
       color: googleColors.blue800,
@@ -74,13 +74,13 @@ const scale_card_css = css({
     flexDirection: "column",
     userSelect: "none",
     "& .cn": {
-      fontFamily: "misans-m",
+      
       fontSize: 20,
       marginTop: 8,
       color: googleColors.gray800
     },
     "& .cl": {
-      fontFamily: "misans-m",
+      
       userSelect: "none",
       fontSize: 20,
       color: googleColors.gray800

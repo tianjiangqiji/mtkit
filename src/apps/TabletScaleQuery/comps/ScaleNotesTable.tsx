@@ -209,7 +209,7 @@ const ScaleNotesTable_css = (i: boolean, isTonicReplaced: boolean) => css({
 					marginTop: i ? -3 : 0,
 				},
 				"& .cn_name": {
-					fontSize: 16, fontFamily: "misans-m",
+					fontSize: 16, 
 					marginRight: 5,
 					color: googleColors.gray700
 				},
@@ -231,7 +231,7 @@ const ScaleNotesTable_css = (i: boolean, isTonicReplaced: boolean) => css({
 	},
 	".tonic_replaced": {
 		userSelect: "none",
-		fontFamily: "misans-m",
+		
 		backgroundColor: googleColors.amber200,
 		border: `1px solid ${googleColors.amber300}`,
 		marginLeft: "auto",

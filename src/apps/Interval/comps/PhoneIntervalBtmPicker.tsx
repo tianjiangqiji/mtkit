@@ -59,7 +59,7 @@ const phone_note_picker_css = css({
 		backgroundColor: "white",
 		borderRadius: 999,
 		...cssPresets.flexCenter,
-		fontFamily: "misans-m",
+		
 		border: `1px solid ${googleColors.gray300}`,
 		overflow: "hidden",
 

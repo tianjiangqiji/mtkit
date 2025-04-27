@@ -130,7 +130,7 @@ const MobileScaleTableConfigPopover_css = css({
   backgroundColor: "white",
   borderRadius: 8,
   userSelect: "none",
-  fontFamily: "misans-m",
+  
   paddingBottom: 50,
   paddingLeft: 20,
   paddingRight: 20,

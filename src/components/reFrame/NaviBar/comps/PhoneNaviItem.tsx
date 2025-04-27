@@ -74,7 +74,7 @@ const navi_item_css = (itemH: number, itemW: number, iconH: number) => css({
     alignItems:"start",
     flexDirection: "column",
     "& .title": {
-      fontFamily: "misans-m",
+      
       // width: 80,
       fontSize:18,
       marginBottom:5,
@@ -82,7 +82,7 @@ const navi_item_css = (itemH: number, itemW: number, iconH: number) => css({
       userSelect: "none",
     },
     "& .subtitle": {
-      fontFamily: "misans-m",
+      
       fontSize: 12,
       color: googleColors.blue300,
     }

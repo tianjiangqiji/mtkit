@@ -70,7 +70,7 @@ const phone_score_helper_picker_css = (isStaveQueryReverse: boolean, bh: number)
     backgroundColor: "white",
     borderRadius: 999,
     ...cssPresets.flexCenter,
-    fontFamily: "misans-m",
+    
     border: `1px solid ${googleColors.gray300}`,
     overflow: "hidden",
 

@@ -104,7 +104,7 @@ const PhoneNote2Stave_css = (height: number) => css({
     ...cssPresets.flexCenter,
     flexDirection: "column",
     "& .tonic_replaced": {
-      fontFamily: "misans-m",
+      
       fontSize: 15,
       color: googleColors.red800,
       ...cssPresets.flexCenter,
@@ -112,7 +112,7 @@ const PhoneNote2Stave_css = (height: number) => css({
     "& .replaced_notes_list": {
       ...cssPresets.flexCenter,
       userSelect: "none",
-      fontFamily: "misans-m",
+      
       gap: 15,
     },
     "& .stave_frame": {
@@ -125,7 +125,7 @@ const PhoneNote2Stave_css = (height: number) => css({
       }
     },
     "& .details": {
-      fontFamily: "misans-m",
+      
       userSelect: "none",
       fontSize: 20,
       color: googleColors.blue800,
@@ -146,7 +146,7 @@ const PhoneNote2Stave_css = (height: number) => css({
     "& .up_part": {
       ...cssPresets.flexCenter,
       "&>span": {
-        fontFamily: "misans-m",
+        
         marginLeft: 5,
         fontSize: scaleTitleFontSize,
         color: scaleTitleColor,
@@ -162,7 +162,7 @@ const PhoneNote2Stave_css = (height: number) => css({
         minWidth: 30,
         fontSize: 25,
         color: googleColors.blue800,
-        fontFamily: "misans-m",
+        
       },
       "&>div:first-of-type": {
         height: 25,

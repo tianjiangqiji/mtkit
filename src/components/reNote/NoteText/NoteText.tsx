@@ -36,7 +36,7 @@ const note_text_css = (fontSize: number, noteColor: string, alter: number) => cs
   "& .step": {
     fontSize: fontSize,
     textAlign: "center",
-    fontFamily: "misans-m",
+    
     color: noteColor,
   },
   "& .alter": {
