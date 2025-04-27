@@ -25,7 +25,7 @@ const TooShortWindow = (props: {
 				height: "auto",
 			}} src={guohub8080} alt=""/>
 		</div>
-		<div style={{fontFamily: "misans-m"}}>屏幕过小，无法显示</div>
+		<div>屏幕过小，无法显示</div>
 	</div>
 }
 

@@ -13,7 +13,6 @@ if (isGitHubPages) {
 if (isUniapp) {
 	console.log("Uniapp 模式")
 }
-console.log("ENV:",process.env)
 console.log("NODE_ENV:", process.env.NODE_ENV);
 console.log("VITE_GITHUB_PAGES:", process.env.VITE_GITHUB_PAGES);
 console.log("VITE_UNIAPP:", process.env.VITE_UNIAPP);
@@ -117,6 +116,8 @@ export default defineConfig({
 						// 注意：路径需与项目实际结构一致，这里假设是 src/music12/ 开头
 					} else if (id.includes('src/music12/')) {
 						return 'music12'; // 分块名为 music12，输出为 music12.js
+					} else if (id.includes('src/assets/instruments/samplersBase64')) {
+						if (isUniapp) return "samplers_base64"
 					}
 				},
 

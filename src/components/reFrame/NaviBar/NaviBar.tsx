@@ -89,6 +89,5 @@ const navigate_window_css = css({
   "& .title": {
     fontSize: 14,
     marginLeft: 5,
-    fontFamily: "misans-m"
   }
 })

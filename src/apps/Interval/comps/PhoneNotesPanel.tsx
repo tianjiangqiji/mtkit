@@ -438,7 +438,7 @@ const phone_notes2interval_css = css({
 		paddingTop: 8, paddingBottom: 8,
 		"&>span": {
 			display: "block",
-			fontFamily: "misans-m"
+
 		}
 	},
 	"& .line:not(:first-of-type)": {
@@ -452,7 +452,7 @@ const phone_notes2interval_css = css({
 			height: "100%",
 			...cssPresets.flexCenter,
 			fontSize: 18,
-			
+
 			userSelect: "none"
 		},
 	}
@@ -485,7 +485,7 @@ const select_note_css = (isValid: boolean, noteWindowWidth: number, isShow = tru
 			margin: "0 auto",
 			paddingTop: 8,
 			fontSize: 14,
-			
+
 			userSelect: "none",
 			display: "flex",
 			overflowX: "hidden",
