@@ -97,10 +97,15 @@ const StaveWithChord = (props: {
 		return create({version: '1.0', encoding: 'UTF-8'}, musicXMLObject)
 			.end({prettyPrint: true});
 	}, [chordVoicing, clef, keys, notes])// 确保依赖于 props.notesList
+	const FixedMeasureWidthFixedValue = useMemo(() => clamp(chordVoicing.length * 1.5, 3, 7), [chordVoicing])
 	// 渲染函数
 	const renderRef = useCallback(async () => {
 		const container = divRef.current;
 		if (!container) return;
+		if (osmdRef.current) {
+			osmdRef.current.clear()
+			osmdRef.current.EngravingRules.FixedMeasureWidthFixedValue = FixedMeasureWidthFixedValue;
+		}
 		// 如果实例不存在则创建
 		if (!osmdRef.current) {
 			osmdRef.current = new OpenSheetMusicDisplay(container, {
@@ -123,14 +128,14 @@ const StaveWithChord = (props: {
 			rules.PageLeftMargin = 2;
 			rules.PageRightMargin = 2;
 			rules.FixedMeasureWidth = true
-			rules.FixedMeasureWidthFixedValue = 4
 			rules.MeasureRightMargin = 0
+			osmdRef.current.EngravingRules.FixedMeasureWidthFixedValue = FixedMeasureWidthFixedValue
 		}
-
 		// 更新 MusicXML
 		await osmdRef.current.load(musicXML);
 		osmdRef.current.render();
-	}, [musicXML, props,keys])
+	}, [musicXML, props, keys, chordVoicing, FixedMeasureWidthFixedValue])
+
 	useEffect(() => {
 		renderRef().then()
 	}, [renderRef, keys, clef, n1_step, n1_alter, n1_octave,
@@ -139,7 +144,7 @@ const StaveWithChord = (props: {
 		n4_step, n4_alter, n4_octave,
 		n5_step, n5_alter, n5_octave,
 		n6_step, n6_alter, n6_octave,
-		n7_step, n7_alter, n7_octave,]) // 确保依赖于 renderRef 和 props.notesList
+		n7_step, n7_alter, n7_octave, chordVoicing, FixedMeasureWidthFixedValue]) // 确保依赖于 renderRef 和 props.notesList
 
 	// 实际DOM结构
 	return <>

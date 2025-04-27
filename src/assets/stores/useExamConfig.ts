@@ -24,7 +24,7 @@ const defaultStore = {
   eachQuestionSeconds: 10, //每道题的时间
   isNaturalOnly: false, //是否只出自然音
 }
-const useChordConfig = create<examType>()(immer(persist(
+const useExamConfig = create<examType>()(immer(persist(
   (set) => ({
     ...defaultStore,
     setExamQuestionsNum: (i: number) => {
@@ -64,4 +64,4 @@ const useChordConfig = create<examType>()(immer(persist(
   },
 ),))
 
-export default useChordConfig
+export default useExamConfig

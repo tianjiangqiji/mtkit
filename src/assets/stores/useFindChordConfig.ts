@@ -38,7 +38,7 @@ const defaultStore = {
   selectOnePianoLocation: 0, //点击了哪个钢琴键位
   pianoKeyIntervalList: Array.from({length: 12}, () => 0), //每个键位都是承担了哪个音程
 }
-const useChordConfig = create<findInScaleType>()(immer(persist(
+const useFindChordConfig = create<findInScaleType>()(immer(persist(
   (set) => ({
     ...defaultStore,
     setIsFindInScaleConfigWindowOpen: (isFindInScaleConfigWindowOpen: boolean) => {
@@ -104,4 +104,4 @@ const useChordConfig = create<findInScaleType>()(immer(persist(
   },
 ),))
 
-export default useChordConfig
+export default useFindChordConfig
