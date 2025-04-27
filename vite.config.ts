@@ -2,7 +2,7 @@ import {defineConfig} from 'vite'
 import react from '@vitejs/plugin-react'
 import terser from '@rollup/plugin-terser';
 import {resolve} from "path"
-import svgr from 'vite-plugin-svgr' // 处理 SVG 为组件
+import svgr from 'vite-plugin-svgr'
 
 const isProduction = process.env.NODE_ENV === 'production';
 const isGitHubPages = process.env.VITE_GITHUB_PAGES === 'true';
@@ -13,6 +13,38 @@ if (isGitHubPages) {
 if (isUniapp) {
 	console.log("Uniapp 模式")
 }
+console.log("ENV:",process.env)
+console.log("NODE_ENV:", process.env.NODE_ENV);
+console.log("VITE_GITHUB_PAGES:", process.env.VITE_GITHUB_PAGES);
+console.log("VITE_UNIAPP:", process.env.VITE_UNIAPP);
+
+const uniapp_html = () => {
+	return {
+		name: 'html-transform',
+		transformIndexHtml(html: any) {
+			const additionalContent = `<script type="text/javascript">
+					      // H5 plus事件处理
+					      function plusReady() {
+					        // 设置系统状态栏背景为白底黑字
+					        plus.navigator.setStatusBarBackground('#FFFFFF');
+					        plus.navigator.setStatusBarStyle('dark');
+					      }
+					      if (window.plus) {
+					        plusReady();
+					      } else {
+					        document.addEventListener('plusready', plusReady, false);
+					      }
+					    </script>`;
+			if (isUniapp) {
+				// 生产环境插入的内容
+				return html.replace(`<if-uniapp/>`, additionalContent);
+			}
+			return html.replace('<if-uniapp/>', "");
+		},
+	}
+}
+
+
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [
@@ -29,6 +61,7 @@ export default defineConfig({
 				toplevel: true
 			}
 		}), // 只在生产环境下使用 terser 压缩
+		uniapp_html()
 	],
 	optimizeDeps: {
 		include: ['react', 'react-dom']
@@ -94,3 +127,4 @@ export default defineConfig({
 		},
 	}
 })
+

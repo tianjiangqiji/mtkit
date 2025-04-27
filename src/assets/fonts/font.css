@@ -1,8 +1,17 @@
 @font-face {
-    font-family: "misans-m";
-    src: url("misans-m-fh.woff2") format("woff2"),
-    url("misans-m-2500.woff2") format("woff2");
-    url("misans-m-ex1000.woff2") format("woff2");
+    font-family: "misans-m-fh";
+    src: url("misans-m-fh.woff2") format("woff2")
+}
+
+@font-face {
+    font-family: "misans-m-ex1000";
+    src: url("misans-m-ex1000.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "misans-m-2500";
+    src: url("misans-m-2500.woff2") format("woff2")
+
 }
 
 /*@font-face {*/
