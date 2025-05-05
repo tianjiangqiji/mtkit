@@ -10,7 +10,6 @@ import getBareChordTransformString from "@/utils/getBareChordTransformString.ts"
 import getChordTransform from "@/utils/getChordTransform.ts";
 import {css} from "@emotion/react";
 import collect from "collect.js";
-import {sortBy} from "lodash";
 import {useMemo} from "react";
 
 const KeyStrokeComplexChord = (props: {
@@ -50,7 +49,7 @@ const KeyStrokeComplexChord = (props: {
 	if (showChordsInfo.length === 0) {
 		const analyseString = getBareChordTransformString(props.locationList, absoluteRootNoteLocation)
 		return <div css={KeyStroke2_css}>
-			<div className="fd">非常规复杂和弦</div>
+			<div className="fd">复杂和弦</div>
 			<div>{
 				absoluteRootNotes.map((item, index) => {
 					return <div key={index} style={{...cssPresets.flexCenter, height: 50}}>
@@ -131,7 +130,7 @@ const KeyStrokeComplexChord = (props: {
 	}
 
 	return <div css={KeyStroke2_css}>
-		<div className="fd">复杂和弦</div>
+		<div className="fd">变化和弦</div>
 		{showChordsInfo.map((item, index) => <div key={index}>
 			{getChordNodes(transformObj[index].rootNoteLocationOfChord, transformObj[index], props.locationList)}
 		</div>)

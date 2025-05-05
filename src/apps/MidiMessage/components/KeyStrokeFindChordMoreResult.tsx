@@ -22,15 +22,18 @@ const KeyStrokeFindChordMoreResult = (props: {
 		{includeRootChordList.length > 0 &&
 			<div className="chord_ir">
 				{includeRootChordList.map((x, y) => {
-					return <KeyStrokeFindChord1Result key={y} hideTitle={true} chordInfo={x} rootNotePitch={props.rootNotePitch}/>
+					return <KeyStrokeFindChord1Result  key={y} hideTitle={true} chordInfo={x}
+					                                  rootNotePitch={props.rootNotePitch}/>
 				})}
 			</div>}
-		{notIncludeRootChordList.length > 0 && <div className="chord_nir" >
+		{notIncludeRootChordList.length > 0 && <div className="chord_nir">
 			{notIncludeRootChordList.map((x, y) => {
-				return <KeyStrokeFindChord1Result fontSize={sideFontSize} key={y} hideTitle={true} chordInfo={x}
+				return <KeyStrokeFindChord1Result fontSize={sideFontSize} key={y} hideTitle={true}
+				                                  chordInfo={x}
 				                                  rootNotePitch={props.rootNotePitch}/>
 			})}
 		</div>}
+
 	</div>
 
 }
@@ -39,16 +42,6 @@ export default KeyStrokeFindChordMoreResult
 
 const KeyStrokeMore_css = css({
 	width: "100%",
-	"&>.note_wrapper": {
-		...cssPresets.flexCenter,
-		height: 85,
-		"&>.slash": {
-			fontSize: 60,
-			color: googleColors.gray100,
-			marginLeft: 10,
-			marginRight: 10,
-		}
-	},
 	"&>.fd": {
 		fontSize: 25,
 		color: googleColors.blue300,

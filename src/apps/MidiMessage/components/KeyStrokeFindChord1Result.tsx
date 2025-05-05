@@ -12,6 +12,7 @@ const KeyStrokeFindChord1Result = (props: {
 	rootNotePitch: number
 	hideTitle?: boolean
 	fontSize?: number
+	height?: number
 }) => {
 	const fontSize = byDefault(props.fontSize, 50)
 	const isHideTitle = byDefault(props.hideTitle, false)
@@ -46,7 +47,7 @@ const KeyStrokeFindChord1Result = (props: {
 			isRightRootTransformed[i] = true
 		}
 	}
-	return <div css={KeyStroke3_css}>
+	return <div css={KeyStroke3_css} style={{height: byDefault(props.height, "auto"), width: "fit-content"}}>
 		<div className="fd" style={isHideTitle ? {display: "none"} : void 0}>和弦</div>
 		<div style={{...cssPresets.flexCenter, width: "100%", flexWrap: "wrap"}}>
 			{mayRootNotes.map((x, y) => {

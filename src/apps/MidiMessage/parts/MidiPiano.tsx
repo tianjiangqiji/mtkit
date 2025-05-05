@@ -57,7 +57,7 @@ const MidiPiano = () => {
 		const pitchValue = octave * 12 + location
 
 		setLatestEvent({
-			name: "点击选择", note: pitchValue, isNoteOn: !noteOnNumList.includes(pitchValue),
+			name: "乐理计算器", note: pitchValue, isNoteOn: !noteOnNumList.includes(pitchValue),
 			isNoteOff:
 				noteOnNumList.includes(pitchValue),
 			velocity:
