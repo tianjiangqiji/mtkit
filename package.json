@@ -25,6 +25,7 @@
     "buffer": "^6.0.3",
     "chinese-numbering": "^1.0.0",
     "collect.js": "^4.36.1",
+    "dayjs": "^1.11.13",
     "delay": "^6.0.0",
     "gsap": "^3.12.7",
     "immer": "^10.1.1",

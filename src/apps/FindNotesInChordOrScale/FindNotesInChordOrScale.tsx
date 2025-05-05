@@ -1,4 +1,6 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+import googleColors from "@/assets/colors/googleColors.ts";
+import NoWrapSection from "@/components/common/NoWrapSection.tsx";
 import {css} from "@emotion/react";
 import PianoKeySelector from "@/apps/FindNotesInChordOrScale/components/PianoKeySelector.tsx";
 import cssPresets from "@/assets/styles/cssPresets.ts";
@@ -16,8 +18,8 @@ const FindNotesInChordOrScale = () => {
       </div>
       <div className="main_result">
         <FindResult/>
-      </div>
 
+      </div>
     </div>
   </>
 }

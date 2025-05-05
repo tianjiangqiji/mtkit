@@ -92,10 +92,10 @@ const r = createHashRouter([
 			//   path: routerPath.staveExam,
 			//   element: <StaveExam/>
 			// },
-			// {
-			//   path: routerPath.midi,
-			//   element: <MidiMessage/>
-			// },
+			{
+			  path: routerPath.spiano,
+			  element: <MidiMessage/>
+			},
 			{
 				path: routerPath.temp251,
 				element: <Temp251/>

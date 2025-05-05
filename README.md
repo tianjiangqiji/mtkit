@@ -48,27 +48,6 @@ Android version recommended to use uniapp framework for packaging.
 The packaging method is to clone this project, then install dependencies, execute packaging, and create `5+APP` in
 uniapp.
 
-```
-pnpm i
-pnpm build
-```
-Tips:
-
-```html
-    <script type="text/javascript">
-      // H5 plus事件处理
-      function plusReady() {
-        // 设置系统状态栏背景为白底黑字
-        plus.navigator.setStatusBarBackground('#FFFFFF');
-        plus.navigator.setStatusBarStyle('dark');
-      }
-      if (window.plus) {
-        plusReady();
-      } else {
-        document.addEventListener('plusready', plusReady, false);
-      }
-    </script>
-```
 
 # 联系作者 Author Contact
 

@@ -61,14 +61,14 @@ const ChordPiano_css = (w) => css({
   },
   "& .o1": {
     backgroundColor: googleColors.blue200,
-    color: googleColors.gray600,
+    color: googleColors.blue800,
   },
   "& .o2": {
     backgroundColor: googleColors.green100,
-    color: googleColors.gray600,
+    color: googleColors.green800,
   }, "& .o3": {
     backgroundColor: googleColors.yellow100,
-    color: googleColors.gray600,
+    color: googleColors.yellow800,
   },
   "& .o1,.o2,.o3": {
     marginBottom: 15,

@@ -54,24 +54,30 @@ declare const getBlackRandomNote: (octave?: number | number[], isNormal?: boolea
 declare const getNormalRandomNote: (octave?: number | number[]) => Note;
 declare const getNoteByLocation: (location: number, octave?: number) => InstanceType<typeof Note>[];
 
-type index$4_Note = Note;
-declare const index$4_Note: typeof Note;
-declare const index$4_getBlackRandomNote: typeof getBlackRandomNote;
-declare const index$4_getCasualRandomNote: typeof getCasualRandomNote;
-declare const index$4_getNormalRandomNote: typeof getNormalRandomNote;
-declare const index$4_getNoteByLocation: typeof getNoteByLocation;
-declare const index$4_getWhiteRandomNote: typeof getWhiteRandomNote;
-declare namespace index$4 {
-  export { index$4_Note as Note, index$4_getBlackRandomNote as getBlackRandomNote, index$4_getCasualRandomNote as getCasualRandomNote, index$4_getNormalRandomNote as getNormalRandomNote, index$4_getNoteByLocation as getNoteByLocation, index$4_getWhiteRandomNote as getWhiteRandomNote };
+declare const getUpwardLocationGap: (baseLocation: number, targetLocation: number) => number;
+
+type index$5_Note = Note;
+declare const index$5_Note: typeof Note;
+declare const index$5_getBlackRandomNote: typeof getBlackRandomNote;
+declare const index$5_getCasualRandomNote: typeof getCasualRandomNote;
+declare const index$5_getNormalRandomNote: typeof getNormalRandomNote;
+declare const index$5_getNoteByLocation: typeof getNoteByLocation;
+declare const index$5_getUpwardLocationGap: typeof getUpwardLocationGap;
+declare const index$5_getWhiteRandomNote: typeof getWhiteRandomNote;
+declare namespace index$5 {
+  export { index$5_Note as Note, index$5_getBlackRandomNote as getBlackRandomNote, index$5_getCasualRandomNote as getCasualRandomNote, index$5_getNormalRandomNote as getNormalRandomNote, index$5_getNoteByLocation as getNoteByLocation, index$5_getUpwardLocationGap as getUpwardLocationGap, index$5_getWhiteRandomNote as getWhiteRandomNote };
 }
 
 declare const getIntervalByComparingNotes: (note1: InstanceType<typeof Note>, note2: InstanceType<typeof Note>) => InstanceType<typeof Interval>;
 
-type index$3_Interval = Interval;
-declare const index$3_Interval: typeof Interval;
-declare const index$3_getIntervalByComparingNotes: typeof getIntervalByComparingNotes;
-declare namespace index$3 {
-  export { index$3_Interval as Interval, index$3_getIntervalByComparingNotes as getIntervalByComparingNotes };
+declare const getIntervalBySemitoneGap: (semitoneGap: number) => InstanceType<typeof Interval>[] | [];
+
+type index$4_Interval = Interval;
+declare const index$4_Interval: typeof Interval;
+declare const index$4_getIntervalByComparingNotes: typeof getIntervalByComparingNotes;
+declare const index$4_getIntervalBySemitoneGap: typeof getIntervalBySemitoneGap;
+declare namespace index$4 {
+  export { index$4_Interval as Interval, index$4_getIntervalByComparingNotes as getIntervalByComparingNotes, index$4_getIntervalBySemitoneGap as getIntervalBySemitoneGap };
 }
 
 type t_scaleMode = "MAJ" | "DOR" | "PHR" | "LYD" | "MLY" | "MIN" | "ION" | "AEO" | "MMAJ" | "HMAJ" | "HMIN" | "MMIN" | "LOC" | "CG" | "CS" | "CJ" | "CZ" | "CY";
@@ -219,11 +225,11 @@ declare const getScaleByStaveAlters: (staveAlter: number) => {
 
 declare const getAlterStepListByNum: (num: number) => string[];
 
-declare const index$2_getAlterStepListByNum: typeof getAlterStepListByNum;
-declare const index$2_getScaleByStaveAlters: typeof getScaleByStaveAlters;
-declare const index$2_getStaveAlterByNote: typeof getStaveAlterByNote;
-declare namespace index$2 {
-  export { index$2_getAlterStepListByNum as getAlterStepListByNum, index$2_getScaleByStaveAlters as getScaleByStaveAlters, index$2_getStaveAlterByNote as getStaveAlterByNote };
+declare const index$3_getAlterStepListByNum: typeof getAlterStepListByNum;
+declare const index$3_getScaleByStaveAlters: typeof getScaleByStaveAlters;
+declare const index$3_getStaveAlterByNote: typeof getStaveAlterByNote;
+declare namespace index$3 {
+  export { index$3_getAlterStepListByNum as getAlterStepListByNum, index$3_getScaleByStaveAlters as getScaleByStaveAlters, index$3_getStaveAlterByNote as getStaveAlterByNote };
 }
 
 declare const getNote: (step: string, alter: number, octave?: number) => Note;
@@ -234,12 +240,12 @@ declare const getScale: (step: string, alter: number, octave: number, mode: stri
 
 declare const getChord: (step: string, alter: number, octave: number, chordKey: string, transformPanel?: t_inputTransformPanel) => Chord;
 
-declare const index$1_getChord: typeof getChord;
-declare const index$1_getInterval: typeof getInterval;
-declare const index$1_getNote: typeof getNote;
-declare const index$1_getScale: typeof getScale;
-declare namespace index$1 {
-  export { index$1_getChord as getChord, index$1_getInterval as getInterval, index$1_getNote as getNote, index$1_getScale as getScale };
+declare const index$2_getChord: typeof getChord;
+declare const index$2_getInterval: typeof getInterval;
+declare const index$2_getNote: typeof getNote;
+declare const index$2_getScale: typeof getScale;
+declare namespace index$2 {
+  export { index$2_getChord as getChord, index$2_getInterval as getInterval, index$2_getNote as getNote, index$2_getScale as getScale };
 }
 
 declare class Radix {
@@ -253,6 +259,16 @@ declare class Radix {
     add(num: number): Radix;
 }
 
+declare class IntervalRadix {
+    #private;
+    constructor(intervalNum: number);
+    get base10(): number;
+    get twoDigitArray(): number[];
+    get octave(): number;
+    get intervalNum(): number;
+    get intervalNumWithinOctave(): number;
+}
+
 declare class Base12Radix extends Radix {
     constructor(num: number);
     static fromArray(array: any[]): Base12Radix;
@@ -260,6 +276,64 @@ declare class Base12Radix extends Radix {
     get lastDigit(): number;
     add(num: number): Base12Radix;
     getGap(otherRadix: Radix): number;
+}
+
+declare class Base7Radix extends Radix {
+    constructor(num: number);
+    static fromArray(array: any[]): Base7Radix;
+    get firstDigit(): number;
+    get lastDigit(): number;
+    add(num: number): Base7Radix;
+    getGap(otherRadix: Radix): number;
+}
+
+declare class StepRadix extends Base7Radix {
+    constructor(step: number | string);
+    static fromArray(array: any[]): StepRadix;
+    get step(): t_noteStep;
+    get octave(): number;
+    add(num: number): StepRadix;
+    get stepIndex(): number;
+    getGap(otherRadix: StepRadix): number;
+    getIntervalGap(otherRadix: StepRadix): IntervalRadix;
+}
+declare class SemitoneRadix extends Base12Radix {
+    constructor(semitone: number);
+    static fromArray(array: number[]): SemitoneRadix;
+    getGap(otherRadix: SemitoneRadix): number;
+    add(num: number): SemitoneRadix;
+    get location(): number;
+    get octave(): number;
+    getKeyboardNotes(isAlterAbsLessThan?: number): any[];
+}
+
+declare class ScaleRadix {
+    #private;
+    constructor(scaleDegreeNum: number);
+    get base10(): number;
+    get twoDigitArray(): number[];
+    get octave(): number;
+    get totalScaleDegrees(): number;
+    get scaleDegree(): number;
+    add(num: number): ScaleRadix;
+}
+
+type index$1_Base12Radix = Base12Radix;
+declare const index$1_Base12Radix: typeof Base12Radix;
+type index$1_Base7Radix = Base7Radix;
+declare const index$1_Base7Radix: typeof Base7Radix;
+type index$1_IntervalRadix = IntervalRadix;
+declare const index$1_IntervalRadix: typeof IntervalRadix;
+type index$1_Radix = Radix;
+declare const index$1_Radix: typeof Radix;
+type index$1_ScaleRadix = ScaleRadix;
+declare const index$1_ScaleRadix: typeof ScaleRadix;
+type index$1_SemitoneRadix = SemitoneRadix;
+declare const index$1_SemitoneRadix: typeof SemitoneRadix;
+type index$1_StepRadix = StepRadix;
+declare const index$1_StepRadix: typeof StepRadix;
+declare namespace index$1 {
+  export { index$1_Base12Radix as Base12Radix, index$1_Base7Radix as Base7Radix, index$1_IntervalRadix as IntervalRadix, index$1_Radix as Radix, index$1_ScaleRadix as ScaleRadix, index$1_SemitoneRadix as SemitoneRadix, index$1_StepRadix as StepRadix };
 }
 
 declare class CircleOfFifths extends Base12Radix {
@@ -380,6 +454,22 @@ declare const _default$1: {
         n11L: number;
         n13L: number;
     }[];
+    getChordTransformByLocationList: (originChordInfo: {
+        rootNoteLocation: number;
+        n3L: number;
+        n5L: number;
+        n7L: number;
+        n9L: number;
+        n11L: number;
+        n13L: number;
+    }, chordNotesLocationList: number[]) => {
+        omit: any[];
+        min: any[];
+        maj: any[];
+        p: any[];
+        dim: any[];
+        aug: any[];
+    };
 };
 
 declare const _default: {
@@ -429,6 +519,21 @@ declare const _default: {
         n6L: number;
         n7L: number;
     }[];
+    findComplexChordByMidi: (midiPitchList: number[]) => {
+        likely: number;
+        rootNoteLocation: number;
+        chordKey: string;
+        cnName: string;
+        type: string;
+        notesLocationList: number[];
+        orderedNotesLocationList: number[];
+        n3L: number;
+        n5L: number;
+        n7L: number;
+        n9L: number;
+        n11L: number;
+        n13L: number;
+    }[];
 };
 
-export { Radix, _default$1 as chord, index as circleOfFifths, index$1 as factory, _default as find, index$3 as interval, index$4 as note, _default$2 as scale, index$2 as stave };
+export { index$1 as Radix, _default$1 as chord, index as circleOfFifths, index$2 as factory, _default as find, index$4 as interval, index$5 as note, _default$2 as scale, index$3 as stave };

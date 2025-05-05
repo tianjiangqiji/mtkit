@@ -54,7 +54,9 @@ const useInstrument = () => {
 			default:
 				return dingDongSynth
 		}
-	}, [instrument, dingDongSynth, ePianoSampler, fluteSampler, guitarSampler, harpSampler, pianoSampler, sineSynth, stringsSampler, warmSynth])
+	}, [instrument,
+		dingDongSynth,
+		ePianoSampler, fluteSampler, guitarSampler, harpSampler, pianoSampler, sineSynth, stringsSampler, warmSynth])
 	const play = (playList: number[], duration: {
 		column: string,
 		split_up: string,

@@ -6,6 +6,7 @@ import googleColors from "@/assets/colors/googleColors.ts";
 import useGlobalSettings from "@/assets/stores/useGlobalSettings.ts";
 import cssFunctions from "@/assets/styles/cssFunctions.ts";
 import cssPresets from "@/assets/styles/cssPresets.ts";
+import useMidiKeyboardPlay from "@/utils/useMIDI/useMidiKeyboardPlay.ts";
 import {css} from "@emotion/react";
 import {useEffect} from "react";
 import {Toaster} from "react-hot-toast";
@@ -14,12 +15,14 @@ import * as Tone from "tone"
 const Settings = (props: {}) => {
 	const {naviBarHeight} = useGlobalSettings()
 
+	const {setMidiLog, setIsPlayerActive} = useMidiKeyboardPlay()
 
 	useEffect(() => {
 		// 加载音频文件
 		Tone.start().then(() => console.log("Tone.js引擎加载成功。"))
-	})
-
+		setMidiLog(false)
+		setIsPlayerActive(true)
+	}, [])
 
 	return <>
 		<Toaster/>

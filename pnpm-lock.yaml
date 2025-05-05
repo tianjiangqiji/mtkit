@@ -44,6 +44,9 @@ importers:
       collect.js:
         specifier: ^4.36.1
         version: 4.36.1
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
       delay:
         specifier: ^6.0.0
         version: 6.0.0

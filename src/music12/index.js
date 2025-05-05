@@ -21,6 +21,7 @@ __export(note_exports, {
   getCasualRandomNote: () => getCasualRandomNote,
   getNormalRandomNote: () => getNormalRandomNote,
   getNoteByLocation: () => getNoteByLocation,
+  getUpwardLocationGap: () => getUpwardLocationGap,
   getWhiteRandomNote: () => getWhiteRandomNote
 });
 
@@ -70,6 +71,18 @@ var FactoryError = class extends Error {
     this.name = "FactoryError";
   }
 };
+
+// src/common/radix/index.ts
+var radix_exports = {};
+__export(radix_exports, {
+  Base12Radix: () => Base12Radix,
+  Base7Radix: () => Base7Radix,
+  IntervalRadix: () => IntervalRadix,
+  Radix: () => Radix,
+  ScaleRadix: () => ScaleRadix,
+  SemitoneRadix: () => SemitoneRadix,
+  StepRadix: () => StepRadix
+});
 
 // src/common/radix/Radix.ts
 var _base10;
@@ -1588,11 +1601,21 @@ var getNoteByLocation = (location, octave) => {
   });
 };
 
+// src/note/methods/getUpwardLocationGap.ts
+var getUpwardLocationGap = (baseLocation, targetLocation) => {
+  const numberGapWithRoot = Base12Radix.fromArray([1, baseLocation]).getGap(Base12Radix.fromArray([1, targetLocation]));
+  if (numberGapWithRoot < 0) {
+    return Base12Radix.fromArray([1, baseLocation]).getGap(Base12Radix.fromArray([2, targetLocation]));
+  }
+  return numberGapWithRoot;
+};
+
 // src/interval/index.ts
 var interval_exports = {};
 __export(interval_exports, {
   Interval: () => Interval,
-  getIntervalByComparingNotes: () => getIntervalByComparingNotes
+  getIntervalByComparingNotes: () => getIntervalByComparingNotes,
+  getIntervalBySemitoneGap: () => getIntervalBySemitoneGap
 });
 
 // src/interval/methods/getIntervalByComparingNotes.ts
@@ -1618,6 +1641,19 @@ var getIntervalByComparingNotes = (note1, note2) => {
     return new Interval(findIntervalObj.type, stepGapArr[0] * 7 + stepGapArr[1] + 1);
   }
   throw new IntervalError("Cannot find the interval.");
+};
+
+// src/interval/methods/getIntervalBySemitoneGap.ts
+import { isNumber as isNumber5, isUndefined as isUndefined5 } from "lodash";
+var getIntervalBySemitoneGap = (semitoneGap) => {
+  const semitoneGapAbs = Math.abs(semitoneGap);
+  const semitoneGapRadix = new Base12Radix(semitoneGapAbs);
+  const findResult = intervalMeta_default.where("isNatural", true).where("semitoneGap", semitoneGapRadix.lastDigit).all();
+  if (isUndefined5(findResult) || isNumber5(findResult)) return [];
+  if (findResult.length === 0) return [];
+  return findResult.map((item) => {
+    return new Interval(item.type, item.num + semitoneGapRadix.firstDigit * 7);
+  });
 };
 
 // src/scale/presets/ScaleMode.ts
@@ -17435,11 +17471,11 @@ var cls_getScoreSymbol_default = cls_getScoreSymbol;
 import { isEmpty as isEmpty5 } from "lodash";
 
 // src/chord/cls/classFn/cls_isTransformEmpty.ts
-import { isUndefined as isUndefined5, keys as keys7 } from "lodash";
+import { isUndefined as isUndefined6, keys as keys7 } from "lodash";
 var cls_isTransformEmpty = (obj) => {
   let result = true;
   for (let k of keys7(obj)) {
-    if (!isUndefined5(obj[k])) {
+    if (!isUndefined6(obj[k])) {
       result = false;
       break;
     }
@@ -18344,11 +18380,11 @@ var getFifthCircleByAlter = (alter) => {
 
 // src/find/findChord.ts
 import collect13 from "collect.js";
-import { isArray as isArray2, isNumber as isNumber5, isEqual as isEqual3, intersection, isEmpty as isEmpty8 } from "lodash";
+import { isArray as isArray2, isNumber as isNumber6, isEqual as isEqual3, intersection, isEmpty as isEmpty8 } from "lodash";
 var findChord = (locationList, isStrictlyMatch, rootNoteLocation, limitType) => {
   const isLimitType = isArray2(limitType) && limitType.length > 0;
   const betterLocationList = locationList.slice().sort((x, y) => x - y);
-  const isRootNoteLocationRequired = isNumber5(rootNoteLocation) && rootNoteLocation >= 0 && rootNoteLocation <= 11;
+  const isRootNoteLocationRequired = isNumber6(rootNoteLocation) && rootNoteLocation >= 0 && rootNoteLocation <= 11;
   let handle = collect13(findChordMeta_default);
   if (isRootNoteLocationRequired) {
     handle = handle.where("rootNoteLocation", rootNoteLocation);
@@ -18358,12 +18394,12 @@ var findChord = (locationList, isStrictlyMatch, rootNoteLocation, limitType) => 
   }
   const isStrictlyMatchJudge = byDefault_default(isStrictlyMatch, false);
   if (isStrictlyMatchJudge) {
-    const result2 = handle.filter((x) => isEqual3(betterLocationList, x.notesLocationList)).all();
+    const result2 = handle.filter((x) => isEqual3(betterLocationList, x.orderedNotesLocationList)).all();
     if (isEmpty8(result2)) return [];
     return result2;
   }
   const result = handle.filter((x) => {
-    if (isEqual3(betterLocationList, x.notesLocationList)) return true;
+    if (isEqual3(betterLocationList, x.orderedNotesLocationList)) return true;
     if (x.orderedNotesLocationList.length > betterLocationList.length) {
       if (intersection(betterLocationList, x.orderedNotesLocationList).length === betterLocationList.length) return true;
     }
@@ -19867,6 +19903,82 @@ var getChordCnNameByKey = (k) => {
 };
 var getChordCnNameByKey_default = getChordCnNameByKey;
 
+// src/chord/methods/getChordTransformByLocationList.ts
+import { intersection as intersection3, isNumber as isNumber8, keys as keys9 } from "lodash";
+var getChordTransformByLocationList = (originChordInfo, chordNotesLocationList) => {
+  const adjustObj = {
+    omit: [],
+    min: [],
+    maj: [],
+    p: [],
+    dim: [],
+    aug: []
+  };
+  const standardChordNotesLocationList = keys9(originChordInfo).map((x) => originChordInfo[x]).filter((x) => x !== -1);
+  const intersectionList = intersection3(standardChordNotesLocationList, chordNotesLocationList);
+  const standardAfterSubtract = standardChordNotesLocationList.filter((item) => !intersectionList.includes(item));
+  const givenLocationAfterSubtract = chordNotesLocationList.filter((item) => !intersectionList.includes(item));
+  if (isNumber8(originChordInfo.n3L) && originChordInfo.n3L >= 0) {
+    if (standardAfterSubtract.includes(originChordInfo.n3L)) {
+      adjustObj.omit.push(3);
+    }
+  }
+  if (isNumber8(originChordInfo.n5L) && originChordInfo.n5L >= 0) {
+    if (standardAfterSubtract.includes(originChordInfo.n5L)) {
+      adjustObj.omit.push(5);
+    }
+  }
+  if (isNumber8(originChordInfo.n7L) && originChordInfo.n7L >= 0) {
+    if (standardAfterSubtract.includes(originChordInfo.n7L)) {
+      adjustObj.omit.push(7);
+    }
+  }
+  if (isNumber8(originChordInfo.n9L) && originChordInfo.n9L >= 0) {
+    if (standardAfterSubtract.includes(originChordInfo.n9L)) {
+      adjustObj.omit.push(9);
+    }
+  }
+  if (isNumber8(originChordInfo.n11L) && originChordInfo.n11L >= 0) {
+    if (standardAfterSubtract.includes(originChordInfo.n11L)) {
+      adjustObj.omit.push(11);
+    }
+  }
+  if (isNumber8(originChordInfo.n13L) && originChordInfo.n13L >= 0) {
+    if (standardAfterSubtract.includes(originChordInfo.n13L)) {
+      adjustObj.omit.push(13);
+    }
+  }
+  if (givenLocationAfterSubtract.length === 0) return adjustObj;
+  for (let i of givenLocationAfterSubtract) {
+    const numberGapWithRoot = getUpwardLocationGap(originChordInfo.rootNoteLocation, i);
+    if (numberGapWithRoot === 1) {
+      adjustObj.min.push(2);
+    } else if (numberGapWithRoot === 2) {
+      adjustObj.maj.push(2);
+    } else if (numberGapWithRoot === 3) {
+      adjustObj.min.push(3);
+    } else if (numberGapWithRoot === 4) {
+      adjustObj.maj.push(3);
+    } else if (numberGapWithRoot === 5) {
+      adjustObj.p.push(4);
+    } else if (numberGapWithRoot === 6) {
+      adjustObj.aug.push(4);
+    } else if (numberGapWithRoot === 7) {
+      adjustObj.p.push(5);
+    } else if (numberGapWithRoot === 8) {
+      adjustObj.min.push(6);
+    } else if (numberGapWithRoot === 9) {
+      adjustObj.maj.push(6);
+    } else if (numberGapWithRoot === 10) {
+      adjustObj.min.push(7);
+    } else if (numberGapWithRoot === 11) {
+      adjustObj.maj.push(7);
+    }
+  }
+  return adjustObj;
+};
+var getChordTransformByLocationList_default = getChordTransformByLocationList;
+
 // src/find/findNotesInChord.ts
 import collect17 from "collect.js";
 import { isEmpty as isEmpty10 } from "lodash";
@@ -19905,7 +20017,8 @@ var chord_default = {
   findChordInScale: findChordInScale_default,
   getChordSymbolByKey: getChordSymbolByKey_default,
   getChordCnNameByKey: getChordCnNameByKey_default,
-  findNotesInChord: findNotesInChord_default
+  findNotesInChord: findNotesInChord_default,
+  getChordTransformByLocationList: getChordTransformByLocationList_default
 };
 
 // src/find/findNotesInScale.ts
@@ -19936,14 +20049,72 @@ var findNotesInScale = (notesList) => {
 };
 var findNotesInScale_default = findNotesInScale;
 
+// src/find/findComplexChordByMidi.ts
+import { intersection as intersection4, isArray as isArray4, isNull as isNull6, isUndefined as isUndefined9, orderBy, sortBy, uniq } from "lodash";
+import collect19 from "collect.js";
+var findComplexChordByMidi = (midiPitchList) => {
+  const locationList = sortBy(uniq(midiPitchList.map((x) => new Base12Radix(x).lastDigit)));
+  const findResult = collect19(findChordMeta_default).where("orderedNotesLocationList", "!==", locationList).filter((x) => {
+    if (!locationList.includes(x.rootNoteLocation)) return false;
+    if (x.chordKey.includes("7")) {
+      if (!locationList.includes(x.n7L)) return false;
+    }
+    if (x.chordKey.includes("13") || x.chordKey.includes("add6")) {
+      if (!locationList.includes(x.n13L)) return false;
+    }
+    if (x.chordKey.includes("#5") || x.chordKey.includes("b5")) {
+      if (!locationList.includes(x.n5L)) return false;
+    }
+    if (x.chordKey.includes("sus2") || x.chordKey.includes("9")) {
+      if (!locationList.includes(x.n9L)) return false;
+    }
+    if (x.chordKey.includes("sus4") || x.chordKey.includes("11")) {
+      if (!locationList.includes(x.n11L)) return false;
+    }
+    if (x.chordKey.includes("7")) {
+      if (!(locationList.includes(x.n7L) && locationList.includes(x.n3L))) return false;
+    }
+    if (x.chordKey.includes("maj3") || x.chordKey.includes("aug3") || x.chordKey.includes("min3") || x.chordKey.includes("dim3")) {
+      if (!locationList.includes(x.n3L)) return false;
+    }
+    if (x.chordKey.includes("dom9") || x.chordKey.includes("dom11") || x.chordKey.includes("dom13")) {
+      if (!(locationList.includes(x.n7L) && locationList.includes(x.n3L))) return false;
+    }
+    if (x.chordKey.includes("augmaj")) {
+      if (!(locationList.includes(x.n3L) && locationList.includes(x.n5L) && locationList.includes(x.n7L))) return false;
+    }
+    if (x.chordKey.includes("minmaj")) {
+      if (!(locationList.includes(x.n3L) && locationList.includes(x.n7L))) return false;
+    }
+    return intersection4(x.orderedNotesLocationList, locationList).length > 2;
+  });
+  if (isUndefined9(findResult) || isNull6(findResult) || isArray4(findResult) && findResult.length === 0) {
+    return [];
+  }
+  const originMapList = findResult.all().map((x) => {
+    const likely = jaccard(x.orderedNotesLocationList, locationList);
+    return {
+      ...x,
+      likely: Number(likely.toFixed(4))
+    };
+  });
+  return orderBy(originMapList, "likely", "desc");
+};
+var findComplexChordByMidi_default = findComplexChordByMidi;
+var jaccard = (a, b) => {
+  const intersectionLength = intersection4(a, b).length;
+  return intersectionLength / (a.length + b.length - intersectionLength);
+};
+
 // src/find/index.ts
 var find_default = {
   findChord: findChord_default,
   findNotesInChord: findNotesInChord_default,
-  findNotesInScale: findNotesInScale_default
+  findNotesInScale: findNotesInScale_default,
+  findComplexChordByMidi: findComplexChordByMidi_default
 };
 export {
-  Radix,
+  radix_exports as Radix,
   chord_default as chord,
   circleOfFifths_exports as circleOfFifths,
   factory_exports as factory,
