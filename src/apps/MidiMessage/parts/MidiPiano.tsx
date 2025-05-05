@@ -16,6 +16,7 @@ const colorList = [
 	{backgroundColor: googleColors.green200, color: googleColors.green900},
 	{backgroundColor: googleColors.blue200, color: googleColors.blue900},
 	{backgroundColor: googleColors.purple200, color: googleColors.purple700},
+	{backgroundColor: googleColors.deepOrange200, color: googleColors.red800},
 ]
 
 

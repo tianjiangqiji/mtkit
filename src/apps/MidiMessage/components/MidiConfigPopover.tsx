@@ -8,6 +8,7 @@ import {Mask, Slider} from "antd-mobile";
 import {useEffect, useState} from "react";
 
 const marks = {
+	2: 2,
 	3: 3,
 	4: 4,
 	5: 5,
@@ -96,7 +97,7 @@ const MidiConfigPopover = (props: {}) => {
 						<Slider
 							marks={marks}
 							max={7}
-							min={3}
+							min={2}
 							step={1}
 							ticks={true}
 							style={{"--fill-color": googleColors.blue800}}
