@@ -63,6 +63,8 @@ type intervalConfigType = {
 	setWhiteKeyWidth: (i: number) => void
 	isAnalyzeShow: boolean,
 	setIsAnalyzeShow: (i: boolean) => void
+	noteOnNumList: number[]
+	setNoteOnNumList: (i: number[]) => void
 }
 const defaultStore = {
 	isWebMidiSupport: false,
@@ -79,7 +81,8 @@ const defaultStore = {
 	whiteKeyWidth: 30,//钢琴键盘白键宽度
 	isAnalyzeShow: true,//分析显示开关
 	eventList: [],
-	latestEvent: null
+	latestEvent: null,
+	noteOnNumList: []
 }
 const storeKey = "midiConfig"
 const useMIDIConfig = create<intervalConfigType>()(immer(persist(
@@ -88,6 +91,11 @@ const useMIDIConfig = create<intervalConfigType>()(immer(persist(
 		setIsWebMidiSupport: (i: boolean) => {
 			set((state) => {
 				state.isWebMidiSupport = i
+			})
+		},
+		setNoteOnNumList: (i: number[]) => {
+			set((state) => {
+				state.noteOnNumList = i
 			})
 		},
 		setLatestEvent: (i: {
@@ -184,7 +192,7 @@ const useMIDIConfig = create<intervalConfigType>()(immer(persist(
 		name: storeKey, // name of the item in the storage (must be unique)
 		storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
 		partialize: (state) => {
-			const {eventList, latestEvent, ...rest} = state
+			const {eventList, latestEvent, noteOnNumList, ...rest} = state
 			return rest
 		},
 	},

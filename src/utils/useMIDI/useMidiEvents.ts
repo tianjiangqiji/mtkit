@@ -9,11 +9,20 @@ import {isEmpty, isNull, isNumber, isUndefined, sortBy} from "lodash";
 import {useEffect, useMemo, useState} from "react";
 
 const useMidiEvents = () => {
-	const {eventListLength, setEventListLength, latestEvent, setLatestEvent, eventList, setEventList} = useMIDIConfig()
+	const {
+		eventListLength,
+		setEventListLength,
+		latestEvent,
+		setLatestEvent,
+		eventList,
+		setEventList,
+		noteOnNumList,
+		setNoteOnNumList
+	} = useMIDIConfig()
 	const {isWebMidiSupport, isJzzEngineReady, JZZ} = UseMIDIReady()
 	const {inputs, outputs,} = useMIDIPorts()
 
-	const [noteOnNumList, setNoteOnNumList] = useState<number[]>([])
+	// const [noteOnNumList, setNoteOnNumList] = useState<number[]>([])
 	const clearNoteOnList = () => setNoteOnNumList([])
 
 	const clearEventList = () => setEventList([])
@@ -84,16 +93,6 @@ const useMidiEvents = () => {
 		if (noteOnNumList.length === 0) return []
 		return sortBy(noteOnNumList).map(num => new music12.Radix.Base12Radix(num).twoDigitArray)
 	}, [noteOnNumList])
-
-	useEffect(() => {
-		console.log("useEvent: latestEvent changed:", latestEvent);
-	}, [latestEvent]);
-	useEffect(() => {
-		console.log("useEvent: note on changed:", noteOnNumList);
-	}, [noteOnNumList]);
-	useEffect(() => {
-		console.log("useEvent: note witin octave changed:", noteOnNumWithOctaveList);
-	}, [noteOnNumWithOctaveList]);
 
 	return {
 		eventList, latestEvent, noteOnNumList, clearNoteOnList, clearEventList, noteOnNumWithOctaveList,

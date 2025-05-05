@@ -6,7 +6,7 @@ import OctavePiano from "@/components/rePiano/OctavePiano.tsx";
 import dt from "@/utils/guoDT.ts";
 import useMidiEvents from "@/utils/useMIDI/useMidiEvents.ts";
 import {css} from "@emotion/react";
-import {range} from "lodash";
+import {random, range} from "lodash";
 import {useMemo} from "react";
 
 
@@ -58,12 +58,9 @@ const MidiPiano = () => {
 
 		setLatestEvent({
 			name: "乐理计算器", note: pitchValue, isNoteOn: !noteOnNumList.includes(pitchValue),
-			isNoteOff:
-				noteOnNumList.includes(pitchValue),
-			velocity:
-				100,
-			time:
-				dt.getDayjs()
+			isNoteOff: noteOnNumList.includes(pitchValue),
+			velocity: random(10, 126),
+			time: dt.getDayjs()
 		})
 	}
 
