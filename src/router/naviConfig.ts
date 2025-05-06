@@ -56,6 +56,13 @@ export default [
 		imgURL: chord_svg,
 	},
 	{
+		link: `/${routerPath.spiano}`,
+		title: "超级钢琴",
+		subtitle: "分析琴键/可搭配MIDI键盘使用",
+		imgURL: midi_svg,
+		type: "all"
+	},
+	{
 		link: `/${routerPath.mobile_scoreChecker}`,
 		title: "识谱辅助",
 		subtitle: "识别谱面并与钢琴键盘对应",
@@ -106,13 +113,7 @@ export default [
 	//   imgURL: exam_svg,
 	//   type: "all"
 	// },
-	{
-		link: `/${routerPath.spiano}`,
-		title: "超级钢琴",
-		subtitle: "分析琴键/可搭配MIDI键盘使用",
-		imgURL: midi_svg,
-		type: "all"
-	},
+
 	// {
 	// 	link: `/${routerPath.keyboard}`,
 	// 	title: "键盘演奏",

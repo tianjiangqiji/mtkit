@@ -14,6 +14,7 @@ const marks = {
 	5: 5,
 	6: 6,
 	7: 7,
+	8: 8,
 }
 
 const whiteKeyWidthMarks = {
@@ -96,7 +97,7 @@ const MidiConfigPopover = (props: {}) => {
 						<div style={{color: googleColors.blue800, marginBottom: 20}}>钢琴八度跨度</div>
 						<Slider
 							marks={marks}
-							max={7}
+							max={8}
 							min={2}
 							step={1}
 							ticks={true}
